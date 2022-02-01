@@ -1,0 +1,91 @@
+/*Give the <body> element a background of #bda464*/
+body
+{
+    background-color: #bda464;
+}
+/*Make the <h1> elements blue*/
+h1
+{
+    color: blue;
+}
+/*Make all <li> elements in the shade of hexadecimal blue*/
+li
+{
+    color: #89CFF0;
+}
+/*Paragraph background to orange*/
+p
+{
+    background-color: orange;
+}
+/*Make all <h3> have 5px red solid border*/
+h3
+{
+    border: 5px solid red;
+}
+/*Give everything with <abbr> bold and underlined*/
+abbr
+{
+    font-weight: bold;
+    text-decoration: underline;
+}
+/*Give elements with class "explanation" red*/
+.explanation
+{
+    color: red;
+}
+/*Give <p> in id "zen-benefits" pink background*/
+#zen-benefits p
+{
+    background-color: pink;
+}
+/*Make <li> adjacent to <h2> red background*/
+li+h2
+{
+    background-color: red;
+}
+/*Give <em> inside <p> red and bold*/
+p em
+{
+    color: red;
+    font-weight: bold;
+}
+/* Give visited link green */
+a:visited
+{
+    color: green;
+}
+/* Change to body font to any google font as you like */
+body
+{
+    font-family: 'Inconsolata', monospace;
+}
+/* Add any animation to <h1> (try the new one not same as the example) */
+@keyframes MoveFromTop
+{
+    0%
+    {
+        opacity:0;
+        transform: translateY(-20rem);
+    }
+    25%
+    {
+        opacity:0.25;
+        transform: translateY(-5rem);
+    }
+    50%
+    {
+        opacity:0.5;
+        transform: translateY(2rem);
+    }  
+    100%
+    {
+        opacity:1;
+        transform: translate(0);
+    }
+}
+h1
+{
+    animation-name: MoveFromTop;
+    animation-duration: 2.5s;
+}
