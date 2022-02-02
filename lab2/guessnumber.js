@@ -19,7 +19,7 @@ while(true)
     {
         lastnum = player;
     }
-    else if(player > lastnum)
+    else if(player > lastnum || player < frontnum)
     {
         alert("YOU LOSE!\nSecert Number Is " + number);
         break;
