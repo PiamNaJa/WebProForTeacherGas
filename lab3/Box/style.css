@@ -1,0 +1,20 @@
+.boutsidebox {
+    background-color: rgb(230, 126, 230);
+}
+
+.binsidebox {
+    background-color: wheat;
+}
+
+.aoutsidebox {
+    background-color: rgb(127, 228, 11);
+}
+
+.ainsidebox {
+    background-color: rgb(97, 120, 226);
+}
+
+div {
+    padding: 5px;
+    margin: 10px;
+}
