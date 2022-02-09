@@ -1,6 +1,6 @@
 function b1()
 {
-    if(!visit[1])
+    if(visit[1] === false)
     {
         if(turn === 'X')
         {
@@ -13,13 +13,15 @@ function b1()
             turn = 'X';
         }
         visit[1] = true;
+        let index = numlist.indexOf(1);
+        numlist.splice(index,1);
         random();
     }
     block1.removeEventListener('click', b1);
 }
 function b2()
 {
-    if(!visit[2])
+    if(visit[2] === false)
     {
         if(turn === 'X')
         {
@@ -32,13 +34,15 @@ function b2()
             turn = 'X';
         }
         visit[2] = true;
+        let index = numlist.indexOf(2);
+        numlist.splice(index,1);
         random();
     }
     block2.removeEventListener('click', b2);
 }
 function b3()
 {
-    if(!visit[3])
+    if(visit[3] === false)
     {
         if(turn === 'X')
         {
@@ -51,13 +55,15 @@ function b3()
             turn = 'X';
         }
         visit[3] = true;
+        let index = numlist.indexOf(3);
+        numlist.splice(index,1);
         random();
     }
     block3.removeEventListener('click', b3);
 }
 function b4()
 {
-    if(!visit[4])
+    if(visit[4] === false)
     {
         if(turn === 'X')
         {
@@ -70,13 +76,15 @@ function b4()
             turn = 'X';
         }
         visit[4] = true;
+        let index = numlist.indexOf(4);
+        numlist.splice(index,1);
         random();
     }
     block4.removeEventListener('click', b4);
 }
 function b5()
 {
-    if(!visit[5])
+    if(visit[5] === false)
     {
         if(turn === 'X')
         {
@@ -89,13 +97,15 @@ function b5()
             turn = 'X';
         }
         visit[5] = true;
+        let index = numlist.indexOf(5);
+        numlist.splice(index,1);
         random();
     }
     block5.removeEventListener('click', b5);
 }
 function b6()
 {
-    if(!visit[6])
+    if(visit[6] === false)
     {
         if(turn === 'X')
         {
@@ -108,29 +118,36 @@ function b6()
             turn = 'X';
         }
         visit[6] = true;
+        let index = numlist.indexOf(6);
+        numlist.splice(index,1);
         random();
     }
     block6.removeEventListener('click', b6);
 }
 function b7()
 {
-    if(turn === 'X')
+    if(visit[7] === false)
     {
-        block7.innerHTML = turn;
-        turn = 'O';
+        if(turn === 'X')
+        {
+            block7.innerHTML = turn;
+            turn = 'O';
+        }
+        else if(turn === 'O')
+        {
+            block7.innerHTML = turn;
+            turn = 'X';
+        }
+        visit[7] = true;
+        let index = numlist.indexOf(7);
+        numlist.splice(index,1);
+        random();
     }
-    else if(turn === 'O')
-    {
-        block7.innerHTML = turn;
-        turn = 'X';
-    }
-    visit[7] = true;
     block7.removeEventListener('click', b7);
-    random();
 }
 function b8()
 {
-    if(!visit[8])
+    if(visit[8] === false)
     {
         if(turn === 'X')
         {
@@ -143,13 +160,15 @@ function b8()
             turn = 'X';
         }
         visit[8] = true;
+        let index = numlist.indexOf(8);
+        numlist.splice(index,1);
         random();
     }
     block8.removeEventListener('click', b8);
 }
 function b9()
 {
-    if(!visit[9])
+    if(visit[9] === false)
     {
         if(turn === 'X')
         {
@@ -162,6 +181,8 @@ function b9()
             turn = 'X';
         }
         visit[9] = true;
+        let index = numlist.indexOf(9);
+        numlist.splice(index,1);
         random();
     }
     block9.removeEventListener('click', b9);
@@ -171,10 +192,14 @@ function random()
     while(true)
     {
         let num = numlist[Math.floor(Math.random()*numlist.length)];
+        if(num === undefined) break;
         console.log(num);
+        let index = numlist.indexOf(num);
+        numlist.splice(index,1);
+        console.log(numlist);
         if(num === 1)
         {
-            if(!visit[1])
+            if(visit[1] === false)
             {
                 if(turn === 'X')
                 {
@@ -187,12 +212,13 @@ function random()
                     turn = 'X';
                 }
                 block1.removeEventListener('click', b1);
+                visit[1] = true;
                 break;
             }
         }
         else if(num === 2)
         {
-            if(!visit[2])
+            if(visit[2] === false)
             {
                 if(turn === 'X')
                 {
@@ -205,12 +231,13 @@ function random()
                     turn = 'X';
                 }
                 block2.removeEventListener('click', b2);
+                visit[2] = true;
                 break;
             }
         }
         else if(num === 3)
         {
-            if(!visit[3])
+            if(visit[3] === false)
             {
                 if(turn === 'X')
                 {
@@ -223,12 +250,13 @@ function random()
                     turn = 'X';
                 }
                 block3.removeEventListener('click', b3);
+                visit[3] = true;
                 break;
             }
         }
         else if(num === 4)
         {
-            if(!visit[4])
+            if(visit[4] === false)
             {
                 if(turn === 'X')
                 {
@@ -241,12 +269,13 @@ function random()
                     turn = 'X';
                 }
                 block4.removeEventListener('click', b4);
+                visit[4] = true;
                 break;
             }
         }
         else if(num === 5)
         {
-            if(!visit[5])
+            if(visit[5] === false)
             {
                 if(turn === 'X')
                 {
@@ -259,12 +288,13 @@ function random()
                     turn = 'X';
                 }
                 block5.removeEventListener('click', b5);
+                visit[5] = true;
                 break;
             }
         }
         else if(num === 6)
         {
-            if(!visit[6])
+            if(visit[6] === false)
             {
                 if(turn === 'X')
                 {
@@ -277,12 +307,13 @@ function random()
                     turn = 'X';
                 }
                 block6.removeEventListener('click', b6);
+                visit[6] = true;
                 break;
             }
         }
         else if(num === 7)
         {
-            if(!visit[7])
+            if(visit[7] === false)
             {
                 if(turn === 'X')
                 {
@@ -295,12 +326,13 @@ function random()
                     turn = 'X';
                 }
                 block7.removeEventListener('click', b7);
+                visit[7] = true;
                 break;
             }
         }
         else if(num === 8)
         {
-            if(!visit[8])
+            if(visit[8] === false)
             {
                 if(turn === 'X')
                 {
@@ -313,12 +345,13 @@ function random()
                     turn = 'X';
                 }
                 block8.removeEventListener('click', b8);
+                visit[8] = true;
                 break;
             }
         }
         else if(num === 9)
         {
-            if(!visit[9])
+            if(visit[9] === false)
             {
                 if(turn === 'X')
                 {
@@ -331,10 +364,15 @@ function random()
                     turn = 'X';
                 }
                 block9.removeEventListener('click', b9);
+                visit[9] = true;
                 break;
             }
         }
     }
+}
+function checkwin()
+{
+
 }
 let visit = [false,false,false,false,false,false,false,false,false,false];
 let numlist = [1,2,3,4,5,6,7,8,9];
