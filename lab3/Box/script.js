@@ -17,8 +17,23 @@ function insidebox()
     outbox.removeEventListener('click', outsidebox);
 }
 
+function reset()
+{
+    const obox = document.querySelector('.aoutsidebox');
+    obox.classList.remove("aoutsidebox");
+    obox.classList.add("boutsidebox");
+    outbox.addEventListener('click', outsidebox);
+
+    const ibox = document.querySelector('.ainsidebox');
+    ibox.classList.remove("ainsidebox");
+    ibox.classList.add("binsidebox");
+    inbox.addEventListener('click', insidebox);
+}
 const outbox = document.querySelector('.boutsidebox');
 outbox.addEventListener('click', outsidebox);
 
 const inbox = document.querySelector('.binsidebox');
 inbox.addEventListener('click', insidebox);
+
+const button = document.querySelector('button');
+button.addEventListener('click', reset);

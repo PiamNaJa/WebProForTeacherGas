@@ -1,0 +1,12 @@
+.word
+{
+    background-color: darkgrey;
+}
+.hidden
+{
+    display: none;
+}
+.show
+{
+    display: list-item;
+}
