@@ -9,37 +9,31 @@ h1 {
     grid-template-columns: auto auto auto;
     text-align: center;
     margin: auto;
+    font-size: 10rem;
 }
-.board #item1,#item4
+#item1,#item2,#item4,#item5
 {
     border: 1px red solid;
     border-top: none;
     border-left: none;
+    width: 10rem;
+    height: 10rem;
 }
-.board #item7
-{
-    border: 1px red solid;
-    border-top: none;
-    border-left: none;
-    border-bottom: none;
-}
-.board #item2,#item5
-{
-    border: 1px red solid;
-    border-top: none;
-    border-left: none;
-}
-.board #item8
+#item7,#item8
 {
     border: 1px red solid;
     border-top: none;
     border-left: none;
     border-bottom: none;
+    width: 10rem;
+    height: 10rem;
 }
-.board #item3,#item6
+#item3,#item6
 {
     border: 1px red solid;
     border-top: none;
     border-left: none;
     border-right: none;
+    width: 10rem;
+    height: 10rem;
 }
