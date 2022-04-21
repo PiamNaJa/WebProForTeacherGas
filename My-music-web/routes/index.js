@@ -1,43 +1,40 @@
-const   express = require("express"),
-        router = express.Router(),
-        passport = require('passport'),
-        User = require('../models/user'),
-        Artist = require('../models/artist'),
-        middleware = require('../middleware'),
-        Song = require('../models/song');
-
-
+const   express     = require("express"),
+        router      = express.Router(),
+        passport    = require('passport'),
+        User        = require('../models/user'),
+        Song        = require('../models/song'),
+        Artist      = require('../models/artist'),
+        Album      = require('../models/album'),
+        middleware  = require('../middleware');
 
 router.get('/', (req,res)=>{
-    let artist;
-    Artist.find({},(err,allArtist)=>{
-        if(err)
-        {
-            console.log(err);
-        }
+    Album.find({},(err, allAlbum)=>{
+        if(err){console.log(err);}
         else
         {
-            artist = allArtist;
-        }
-    })
-
-    Song.find({}).populate('artist').exec((err, allSong)=>{
-        if(err)
-        {
-            console.log(err);
-        }
-        else
-        {
-            const MostFavSong   = allSong.sort((a, b) => a.fav < b.fav ? 1 : -1).slice(0,6), //เรียง Fav จากมากไปน้อย และเอา5อันดับแรก
-                  NewSong       = allSong.sort((a, b) => a.release < b.release ? 1 : -1).slice(0,6); //เรียง date จากล่าสุดไปนาน และเอา5อันดับแรก
-            
-                  console.log(NewSong[0].release);
-                  console.log(NewSong[1].release);
-            
-                res.render("landing.ejs", {
-                MostFavSong : MostFavSong,
-                NewSong : NewSong,
-                artist : artist
+            Artist.find({},(err,allArtist)=>{
+                if(err){console.log(err);}
+                else
+                {
+                    Song.find({}).populate('artist').exec((err, allSong)=>{
+                        if(err){console.log(err);}
+                        else
+                        {
+                            const MostFavSong   = allSong.sort((a, b) => a.fav < b.fav ? 1 : -1).slice(0,6), //เรียง Fav จากมากไปน้อย และเอา5อันดับแรก
+                                  NewSong       = allSong.sort((a, b) => a.release < b.release ? 1 : -1).slice(0,6); //เรียง date จากล่าสุดไปนาน และเอา5อันดับแรก
+                            
+                                  console.log(NewSong[0].release);
+                                  console.log(NewSong[1].release);
+                            
+                            res.render("landing.ejs", {
+                                MostFavSong : MostFavSong,
+                                NewSong : NewSong,
+                                artist : allArtist,
+                                album : allAlbum
+                            });
+                        }
+                    });
+                }
             });
         }
     });
