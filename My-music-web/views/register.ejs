@@ -1,0 +1,21 @@
+<%- include("partials/login_register_header.ejs") %> 
+    <a class="closebutton" href="/">
+        <span class="closebutton__icon">&nbsp;</span>
+    </a>
+
+    <img src="/icon/web-icon.png" class="webicon">
+
+    <form action="" method="post" class="input">
+        <div class ="mb-3">
+            <label for="" class="form-label">Username</label>
+            <input class="form-control" name="username" type="text" placeholder="Username" required>
+        </div>
+
+        <div class ="mb-3">
+            <label for="" class="form-label">Password</label>
+            <input class="form-control" name="password" id = "password" type="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn--register">Register</button>
+        <a href="/login" class="gologin">I have account</a>
+    </form>
+<%- include("partials/footer.ejs") %> 

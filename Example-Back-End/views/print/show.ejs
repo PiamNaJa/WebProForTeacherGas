@@ -1,0 +1,13 @@
+<%- include("../partials/header.ejs") %>
+<h1>Title : <%=print.name%></h1>
+<img src="<%=print.image%>">
+<p>Artist : <%=print.Artist%></p>
+<p>Subbmited by <%= print.author.username %> </p>
+<h2>Comments</h2>
+<% print.comments.forEach((comment)=>{%> 
+    <p>
+        <strong><%=comment.author.username%></strong> = <%=comment.text%>
+    </p>
+<%}) %> 
+<a href="/prints/<%=print._id%>/comments/new" class="btn btn-primary my-2">Add new comment</a>
+<%- include("../partials/footer.ejs") %>

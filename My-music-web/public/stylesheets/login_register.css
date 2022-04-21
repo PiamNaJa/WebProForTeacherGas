@@ -1,0 +1,80 @@
+*
+{
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: 600;
+    font-size : 1.5rem;
+    background-color: #1F1F1F;
+    color:white;
+}
+.closebutton
+{
+    position: absolute;
+    width: 2rem;
+    left: 90%;
+    top: 0;
+}
+
+.closebutton__icon,
+.closebutton__icon::after,
+.closebutton__icon::before {
+    width: 3rem;
+    height: 0.2rem;
+    background-color: tranparent;
+    display: inline-block;
+}
+
+.closebutton__icon {
+    position: relative;
+    margin-top: 3rem;
+}
+
+.closebutton__icon::after,
+.closebutton__icon::before {
+    content: "";
+    position: absolute;
+    background-color: white;
+}
+
+.closebutton__icon::after {
+    left: 0;
+    transform: rotate(135deg);
+}
+
+.closebutton__icon::before {
+    left: 0;
+    transform: rotate(-135deg);
+}
+
+.webicon{
+    position: absolute;
+    left: 50%;
+    top: 13%;
+    width: 10%;
+    transform: translateX(-50%);
+}
+
+.input{
+    position: absolute;
+    width: 50%;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.btn--login, .btn--register{
+    background-color: #1DE8F1;
+    color: black;
+    font-weight: 700;
+}
+.btn--login:hover, .btn--register:hover{
+    background-color: #0fb9c2;
+}
+
+.goregister, .gologin{
+    color: white;
+    font-weight: 700;
+}
+
+.goregister:hover, .gologin:hover{
+    color: #1DE8F1;
+    font-weight: 700;
+}

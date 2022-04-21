@@ -1,0 +1,55 @@
+<%- include("../partials/header.ejs") %>
+<div class="container-fluid pt-0 ps-0">
+  <div class="p-1 p-md-3 mb-2 text-white rounded bg-dark">
+    <div class="col-md-6 px-0 d-flex">
+      <img class="rounded-circle me-2" src="<%= artist.image %>" width="140px" height = "140px">
+      <div class="d-block">
+        <h3><%= artist.name %></h3>
+        <p class="lead">Artist</p>
+      </div>  
+    </div>
+  </div>
+
+
+  <div class="row g-5">
+    <div class="col-md-8">
+
+      <h2>Artist Songs</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th class="text-white" scope="col">Title</th>
+              <th class="text-white" scope="col">Genre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% song.forEach((song)=>{ %>
+              <tr class = "artist-song-row">
+                <td class="text-white" ><a class="text-white text-decoration-none" href="/song/<%= song._id %>"><%= song.name %></a></td>
+                <td class="text-white"><a class="text-white text-decoration-none" href="#"><%= song.genre %></a></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h2>Other Artists</h2>
+      <div class="position-sticky" style="top: 4rem;">
+        <div class="p-0 mb-3 otherartist rounded">
+          <% otherArt.forEach((otherArt)=>{ %>
+            <a class = "d-block p-2 ps-2 mb-1 otherartist__block"href="/artist/<%= otherArt._id %>">
+              <img class="rounded-circle" src="<%= otherArt.image %>" width = "60px" height="60px">
+              <p class="d-inline-block otherartist--name"><%= otherArt.name %></p>
+            </a>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<%- include("../partials/footer.ejs") %>

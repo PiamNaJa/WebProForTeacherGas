@@ -1,0 +1,18 @@
+.mainbox
+{
+    top: 10%;
+    border: 1rem gray solid;
+    padding: 1px;
+    width: 21vh;
+    height: 21vh;
+    position: absolute;
+    left: 50%;
+}
+.insidebox{
+    width: 10vh;
+    height: 10vh;
+    display: inline-block;
+}
+.black{
+    background-color: black;
+}

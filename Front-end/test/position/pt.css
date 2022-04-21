@@ -1,0 +1,24 @@
+.container
+{
+    position: relative;
+    display: block;
+}
+.container__left{
+    width: 4rem;
+    height: 4rem;
+    display: inline-block;
+    float: left;
+}
+.container__right{
+    width: 4rem;
+    height: 4rem;
+    float: right;
+    display: inline-block;
+    margin-right: 1%;
+}
+.container__center{
+    width: 4rem;
+    height: 4rem;
+    display: inline-block;
+    margin-left: 38%;
+}

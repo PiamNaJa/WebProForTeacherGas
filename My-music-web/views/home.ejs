@@ -1,0 +1,58 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Most Favorite Song</h1>
+<div class="album ms-0">
+  <div class="container-fluid p-0">
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3">
+      <% MostFavSong.forEach((fav)=>{ %>
+      <div class="col">
+        <div class="card shadow-sm p-3">
+          <a href="/song/<%= fav._id %>" class="text-decoration-none">
+            <img class="song--img" src="<%= fav.image %>">
+            <p class="song--name text-white m-0"><%= fav.name %></p>
+            <a href="/artist/<%= fav.artist._id %>" class="song--artist text-white"><%= fav.artist.name %></a>
+          </a>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+</div>
+
+<h1 class="mt-2">New Song</h1>
+<div class="album ms-0">
+  <div class="container-fluid p-0">
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3">
+      <% NewSong.forEach((newsong)=>{ %>
+      <div class="col">
+        <div class="card shadow-sm p-3">
+          <a href="/song/<%= newsong._id %>" class="text-decoration-none">
+            <img class="song--img" src="<%= newsong.image %>">
+            <p class="song--name text-white m-0"><%= newsong.name %></p>
+            <a href="/artist/<%= newsong.artist._id %>" class="song--artist text-white"><%= newsong.artist.name %></a>
+          </a>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+</div>
+
+<h1 class="mt-2">Artist</h1>
+<div class="album ms-0">
+  <div class="container-fluid p-0">
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3">
+      <% artist.forEach((artist)=>{ %>
+      <div class="col">
+        <div class="card shadow-sm p-3">
+          <a href="/song/<%= artist._id %>" class="text-decoration-none">
+            <img class="rounded-circle artist--img" src="<%= artist.image %>">
+            <p class="artist--name text-white m-0"><%= artist.name %></p>
+          </a>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+</div>
+<%- include("partials/footer.ejs") %>

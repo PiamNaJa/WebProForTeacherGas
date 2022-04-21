@@ -1,0 +1,37 @@
+.box
+{
+    width: 10%;
+    height: 10%;
+    position: relative;
+    display: inline-block;
+    content: "";
+    margin: 0.1rem;
+}
+.col
+{
+    display: block;
+}
+section
+{
+    width: 60%;
+    position: relative;
+    display: inline;
+}
+aside
+{
+    width: 40%;
+    position: relative;
+    display: inline;
+}
+header .container .col .box
+{
+    background-color: aquamarine;
+}
+section .container .col .box
+{
+    background-color: black;
+}
+aside section .container .col .box
+{
+    background-color: green;
+}
