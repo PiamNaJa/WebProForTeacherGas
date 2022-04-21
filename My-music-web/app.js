@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost/Kmusic'); // เชื่อม Database
 app.set("view engine" ,"ejs");
 app.use(express.static("./public"));
 app.use(bodyParser.urlencoded({extended : true}));
-// sendDB();
+sendDB();
 app.use(require('express-session')({
     secret: "secret word",
     resave: false,

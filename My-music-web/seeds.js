@@ -1,8 +1,9 @@
 const mongoose = require('mongoose'),
       Artist = require('./models/artist'),
+      Album = require('./models/album'),
       Song = require('./models/song');
 
-const Songdata = [
+const SlipknotSong = [
         {
             image : "https://i.ytimg.com/vi/h_htyBV4XWM/hqdefault.jpg",
             name : ".execute.", 
@@ -740,10 +741,1008 @@ const Songdata = [
         }
     ];
 
-const Artistdata = {
-    image : "https://m.thaiticketmajor.com/img_artist/prefix_1/0264/264/264-5ea7d02c147ee-a.jpg",
-    name : "Slipknot"
-}
+const BabymetalSong = [
+    {
+        image : "https://i.ytimg.com/vi/cJ_poK8kVOU/maxresdefault.jpg",
+        name : "Babymetal Death", 
+        genre : "Rock",
+        fav : 100,
+        lyric: `B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!! SU-METAL DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!! YUIMETAL DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!! MOAMETAL DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!! BABYMETAL DEATH!!
+        B A B Y M E T A L
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!! SU-METAL DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!! YUIMETAL DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!! MOAMETAL DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!! SU-METAL DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!! YUIMETAL DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!! MOAMETAL DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!! BABYMETAL DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        DEATH!!
+        B×A×B×Y×M×E×T×A×L
+        DEATH!!`
+    },
+    {
+        image : "https://i1.sndcdn.com/artworks-000091364658-ay3rca-t500x500.jpg",
+        name : "Megitsune", 
+        genre : "Rock",
+        fav : 40,
+        lyric: `(sore!! sore!! sore!! sore sore sore sore!!)
+        (sore!! sore!! sore!! sore sore sore sore!!)
+        
+        omekashi kitsune san
+        (chikichiki wasshoi! chikichiki wasshoi!)
+        
+        tsuinte nabikase te
+        (kirakira wasshoi! kirakira wasshoi!)
+        
+        hajikete doron shite
+        (guruguru wasshoi! guruguru wasshoi!)
+        
+        iza ike nana henka
+        (konkonkonkokonkonkokon!)
+        
+        (sore!! sore!! sore!! sore sore sore sore!!)
+        (sore!! sore!! sore!! sore sore sore sore!!)
+        
+        inishie no otome tachi yo kari some no yume ni odoru
+        ikusen no toki wo koete ima o ikiru
+        
+        Ah~ah.. sou yoitsu demo onna wa joyuu yo
+        kitsune ja nai kitsune ja nai otome wa megitsune
+        
+        Ah~ah..yamatonadeshiko onna wa kawaru no
+        kao de waratte kokoro de nai te
+        sou yo ne tte namida wa mise nai no
+        
+        kitsune kitsune
+        watashi wa megitsune onna wa joyuu yo
+        
+        (so iyasoiyasoiyaso iya so iyasoiyasoiyaso iya so iyasoiyasoiyaso iya sore sore sore sore!)
+        (so iyasoiyasoiyaso iya so iyasoiyasoiyaso iya so iyasoiyasoiyaso iya sore sore sore sore!)
+        
+        (sore!! sore!! sore!! sore sore sore sore!!)
+        (sore!! sore!! sore!! sore sore sore sore!!)
+        
+        inishie no otome tachi yo kari hajime no yume ni utau
+        ikusen no toki wo koe te koko ni ikiru
+        
+        Ah~ah.. sou yoitsu demo onna wa joyuu yo
+        kitsune ja nai kitsune ja nai otome wa...
+        
+        'name tara ikanze yo!'
+        
+        Ah~ah.. yamatonadeshiko onna wa kawaru no
+        zutto itsumo kienai you ni hanabi wo ageru no
+        
+        Ah~ah.. sai te chiru no ga onna no sadame yo
+        kao de waratte kokoro de nai te
+        junjou otome na megitsune yo
+        
+        Ah~ah..`
+    },
+    {
+        image : "https://upload.wikimedia.org/wikipedia/en/8/83/Babymetal_Gimme_Chocolate%21%21_UK_iTunes_artwork.jpg",
+        name : "Gimme Chocolate!!", 
+        genre : "Rock",
+        fav : 20,
+        lyric: `[Give me chocolate!]
+
+        Atatata tata tatatata zukkyun!
+        Watatata tata tatatata dokkyun!
+        Zukyun! Dokyun!
+        Zukyun! Dokyun!
+        Yada! Yada! Yada! Yada!
+        NEVER! NEVER! NEVER!
+        
+        C! I! O! (chekera) Chokoreeto chokoreeto
+        Cho! Cho! Cho! Iikana?
+        Demo ne chotto Weight
+        Chotto saikin shinpai nan desu
+        Dakedo chokoreeto chokoreeto
+        Cho! Cho! Cho! Iikana?
+        Demo ne chotto Wait
+        Chotto matte
+        Cho! Cho! Cho!
+        
+        [ Give me! ]
+        
+        [Give me chocolate!]
+        
+        Atatata tata tatatata zukkyun!
+        Watatata tata tatatata dokkyun!
+        Zukyun! Dokyun!
+        Zukyun! Dokyun!
+        Mada! Mada! Mada! Mada!
+        NEVER! NEVER! NEVER!
+        
+        C! I! O! (chekera) Chokoreeto chokoreeto
+        Cho! Cho! Cho! Iiyone?
+        Demo ne chotto Weight
+        Chotto saikin shinpai nan desu
+        Dakedo chokoreeto chokoreeto
+        Cho! Cho! Cho! Iiyone?
+        Demo ne chotto Wait
+        Chotto matte
+        Cho! Cho! Cho!
+        
+        [Give me!]
+        
+        Parappappappaa rappappappaa
+        Rappappappaa paapapapapaa
+        
+        Too too late! Too too late!
+        Too too P! P! P! (Please! Please! Please!)
+        Come on!
+        
+        [Give me chocolate!]
+        
+        Atatata tata tatatata zukkyun!
+        Watatata tata tatatata dokkyun!
+        Zukyun! Dokyun!
+        Zukyun! Dokyun!
+        Yada! Yada! Yada! Yada!
+        NEVER! NEVER! NEVER!
+        
+        Yabai cho! Cho! Haado
+        Cho! Ippai ganbattan desu
+        Dakara chotto haato
+        Chotto dake onegai nan desu
+        Hayaku chokoreeto chokoreeto
+        Cho! Cho! Cho! Choudai
+        Yokose chokoreeto
+        Chokoreeto please!!
+        
+        C! I! O! (chekera) Chokoreeto chokoreeto
+        Cho! Cho! Cho! Iidesho?
+        Dayone cho! Cho! GOOD
+        Cho! Happii de ganbacchaun desu
+        Dakara chokoreeto chokoreeto
+        Cho! Cho! Cho! Iidesho?
+        Dayone chotto dake
+        Chotto dake tabechaou!!
+        
+        Parappappappaa rappappappaa
+        Rappappappaa paapapapapaa
+        
+        Too too late! Too too late!
+        Too too P! P! P! (Please! Please! Please!)
+        Come on!
+        
+        Parappappappaa rappappappaa
+        Rappappappaa paapapapapaa
+        
+        Parappappappaa rappappappaa
+        Rappappappaa paapapapapaa`
+    },
+    {
+        image : "https://i1.sndcdn.com/artworks-000173825717-fl1wpv-t500x500.jpg",
+        name : "Iine!", 
+        genre : "Rock",
+        fav : 105,
+        lyric: `Chi-ku-ta-ku shichau
+        Kimochi tomara-nai yo
+        Chi-ku-ta-ku shichau
+        Kimochi ai sukuriimo
+        
+        Sore watashi no oyatsu!
+        Cho cho cho!
+        Furage shinai de yo!
+        
+        (Omae no mono wa ore no mono)
+        
+        Hitorikiri de sora miageta
+        senchimentaru naito
+        Ikoo zukkyuun to
+        genjitsu toohikou
+        
+        Iine! Iine!
+        Yo-zora de paari-nait
+        Iine! Iine!
+        Kagayaite-'kou
+        Torima mosshusshu
+        Sukoshi-zutsu nante muri
+        
+        Yeah, yeah!
+        Chouzetu sugiru yo  Kanpeki yo
+        Onnya-no-ko wa
+        Yume mo kitto
+        chou kaosu da yo
+        
+        Atama yurase! Megane hazuse!
+        Atama mawase! Megane hazuse!
+        Atama yurase! Megane hazuse!
+        Gyuugyuu panpan tsume-sugi ryukku wa
+        Sugu-sama orose!
+        
+        Yo! Yo! Yo! Yo!
+        Maikurohon chekku wan tsuu wan tsuu
+        Aa yuu redii tuu moosh?
+        Aa yuu redii tuu moosh?
+        Put your KITSUNE up!!
+        Kitsune da-o
+        
+        (Meroikku ja nai, Kitsune san)
+        (Meroikku ja nai, Kitsune da)
+        
+        Gyaa
+        
+        Hitorikiri de yubi-kiri shita
+        senchimentaru naito
+        Ikoo zukkyuun to
+        genjitsu toohikou
+        
+        Iine! Iine!
+        Yo-zora de paari-nait
+        Iine! Iine!
+        Kagayaite-'kou
+        Torima mosshusshu
+        Sukoshi-zutsu nante muri
+        
+        Yeah, yeah!
+        Chouzetu sugiru yo kanpeki yo
+        Onnya-no-ko wa
+        Yume mo kitto
+        chou kaosu da yo
+        
+        (Iine! Iine!)
+        Yeah, yeah!
+        (Iine! Iine!)
+        Yeah, yeah!
+        (Iine! Iine!)
+        Chou kaosu sa
+        
+        Yeah, yeah!
+        (Iine! Iine!)
+        Yeah, yeah!
+        (Iine! Iine!)
+        Yeah, yeah!
+        (Iine! Iine!)
+        (Iine! Iine! Iine! Iine!)`
+    },
+    {
+        image : "https://www.guitartabsexplorer.com/images/tabs/babymetal_akatsuki.jpg",
+        name : "Akatsuki", 
+        genre : "Rock",
+        fav : 38,
+        lyric: `Ikusen mo no yoru o koete
+        iki tsuzukeru ai ga aru kara
+        kono karada ga horobiru made
+        inochi ga kieru made
+        mamori tsuzukete yuku
+        
+        Hitomi no oku ni hikaru
+        nakidashi-soona tsuki wa
+        akai namida afurete
+        yozora o somete yuku
+        
+        Seijaku no naka de
+        kizutsuita yaiba sashi-mukai
+        kodoku mo fuan mo
+        kiri-tsukeru, kokoro made
+        
+        Ikusen mo no yoru o koete
+        iki tsuzukeru ai ga aru kara
+        kono karada ga horobiru made
+        inochi ga kieru made
+        mamori tsuzukete yuku
+        
+        Sugite yuku toki no naka
+        hitomi o tojita mama
+        kono te ni nagareru akai ito kiretemo
+        kanjite-iru, kizuna o
+        
+        Seijaku no naka de
+        kizutsuita yaiba sashi-mukai
+        kodoku mo fuan mo
+        kiri-tsukeru, kokoro made
+        ima
+        
+        Ikusen mo no yoru o koete
+        iki tsuzukeru ai ga aru kara
+        kono karada ga horobiru made
+        inochi ga itsuka kieru made
+        
+        Ikusen mo no yoru o koete
+        iki tsuzukeru ai ga aru kara
+        kono karada ga horobiru made
+        inochi ga kieru made
+        mamori tsuzukete yuku
+        
+        Akaku somare! Makka ni somare!`
+    },
+    {
+        image : "https://i.ytimg.com/vi/cirhQ8iLdbw/maxresdefault.jpg",
+        name : "Doki Doki Morning", 
+        genre : "Rock",
+        fav : 89,
+        lyric: `Pattsun pattsun maegami pattsun (Cutie style)
+        Yappa icchokusen nara ittoushou yo (cho sugoi!)
+        Kyou no rippu accho? Kocchi? Socchi? Docchi?
+        Which? Chocchi? Uocchi ima nanji?
+        
+        Shuugou shuugou houkago shuugou (Party Time)
+        Datte joshikai sanka de gaaruzu tooku yo (cho yabai!)
+        Kyou no VIP acchi? Kocchi? Socchi? Docchi?
+        Which? Chocchi? Uocchi ima nanji?
+        
+        Shiranai furi wa kirai! Kirai!
+        Shiranai sekai mitai! Mitai!
+        Yo jigen go jigen kitai! Kitai!
+        10 pasento senobi shitai! Shitai!
+        Yo ne?
+        
+        Rin rin rin! Ohayou Wake Up
+        Onegai! Cho matte! Cho matte!
+        Ring Ring Ring! Aserazu Hurry Up
+        Bata bata morning
+        
+        Rin rin rin! Awatezu Make Up
+        Onegai! Cho matte! Cho matte!
+        Ring Ring Ring! Today wa Version Up
+        Doki doki morning
+        
+        Suppin suppin megane ga heapin (Funny face)
+        But san pyou matte ne sokko henshin (cho hayai!)
+        Kyou no RAP acchi? Kocchi? Socchi? Docchi?
+        Which? Chocchi? Uocchi ima nanji?
+        
+        Shiranai furi wa kirai! Kirai!
+        Shiranai sekai mitai! Mitai!
+        Yo jigen go jigen kitai! Kitai!
+        10 pasento senobi shitai! Shitai!
+        Yo ne?
+        
+        Rin rin rin! Ohayou wake up
+        Onegai! Cho matte! Cho matte!
+        Ring, ring, ring! Aserazu hurry up
+        Bata bata morning
+        
+        Rin rin rin! Awatezu make up
+        Onegai! Cho matte! Cho matte!
+        Ring, ring, ring! Today wa version Up
+        Doki doki morning`
+    },
+    {
+        image : "https://image.jimcdn.com/app/cms/image/transf/none/path/sfeb3e2f9ecd74f84/image/i20dd8bb7bc23ace7/version/1416281024/image.jpg",
+        name : "Onedari Daisakusen", 
+        genre : "Rock",
+        fav : 70,
+        lyric: `Sakusen-1
+        Itsumo ijou ni kigen tori 
+        katamomi sukasazu [PAPA daisuki]
+        Sakusen-2
+        Otsukaresama [kamisama]
+        Suki na TAIPU wa mochiron [PAPA daisuki]
+        
+        Uso demo ii! [enryo wa muyou!]
+        homemakure! [gomasuri gomasuri!]
+        are mo hoshii! [mou sukoshi kamase!]
+        kore mo hoshii
+        
+        [Tenshi no kao shita akuma no sasayaki]
+        [Sekkyou suru nara kane wo kure]
+        [Tenshi no kao shita akuma no sasayaki]
+        
+        [Watashi, PAPA no oyomesan ni naru nda]
+        
+        Let’s go! Let’s go!
+        Onedari sakusen
+        kawaiku [punpun] dada konero!
+        saikyou no [oh] Saikou no [oh]
+        tenshi no egao ni damasaresou da
+        Let’s go! Let’s go!
+        Onedari sakusen
+        MAMA ni naisho de GETTO shichao !
+        saikyou no [oh] Saikou no [oh]
+        choudai.. Choudai..
+        Onedari sakusen
+        
+        Onegai.. [saigo no] onegai.. [itsumo no]
+        Kekkon suru nara yappari [PAPA]
+        Onegai.. [saigo no] onegai.. [itsumo no]
+        Dadakko kamasu [BLACK BABYMETAL]
+        Onegai.. [saigo no] onegai.. [itsumo no]
+        Isshou ichido no [saisho de saigo no]
+        Onegai.. [saigo no] onegai.. [itsumo no]
+        Koakuma kimeru [BLACK BABYMETAL]
+        
+        Datte onna no ko da mon
+        kirakira shiteru no daaisuki..
+        kawaii no daaisuki..
+        oishii mono daaisuki..
+        
+        One for the money!
+        Two for the money!
+        Three for the money!
+        Money! Money! Money! Money!
+        
+        One for the money!
+        Two for the money!
+        Three for the money!
+        Money! Money! Money! Money!
+        
+        One for the money!
+        Two for the money!
+        Three for the money!
+        Money! Money! Money! Money!
+        
+        One for the money!
+        Two for the money!
+        Three for the money!
+        Money! Money! Money! Money!
+        
+        Katte! Katte! Katte! Katte! Katte! Katte! Katte! Katte!
+        Choudai! Choudai! Choudai! Choudai! Choudai! Choudai! Choudai! Choudai!
+        
+        Katte! Katte! Katte! Katte! Katte! Katte! Katte! Katte!
+        Choudai! Choudai! Choudai! Choudai! Choudai! Choudai! Choudai! Choudai!
+        
+        Let’s go! Let’s go!
+        Onedari sakusen
+        kawaiku [punpun] dada konero!
+        saikyou no [oh] Saikou no [oh]
+        tenshi no egao ni damasaresou da
+        Let’s go! Let’s go!
+        Onedari sakusen
+        MAMA ni naisho de GETTO shichao !
+        saikyou no [oh] Saikou no [oh]
+        choudai.. Choudai..
+        Onedari sakusen
+        
+        Onegai.. [saigo no] onegai.. [itsumo no]
+        Kekkon suru nara yappari [PAPA]
+        Onegai.. [saigo no] onegai.. [itsumo no]
+        Dadakko kamasu [BLACK BABYMETAL]
+        Onegai.. [saigo no] onegai.. [itsumo no]
+        Isshou ichido no [saisho de saigo no]
+        Onegai.. [saigo no] onegai.. [itsumo no]
+        Koakuma kimeru [BLACK BABYMETAL]`
+    },
+    {
+        image : "https://i.ytimg.com/vi/dDFI-f-V8gs/maxresdefault.jpg",
+        name : "Song 4", 
+        genre : "Rock",
+        fav : 67,
+        lyric: `Yon, yon! Yon, yon! Yon, yon! Yon, yon!
+
+        Ichi no tsugi wa ni. He, hei!
+        Ni no tsugi wa san. He, hei!
+        San no tsugi wa, uu, yon. Foo!
+        
+        Yon, yon! Yon, yon! Yon, yon! Yon, yon!
+        
+        Nana no mae wa roku. He, hei!
+        Roku no mae wa go. He, hei!
+        Go no mae wa, uu, yon. Foo!
+        
+        Yon, yon! Yon, yon! Yon, yon! Yon, yon!
+        
+        Shiawase no shi
+        Shinu ja nai shi. Foo!
+        Shippai no shi
+        Yoroshiku no yon. Foo!
+        
+        Shiawase no shi
+        Shinu ja nai shi. Foo!
+        Bitamin no shi
+        Yorokobi no yon
+        Yon. Yon. Yon. Yon. Foo!
+        
+        Yon, yo, yo, yo, yon, yon
+        Yon, yo, yo, yo, yon, yon. Yoishoo!
+        Yon, yo, yo, yo, yon, yon
+        Yon, yo, yo, yo, yon, yon. Yokkorasho!
+        
+        Yon, yo, yo, yo, yon, yon
+        Yon, yo, yo, yo, yon, yon. Yosshaa!
+        Yon, yo, yo, yo, yon, yon
+        Yon, yo, yo, yo, yon, yon. Oishii!
+        
+        Yon, yon! Yon, yon! Yon, yon! Yon, yon!
+        
+        Ichi no tsugi wa ni. He, hei!
+        Ni no tsugi wa san. He, hei!
+        San no tsugi wa, uu, yon. Foo!
+        
+        Nana no mae wa roku. He, hei!
+        Roku no mae wa go. He, hei!
+        Go no mae wa, uu, yon. Foo!
+        
+        Yon, yon! Yon, yon! Yon, yon! Yon, yon!
+        Yon, yon! Yon, yon! Yon, yon! Yon, yon!
+        
+        Shiawase no sh
+        Shinu ja nai shi. Foo!
+        Shippai no shi
+        Yonaoshi no yon. Foo!
+        
+        Shiawase no shi
+        Shinu ja nai shi. Foo!
+        Oishii no shi
+        Yorokobi no yon
+        Yon. Yon. Yon. Yon. Foo!
+        
+        Yon, yon! Yon, yon! Yon, yon! Yon, yon!`
+    },
+    {
+        image : "https://i.ytimg.com/vi/wFO2sYncwt8/maxresdefault.jpg",
+        name : "Uki Uki Midnight", 
+        genre : "Rock",
+        fav : 10,
+        lyric: `Denki o keshite genki o chaji
+        Korya hajimaru yo Uki uki ★ midnight
+        Sorosoro honki to kaite maji!
+        Agepo yo ¯ de pikapika miraboru
+        
+        Geso! Geso! Ikageso ga tabetai!
+        Atashi wa surume-hana ¯ no! Yada! Yada!
+        Oji-chan mitai!
+        Kyawai okashi ni shiyou YO!
+        
+        Shonen shojo yo!
+        Okashi to yume ippai tsumete
+        Ima atsumare!
+        Atashi n ie Party night!
+        
+        Anata to watashi You and Me 
+        Koyoi wa tanoshi Uki Uki ★ midnight
+        Mongen Closing Time
+        Nononono! No way!
+        Madamada tsudzuku yo
+        Kinkiriariiiiiinnnnn!!!
+        
+        Denki o keshite genki o chaji
+        Korya hajimaru yo uki uki ★ midnight
+        Sorosoro honki to kaite maji!
+        Agepo yo ¯ de pikapika miraboru
+        
+        Shonen shojo yo!
+        Okashi to yume ippai tabete
+        Ima tobidase!
+        Atashi n ie Party night! !
+        
+        Anata to watashi You and Me
+        Koyoi wa tanoshi Uki Uki ★ midnight
+        Mongen Closing Time
+        Nononono! No way! 
+        Madamada tsudzuku yo
+        Kinkiriariiiiiinnnnn!!!
+        
+        Nemuku natte kita onaka mo ippai
+        Demo korekara ga kuraimakkusu
+        Shoboshobo o-me me kosu~u tte maji!
+        Agepo yo ¯ de kinkirarin!
+        
+        Denki o keshite genki o chaji
+        Korya hajimaru yo uki uki ★ midnight
+        Sorosoro honki to kaite maji!
+        Agepo yo ¯ de pikapika miraboru`
+    },
+    {
+        image : "https://i.ytimg.com/vi/H_yATzyi-3g/maxresdefault.jpg",
+        name : "Catch Me If You Can", 
+        genre : "Rock",
+        fav : 40,
+        lyric: `Ooi! Mou Ii Kai? Mou Ii Kaai!?
+        Maada Dayo!
+        Ooi! Mou Ii Kai? Mou Ii Kaai!?
+        Maada Dayo!
+        
+        Acchi Kana? Kocchi Kana?
+        Sate Onisan Doko Deshou?
+        Zettai Ni Mitsukaranai
+        Totteoki No Basho Wo Hakken!
+        
+        Ooi! Mou Ii Kai? Mou Ii Kaai!?
+        Maada Dayo!
+        Ooi! Mou Ii Kai? Mou Ii Kaai!?
+        Maada Dayo!
+        
+        Migi Hidari? Kyorokyorori?
+        Yada Dokidoki Tomannai!
+        Ii Yo! Mitsukerareru Mon Nara
+        Mitsukete Minasai Minasai Na!
+        
+        Ooi! Mou Ii Kai? Mou Ii Kaai!?
+        Maada Dayo!
+        Ooi! Mou Ii Kai? Mou Ii Kaai!?
+        Maada Dayo!
+        
+        Onisan Kochira
+        Te No Naru Hou He
+        Onisan Kochira
+        
+        Mou Ii Yoo!
+        
+        Wow Wow……Guruguru Kakurenbo
+        Mawattemasu (Voi!) Mawattemasu (Voi!)
+        Ashimoto Gochuui? (Hora Tsukamaetee!)
+        Wow Wow……Guruguru Kakurenbo
+        Akai Kutsu (Hai!) Haicha Dame (Non!)
+        Denjarasu Da Mon
+        
+        Nekugo Wa I Ne Ga!
+        Waruigo I Ne Ga
+        
+        Onisan Kochira
+        Te No Naru Hou He
+        Onisan Kochira
+        
+        Miitsuketa!
+        
+        Wow Wow……Guruguru Kakurenbo
+        Akaonisan (Voi!) Aoonisan (Voi!)
+        Suteppu! Suteppu! (Wan Tsuu! Wan Tsuu!)
+        
+        Wow Wow……Guruguru Kakurenbo
+        Koronde Mo (Hai!) Naicha Dame (Non!)
+        Tsuyoi Kosan Da Mon
+        
+        Mada Mada Iku Yoo!
+        
+        Wow Wow……Guruguru Kakurenbo
+        Wow Wow……Guruguru Kakurenbo
+        Akai Kutsu Haicha Dame Denjarasu Da Mon`
+    },
+    {
+        image : "https://i.ytimg.com/vi/8WBDiLMNZcE/maxresdefault.jpg",
+        name : "Rondo of Nightmare", 
+        genre : "Rock",
+        fav : 80,
+        lyric: `Kaketa tsuki ga terashi dashita
+        kageri no naka habikoru kyooki
+        Warai-goe hibiki watari
+        kiba o muite me o hikaraseteru
+        Nigerare-nai
+        
+        Yura yura yurameku
+        kokoro ni mie kakure
+        Akumu no rondo ga kurikaesareteru
+        Mezame no hikari wa
+        haruka kanata mie-naku nari
+        tada hashiri nukeru
+        yami no naka o
+        
+        Mori no naka izumi no naka
+        iki o koroshi mi o hisomete mo
+        semari kuru sugu chikaku ni
+        Yodonda koe. Owara-nai yoru
+        Aa...
+        
+        Moo koko kara derare-nai no nara
+        anata no sugata o misete wa kure-nai ka?
+        
+        Yura yura yurameku
+        kokoro ni mie kakure
+        Akumu no rondo ga kurikaesareteru
+        Mezame no hikari wa
+        haruka kanata mie-naku naru
+        Tada ochite yuku no
+        yami no naka e`
+    },
+    {
+        image : "https://resize.cdn.otakumode.com/exq/65/820.812/shop/product/16790618285746bab3e46e3aa3954baf.jpg",
+        name : "Headbangeeeeerrrrr!!!!!", 
+        genre : "Rock",
+        fav : 48,
+        lyric: `Densetsu no kuro-kami wo
+        Karei ni midashi
+        Kurui zaku kono hanawa
+        Hakanaku kieru
+        
+        Hedobang Hedobang
+        Hedobang Hedobang
+        Hedobang Hedobang
+        Pan pan pan pan
+        
+        Saa toki wa kita
+        Mo o mayowa-nai
+        Nigiri-shimeta no
+        Juuhachi-kippu
+        Higashi e nishi e
+        Minami e kita e
+        Kyoo mo do-sen ni totsugeki
+        
+        Kamite. Koi ya!
+        Shimote. Koi ya!
+        Chokuritsu-fudoo nokezori
+        Gyaku-dai. Kara no!
+        Saku-dai. Kara no!
+        Koro-dai. Kara no!
+        Oritatami
+        
+        Ichigo no yoru o
+        Wasure wa shi-nai
+        Naki mushi na yasu wa
+        Koko kara kie-usero
+        
+        Densetsu no kuro-kami wo
+        Karei ni midashi
+        Kurui zaku kono hanawa
+        Hakanaku kieru
+        
+        Moo nidoto modore-nai
+        Wazukana toki wo
+        Kono mune ni kizamunda
+        Ichigo no yoru o
+        
+        Hirari chuu ni mau
+        
+        Hedobangyaaa!
+        
+        Hedobang Hedobang...
+        
+        Ichigo no yoru o
+        Wasure wa shi-nai
+        Naki mushi na yasu wa
+        Koko kara ki-e-ro
+        
+        Ichigo no yoru o
+        Wasure wa shi-nai
+        Jama o suru yatsu wa
+        Sokuzani kie-usero
+        
+        Densetsu no kuro-kami wo
+        Karei ni midashi
+        Kurui zaku kono hanawa
+        Hakanaku kieru
+        
+        Moo nidoto modore-nai
+        Wazukana toki wo
+        Kono mune ni kizamunda
+        Ichigo no yoru o
+        
+        Densetsu no kuro-kami wo
+        Karei ni midashi
+        Kurui zaku kono hanawa
+        Hakanaku kieru
+        
+        Moo nidoto modore-nai
+        Wazukana toki wo
+        Kono mune ni kizamunda
+        Ichigo no yoru o
+        
+        Hirari chuu ni mau
+        
+        Hedobang Hedobang
+        Hedobang Hedobang
+        Hedobang Hedobang
+        Pan pan pan pan
+        
+        Hedobangyaaa!
+        
+        Hedobang Hedobang...`
+    },
+    {
+        image : "https://wikiimg.tojsiabtv.com/wikipedia/en/thumb/e/e5/BABYMETAL_-_Ijime,_Dame,_Zettai_(cover).jpg/440px-BABYMETAL_-_Ijime,_Dame,_Zettai_(cover).jpg",
+        name : "Ijime Dame Zettai", 
+        genre : "Rock",
+        fav : 109,
+        lyric: `Rururu~
+
+        Yume o miru koto sore sae mo motenakute
+        Hikari to yami no hazama hitori
+        Kizutsuita no wa jibun jishin dake janaku
+        Mitsume tsudzukete kureta anata
+        
+        Jishin (Motte) motezu (makenaide)
+        Kakure tsudzuketa (ijikechaiya)
+        Kinou (yesterday) made no
+        Jibun sayonara (bye bye)
+        
+        Ijime (dame) ijime (dame)
+        Kakkowaruiyo (dame dame dame dame)
+        Kizutsuite kizutsukete kizu
+        Darake ni naru no sa
+        Kitsune (Tobe) kitsune (Tobe)
+        Kitto toberu yo (tobe tobe tobe tobe)
+        Kurushimi mo kanashimi mo subete tokihanate
+        Kimi o mamorukara
+        
+        Namida misezu ni naki dashi souna yoru wa
+        Kokoro no oku no heya ni hitori
+        Kizutsuketa no wa hoka no dareka dake janaku
+        Kidzukanai furi shi teta nakama
+        Nani mo (nasshin) iezu (Say nothing)
+        Akirame kaketa (poisutekinshi)
+        Kinou (yesterday) made no
+        Jibun sayonara (bye bye)
+        
+        Ijime (dame) ijime (dame)
+        Kakkowaruiyo (dame dame dame dame)
+        Kizutsuite kizutsukete kizu
+        Darake ni naru no sa
+        Kitsune (Tobe) kitsune (Tobe)
+        Kitto toberu yo (tobe tobe tobe tobe)
+        Kurushimi mo kanashimi mo subete tokihanate
+        Kimi o mamorukara
+        
+        (Itami) (kanjite) (zutto) (hitori) (kokoro)
+        (Kidzukanai furi) (mou nigenai)
+        (Ijime dame zettai)
+        
+        Itoshikute setsunakute kokoro dzuyokute
+        Kore ijou mou kimi no nakigao wa mitakunai
+        
+        Ijime (dame) ijime (dame)
+        Kakkowaruiyo (dame dame dame dame)
+        Kizutsuite kizutsukete kizu darake ni naru no sa
+        Kitsune (Tobe) kitsune (Tobe)
+        Kitto toberu yo
+        Kurushimi mo kanashimi mo subete tokihanate
+        Kimi o mamorukara
+        
+        Ijime dame zettai (dame dame dame dame)
+        Ijime dame forever
+        Ijime dame zettai (dame dame dame dame)
+        Ijime dame dame`
+    },
+]
+
+const Artistdata = [
+    {
+        image : "https://m.thaiticketmajor.com/img_artist/prefix_1/0264/264/264-5ea7d02c147ee-a.jpg",
+        name : "Slipknot"
+    },
+    {
+        image : "https://i.pinimg.com/736x/7b/46/45/7b4645a211633937815a10b6bc028d09.jpg",
+        name : "Babymetal"
+    }
+];
+
+const Albumdata = [
+    {
+        image : "https://shop.metalscraprecords.com/image/catalog/Products/CD/NEW/SSS/666/SLIPKNOT/All%20Hope%20Is%20Gone/1.jpg",
+        name : "All hope is gone"
+    },
+    {
+        image : "https://upload.wikimedia.org/wikipedia/en/3/36/Babymetalcover.jpg",
+        name : "Babymetal"
+    }
+];
 
 function sendDB()
 {
@@ -755,12 +1754,33 @@ function sendDB()
         else
         {
             console.log("Artist removal complete");
-            Artist.create(Artistdata, (err, artist)=>{
-                if(err)
-                {
-                    console.log(err);
-                }
-            });
+            Artistdata.forEach((artist)=>{
+                Artist.create(artist, (err, artist)=>{
+                    if(err)
+                    {
+                        console.log(err);
+                    }
+                });
+            })
+        }
+    });
+
+    Album.remove({}, (err)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            console.log("Album removal complete");
+            Albumdata.forEach((album)=>{
+                Album.create(album, (err, album)=>{
+                    if(err)
+                    {
+                        console.log(err);
+                    }
+                });
+            })
         }
     });
 
@@ -772,17 +1792,31 @@ function sendDB()
         else
         {
             console.log("Song removal complete");
-            Songdata.forEach((seed)=>
+            seedSong(SlipknotSong, "Slipknot", "All hope is gone");
+            seedSong(BabymetalSong, "Babymetal", "Babymetal");
+        }
+    });
+}
+
+function seedSong(Songdata, artistname, albumname)
+{
+    Songdata.forEach((seed)=>{
+        Song.create(seed, (err, song)=>{
+            if(err)
             {
-                Song.create(seed, (err, song)=>{
+                console.log(err);
+            }
+            else
+            {
+                console.log("New data added");
+                Artist.findOne({name : artistname.toString()}, (err, artist)=>{
                     if(err)
                     {
                         console.log(err);
                     }
                     else
                     {
-                        console.log("New data added");
-                        Artist.findOne({name : "Slipknot"}, (err, artist)=>{
+                        Album.findOne({name : albumname.toString()}, (err, album)=>{
                             if(err)
                             {
                                 console.log(err);
@@ -790,13 +1824,14 @@ function sendDB()
                             else
                             {
                                 song.artist = artist;
+                                song.album = album;
                                 song.save();
                             }
                         });
                     }
                 });
-            });
-        }
+            }
+        });
     });
 }
 

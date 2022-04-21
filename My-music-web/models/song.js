@@ -8,6 +8,10 @@ const songSchema = new mongoose.Schema({ //สร้าง Schema หรือ t
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Artist'
     },
+    album : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Album'
+    },
     release : {
         type: Date,
         default: new Date()

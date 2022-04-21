@@ -3,6 +3,7 @@ const   express = require("express"),
         passport = require('passport'),
         User = require('../models/user'),
         Artist = require('../models/artist'),
+        middleware = require('../middleware'),
         Song = require('../models/song');
 
 
@@ -33,7 +34,7 @@ router.get('/', (req,res)=>{
                   console.log(NewSong[0].release);
                   console.log(NewSong[1].release);
             
-                res.render("home.ejs", {
+                res.render("landing.ejs", {
                 MostFavSong : MostFavSong,
                 NewSong : NewSong,
                 artist : artist
@@ -77,6 +78,10 @@ router.post("/register", function(req, res){
             })
         }
     });
+});
+
+router.get('/favorite', middleware.isLoggedIn, (req,res)=>{
+    res.render("favorite.ejs");
 });
 
 module.exports = router;

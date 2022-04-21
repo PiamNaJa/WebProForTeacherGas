@@ -1,23 +1,22 @@
-const pass = document.getElementById("password");
-const repass = document.getElementById("repassword");
-const form = document.getElementById("form");
+let cart = {id:req.user._id};
 
-
-
-form.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    check();
-})
-
-function check()
-{
-
-    if(document.getElementById("password").value === document.getElementById("repassword").value)
+Cart.create(cart, function(err, new){
+    if(err)
     {
-        console.log("true");
+
     }
     else
     {
-        console.log("false");
+        Cart.findbyId(new._id, function(err, eiei){
+            if(err)
+            {
+        
+            }
+            else
+            {
+                eiei.product.push(foundproduct);
+                eiei.save()
+                redirect
+            }
     }
-}
+})
