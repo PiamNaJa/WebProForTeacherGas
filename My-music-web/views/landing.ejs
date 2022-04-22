@@ -38,14 +38,24 @@
   </div>
 </div>
 
-<!-- <h1 class="mt-2">Album</h1>
+<h1 class="mt-2">Album</h1>
 <div class="album ms-0">
   <div class="container-fluid p-0">
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3">
-      
+      <% album.forEach((album)=>{ %>
+        <div class="col">
+          <div class="card shadow-sm p-3">
+            <a href="/album/<%= album._id %>" class="text-decoration-none">
+              <img class="album--img" src="<%= album.image %>">
+              <p class="album--name text-white m-0"><%= album.name %></p>
+              <a href="/artist/<%= album.artist._id %>" class="song--artist text-white"><%= album.artist.name %></a>
+            </a>
+          </div>
+        </div>
+        <% }); %>
     </div>
   </div>
-</div> -->
+</div>
 
 <h1 class="mt-2">Artist</h1>
 <div class="album ms-0">

@@ -10,7 +10,8 @@ const express       = require('express'),
 
 const   indexRoutes  = require('./routes/index'),
         songRoutes   = require('./routes/song'),
-        artistRoutes = require('./routes/artist');
+        artistRoutes = require('./routes/artist'),
+        albumRoutes = require('./routes/album');
 
 mongoose.connect('mongodb://localhost/Kmusic'); // เชื่อม Database
 app.set("view engine" ,"ejs");
@@ -38,6 +39,7 @@ app.use(function(req,res,next){
 app.use('/', indexRoutes);
 app.use('/song', songRoutes);
 app.use('/artist', artistRoutes);
+app.use('/album', albumRoutes);
 
 app.listen(3000, function(){
     console.log("Kmusic Activated");

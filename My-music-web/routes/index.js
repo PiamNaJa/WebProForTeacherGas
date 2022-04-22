@@ -4,11 +4,11 @@ const   express     = require("express"),
         User        = require('../models/user'),
         Song        = require('../models/song'),
         Artist      = require('../models/artist'),
-        Album      = require('../models/album'),
+        Album       = require('../models/album'),
         middleware  = require('../middleware');
 
 router.get('/', (req,res)=>{
-    Album.find({},(err, allAlbum)=>{
+    Album.find({}).populate('artist').exec((err, allAlbum)=>{
         if(err){console.log(err);}
         else
         {

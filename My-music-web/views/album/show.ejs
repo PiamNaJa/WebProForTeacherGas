@@ -1,0 +1,19 @@
+<%- include("../partials/header.ejs") %>
+<div class="container">
+    <h3 >All Songs List</h3>
+    <div class="my-2 p-3 rounded shadow-sm album-song">
+        <% song.forEach((song)=>{ %>
+            <div class="d-flex pt-2 album-song-row">
+                <div class="pb-2 mb-0 small lh-sm w-100">
+                  <div class="d-flex justify-content-between">
+                    <a href="/song/<%= song._id %>" class="text-white text-decoration-none"><strong class="album-song--name"><%= song.name %></strong></a>
+                  </div>
+                  <a class="d-block text-white text-decoration-none mt-1" href="/artist/<%= song.artist._id %>"><span class="album-song--artistname"><%= song.artist.name %></span></a>
+                </div>
+                <a href="#" class="pt-1 me-2">Follow</a>
+            </div>
+        <% }) %>
+      </div>
+</div>
+
+<%- include("../partials/footer.ejs") %>

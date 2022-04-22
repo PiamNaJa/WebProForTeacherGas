@@ -1823,6 +1823,8 @@ function seedSong(Songdata, artistname, albumname)
                             }
                             else
                             {
+                                album.artist = artist;
+                                album.save();
                                 song.artist = artist;
                                 song.album = album;
                                 song.save();
