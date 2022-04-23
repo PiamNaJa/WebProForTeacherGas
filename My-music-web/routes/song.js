@@ -37,14 +37,23 @@ router.get('/new', (req,res)=>{
 });
 
 router.get('/:id', (req,res)=>{
-    Song.findById(req.params.id).populate('artist').exec((err, foundSong)=>{
+    Song.find({},(err, otherSong)=>{
         if(err)
         {
             console.log(err);
         }
         else
         {
-            res.render('song/show.ejs', {song:foundSong});
+            Song.findById(req.params.id).populate('artist').exec((err, foundSong)=>{
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    res.render('song/show.ejs', {song:foundSong, otherSong:otherSong});
+                }
+            });            
         }
     });
 });

@@ -1,7 +1,7 @@
 <%- include("../partials/header.ejs") %>
 
 <div class="container-fluid pt-0 ps-0">
-  <div class="p-1 p-md-3 mb-2 text-white rounded bg-dark">
+  <div class="p-1 p-md-3 mb-2 text-white rounded bg-gradient">
     <div class="col-md-6 px-0 d-flex">
       <img class="me-3 songinfo--img" src="<%= song.image %>" width="150px" height="150px">
       <div class="d-block">
@@ -10,7 +10,7 @@
         <p class="mb-1 songinfo--genre">Genre : <%= song.genre %></p>
         <p class="mb-1 songinfo--date">Release Date :
           <%= song.release.getDate() %>/<%= song.release.getMonth() %>/<%= song.release.getFullYear() %></p>
-        <button class="btn btn--play bg-white">
+        <button class="btn btn--play">
           <img class="mb-2" src="/icon/blue_play.png" alt="play">
           <p class="d-inline m-0">Play</p>
         </button>
@@ -18,7 +18,7 @@
           <img src="/icon/OutlineHeart.png" alt="Favorite">
         </button>
         <button class="btn btn--addplaylist p-0 ms-2">
-          <img src="/icon/addplaylist.png" alt="play">
+          <img src="/icon/addplaylist.png" alt="addplaylist">
         </button>
       </div>
     </div>
@@ -32,11 +32,15 @@
     </div>
 
     <div class="col-md-4">
+      <h4 class="fst-italic">Other Song</h4>
       <div class="position-sticky" style="top: 4rem;">
         <div class="p-4 mb-3 bg-dark rounded">
-          <h4 class="fst-italic">About</h4>
-          <p class="mb-0">Customize this section to tell your visitors a little bit about your publication, writers,
-            content, or something else entirely. Totally up to you.</p>
+          <% otherSong.forEach((otherSong)=>{ %>
+            <a class = "d-block p-2 ps-2 mb-1 othersong__block"href="/song/<%= otherSong._id %>">
+              <img class="rounded-circle" src="<%= otherSong.image %>" width = "60px" height="60px">
+              <p class="d-inline-block othersong--name"><%= otherSong.name %></p>
+            </a>
+          <% }); %>
         </div>
       </div>
     </div>

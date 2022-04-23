@@ -1800,40 +1800,40 @@ function sendDB()
 
 function seedSong(Songdata, artistname, albumname)
 {
-    Songdata.forEach((seed)=>{
-        Song.create(seed, (err, song)=>{
-            if(err)
-            {
-                console.log(err);
-            }
-            else
-            {
-                console.log("New data added");
-                Artist.findOne({name : artistname.toString()}, (err, artist)=>{
-                    if(err)
-                    {
-                        console.log(err);
-                    }
-                    else
-                    {
-                        Album.findOne({name : albumname.toString()}, (err, album)=>{
+    Artist.findOne({name : artistname.toString()}, (err, artist)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            Album.findOne({name : albumname.toString()}, (err, album)=>{
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    album.artist = artist;
+                    album.save();
+                    Songdata.forEach((seed)=>{
+                        Song.create(seed, (err, song)=>{
                             if(err)
                             {
                                 console.log(err);
                             }
                             else
                             {
-                                album.artist = artist;
-                                album.save();
                                 song.artist = artist;
                                 song.album = album;
                                 song.save();
-                            }
+                                console.log("Song : " + song.name + " Artist : " + artist.name + " Album : "+ album.name + " added");
+                            }                            
                         });
-                    }
-                });
-            }
-        });
+                    });
+                }
+            });
+        }
     });
 }
 

@@ -1,6 +1,6 @@
 <%- include("../partials/header.ejs") %>
 <div class="container-fluid pt-0 ps-0">
-  <div class="p-1 p-md-3 mb-2 text-white rounded bg-dark">
+  <div class="p-1 p-md-3 mb-2 text-white rounded artistinfo">
     <div class="col-md-6 px-0 d-flex">
       <img class="rounded-circle me-2 artistinfo--img" src="<%= artist.image %>" width="140px" height = "140px">
       <div class="d-block my-4 ms-1">
@@ -38,11 +38,11 @@
     <div class="col-md-4">
       <h2>Other Artists</h2>
       <div class="position-sticky" style="top: 4rem;">
-        <div class="p-0 mb-3 otherartist rounded">
+        <div class="p-0 mb-3 othersong rounded">
           <% otherArt.forEach((otherArt)=>{ %>
-            <a class = "d-block p-2 ps-2 mb-1 otherartist__block"href="/artist/<%= otherArt._id %>">
+            <a class = "d-block p-2 ps-2 mb-1 othersong__block"href="/artist/<%= otherArt._id %>">
               <img class="rounded-circle" src="<%= otherArt.image %>" width = "60px" height="60px">
-              <p class="d-inline-block otherartist--name"><%= otherArt.name %></p>
+              <p class="d-inline-block othersong--name"><%= otherArt.name %></p>
             </a>
           <% }); %>
         </div>

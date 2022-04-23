@@ -94,6 +94,10 @@ thead{
     object-fit: cover;
 }
 
+.artistinfo{
+    background-color: #121212;
+}
+
 .song--img, .artist--img, .album--img{
     object-fit: cover;
     width: 100%;
@@ -168,6 +172,18 @@ thead{
     width: 2vw;
 }
 
+.btn--play{
+    background-color: white;
+}
+
+.btn--play:hover{
+    background-color: rgba(255, 255, 255, 0.705);
+}
+
+.btn--fav:hover{
+    border: solid 1px white;
+}
+
 .btn--fav img{
     height: 5vh;
 }
@@ -194,22 +210,22 @@ thead{
 }
 
 
-.otherartist, tbody{
+.otherartist, .othersong, tbody{
     background-color: #121212;
     text-decoration: none;
     color: white;
 }
 
-.otherartist__block{
+.otherartist__block,.othersong__block{
     text-decoration: none;
     color: white;
 }
 
-.otherartist__block:hover{
+.otherartist__block:hover, .othersong__block:hover{
     background-color: #252424;
 }
 
-.otherartist--name{
+.otherartist--name, .othersong--name{
     text-decoration: none;
     color: white;
 }
@@ -217,4 +233,9 @@ thead{
 .otherartist--name:hover{
     text-decoration: underline;
     color: white;
+}
+
+.othersong--song:hover{
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.705);
 }
