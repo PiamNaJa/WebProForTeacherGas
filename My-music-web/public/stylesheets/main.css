@@ -230,12 +230,15 @@ thead{
     color: white;
 }
 
-.otherartist--name:hover{
-    text-decoration: underline;
-    color: white;
+.othersongartist--name{
+    color: rgb(206, 206, 206);
+    text-decoration: none;
 }
 
-.othersong--song:hover{
-    text-decoration: underline;
+.othersongartist--name:hover{
+    color: rgba(206, 206, 206, 0.658);
+}
+
+.otherartist--name:hover, .othersong--name:hover{
     color: rgba(255, 255, 255, 0.705);
 }

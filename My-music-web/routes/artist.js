@@ -25,7 +25,7 @@ router.get('/new', (req,res)=>{
 });
 router.get('/:id', (req,res)=>{
     let otherArt;
-    Artist.find({},(err, allArtist)=>{
+    Artist.find({'_id': {$ne : req.params.id}},(err, allArtist)=>{
         if(err)
         {
             console.log(err);

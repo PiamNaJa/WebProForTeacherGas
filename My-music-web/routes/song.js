@@ -36,8 +36,8 @@ router.get('/new', (req,res)=>{
     });
 });
 
-router.get('/:id', (req,res)=>{
-    Song.find({},(err, otherSong)=>{
+router.get('/:id', (req,res)=>{ //$ne = not equal
+    Song.find({'_id': {$ne : req.params.id}}).populate('artist').exec((err, otherSong)=>{ // Query all song expect spectified ID
         if(err)
         {
             console.log(err);
@@ -51,7 +51,8 @@ router.get('/:id', (req,res)=>{
                 }
                 else
                 {
-                    res.render('song/show.ejs', {song:foundSong, otherSong:otherSong});
+                    const randSong = otherSong.sort(() => Math.random() - 0.5).slice(0,5); //Shuffle Array Because Can't Use aggregate with populate
+                    res.render('song/show.ejs', {song:foundSong, otherSong:randSong});
                 }
             });            
         }

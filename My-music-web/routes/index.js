@@ -25,6 +25,9 @@ router.get('/', (req,res)=>{
                             
                                   console.log(NewSong[0].release);
                                   console.log(NewSong[1].release);
+                                  console.log(NewSong[2].release);
+                                  console.log(NewSong[3].release);
+                                  console.log(NewSong[4].release);
                             
                             res.render("landing.ejs", {
                                 MostFavSong : MostFavSong,

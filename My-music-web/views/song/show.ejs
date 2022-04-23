@@ -32,14 +32,16 @@
     </div>
 
     <div class="col-md-4">
-      <h4 class="fst-italic">Other Song</h4>
       <div class="position-sticky" style="top: 4rem;">
-        <div class="p-4 mb-3 bg-dark rounded">
+        <div class="p-0 mb-3 bg-transparent border-start rounded">
+          <h2 class="ps-2">Other Song</h2>
           <% otherSong.forEach((otherSong)=>{ %>
-            <a class = "d-block p-2 ps-2 mb-1 othersong__block"href="/song/<%= otherSong._id %>">
-              <img class="rounded-circle" src="<%= otherSong.image %>" width = "60px" height="60px">
-              <p class="d-inline-block othersong--name"><%= otherSong.name %></p>
-            </a>
+            <div class = "p-2 ps-2 mb-1 othersong__block">
+              <a class="othersong--name" href="/song/<%= otherSong._id %>"><%= otherSong.name %></a>
+              <br>
+              <a class="othersongartist--name" href="/artist/<%= otherSong.artist._id %>"><%= otherSong.artist.name %></a>
+            </div>
+            
           <% }); %>
         </div>
       </div>
