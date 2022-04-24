@@ -47,6 +47,10 @@ router.get('/login', (req,res)=>{
     res.render("login.ejs");
 });
 
+router.get('/search', (req,res)=>{
+    res.render("search.ejs");
+});
+
 router.post("/login", passport.authenticate('local',{
     successRedirect: '/',
     failureRedirect: '/login',
