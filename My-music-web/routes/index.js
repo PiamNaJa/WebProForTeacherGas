@@ -50,11 +50,15 @@ router.get('/login', (req,res)=>{
 router.post("/login", passport.authenticate('local',{
     successRedirect: '/',
     failureRedirect: '/login',
+    successFlash: true,
+    failureFlash: true,
+    successFlash : 'Successfully login',
+    failureFlash : 'Invalid username or password'
     }), function(req,res){
 
 });
 
-router.get("/logout", function(req, res){
+router.get("/logout", (req, res)=>{
     req.logout();
     res.redirect('/');
 });
@@ -63,12 +67,12 @@ router.get('/register', (req,res)=>{
     res.render("register.ejs");
 });
 
-router.post("/register", function(req, res){
+router.post("/register", (req, res)=>{
     let newUser = new User({username : req.body.username})
     User.register(newUser, req.body.password, (err)=>{
         if(err)
         {
-            console.log(err);
+            req.flash('error', err.message);
             return res.redirect("/register");
         }
         else

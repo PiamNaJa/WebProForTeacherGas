@@ -79,7 +79,7 @@ thead{
 }
 
 
-.home__font, .favorite__font, .playlist__font, .genre__font{
+.home__font, .favorite__font, .playlist__font, .genre__font, .artist__font, .album__font{
     position: relative;
     top: 0.32rem;
     font-weight: 400;
@@ -105,7 +105,7 @@ thead{
 }
 
 .song--name, .artist--name, .album--name{
-    font-size: 1.5vw;
+    font-size: 1.2rem;
     font-weight: 500;
     margin-bottom: 0;
     text-overflow: ellipsis;
@@ -116,7 +116,7 @@ thead{
 }
 
 .song--artist{
-    font-size: 1.3vw;
+    font-size: 1rem;
     font-weight: 400;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -194,15 +194,11 @@ thead{
 
 .lyric{
     white-space: pre-line;
-    font-size: 1.4vw;
+    font-size: 1.2rem;
 }
 
 .songinfo__text h1{
     font-size: 3.1vw;
-}
-
-.songinfo--artist, .songinfo--date, .songinfo--genre{
-    font-size: 1.52vw;
 }
 
 .artist-song-row:hover, .album-song-row:hover{
@@ -241,4 +237,20 @@ thead{
 
 .otherartist--name:hover, .othersong--name:hover{
     color: rgba(255, 255, 255, 0.705);
+}
+
+#number{
+    color: rgba(206, 206, 206, 0.258);
+    cursor: default;
+    width: 1.2rem;
+    text-align: right;
+}
+
+
+.artist-song-row td a{
+    color: white;
+}
+
+.artist-song-row td a:hover{
+    color: rgba(255, 255, 255, 0.705)!important;
 }

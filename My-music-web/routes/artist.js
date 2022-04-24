@@ -1,6 +1,7 @@
 const   express = require("express"),
         router = express.Router(),
         Artist = require('../models/artist'),
+        Album = require('../models/album'),
         Song = require('../models/song');
 
 
@@ -23,9 +24,21 @@ router.post('/', (req,res)=>{
 router.get('/new', (req,res)=>{
     res.render('artist/new.ejs');
 });
+router.get('/all', (req,res)=>{
+    Artist.find({}, (err, allArtist)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.render('artist/all.ejs', {allArtist:allArtist});
+        }
+    });
+});
 router.get('/:id', (req,res)=>{
     let otherArt;
-    Artist.find({'_id': {$ne : req.params.id}},(err, allArtist)=>{
+    Artist.find({'_id': {$ne : req.params.id}},(err, allArtist)=>{ //ne = not equal
         if(err)
         {
             console.log(err);
@@ -35,7 +48,6 @@ router.get('/:id', (req,res)=>{
             otherArt = allArtist.sort(() => Math.random() - 0.5).slice(0,5); //Shuffle Array
         }
     });
-
     Artist.findById(req.params.id, (err, foundArtist)=>{
         if(err)
         {
@@ -43,14 +55,29 @@ router.get('/:id', (req,res)=>{
         }
         else
         {
-            Song.find({"artist": {"_id" : foundArtist._id}}).populate('artist').exec((err, foundSong)=>{
+            Song.find({"artist": {"_id" : foundArtist._id}}).populate('artist album').exec((err, foundSong)=>{
                 if(err)
                 {
                     console.log(err);
                 }
                 else
                 {
-                    res.render('artist/show.ejs', {song:foundSong, artist: foundArtist, otherArt : otherArt});
+                    Album.find({"artist": {"_id" : foundArtist._id}}, (err, foundAlbum)=>{
+                        if(err)
+                        {
+                            console.log(err);
+                        }
+                        else
+                        {
+                            res.render('artist/show.ejs',
+                            {
+                                song:foundSong,
+                                artist: foundArtist,
+                                otherArt : otherArt,
+                                album : foundAlbum
+                            });
+                        }
+                    });
                 }
             });
         }

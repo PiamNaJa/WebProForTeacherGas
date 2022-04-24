@@ -4,6 +4,7 @@ const express       = require('express'),
       mongoose      = require('mongoose'),
       passport      = require('passport'),
       localStrategy = require('passport-local'),
+      flash         = require('connect-flash'),
       User          = require('./models/user'),
       sendDB        = require('./seeds.js');
 
@@ -24,14 +25,17 @@ app.use(require('express-session')({
     saveUninitialized: false
 }));
 
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req,res,next){
+app.use((req,res,next)=>{
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash('error');
+    res.locals.success = req.flash('success');
     next();
 });
 
@@ -41,6 +45,6 @@ app.use('/song', songRoutes);
 app.use('/artist', artistRoutes);
 app.use('/album', albumRoutes);
 
-app.listen(3000, function(){
+app.listen(3000, ()=>{
     console.log("Kmusic Activated");
 });

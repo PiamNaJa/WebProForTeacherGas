@@ -6,7 +6,10 @@ const   express = require("express"),
 
 
 router.get('/new', (req,res)=>{
-    res.render('artist/new.ejs');
+    res.render('album/new.ejs');
+});
+router.get('/all', (req,res)=>{
+    res.render('album/all.ejs');
 });
 router.get('/:id', (req,res)=>{
     Album.findById(req.params.id, (err, foundAlbum)=>{
