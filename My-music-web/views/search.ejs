@@ -1,3 +1,44 @@
 <%- include("partials/header.ejs") %>
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <div class="songside">
+            <h1>Songs</h1>
+            <div class="my-2 p-3 rounded shadow-sm album-song">
+                <% song.forEach((song)=>{ %>
+                    <div class="d-flex py-2 ps-2 album-song-row">
+                        <img src="<%= song.image %>" width="60px" height="60px" class="songside--img">
+                        <div class="mb-0 py-2 ps-2 small lh-sm w-100">
+                          <div class="d-flex justify-content-between">
+                            <a href="/song/<%= song._id %>" class="text-white text-decoration-none mb-1"><strong class="album-song--name"><%= song.name %></strong></a>
+                          </div>
+                          <a class="d-inline text-white text-decoration-none" href="/artist/<%= song.artist._id %>"><span class="album-song--artistname"><%= song.artist.name %></span></a>
+                        </div>
+                        <a href="#" class="my-auto me-2">Play</a>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+
+        <div class="artistside">
+            <h1>Artists</h1>
+            <div class="my-2 p-3 rounded shadow-sm album-song">
+                <% artist.forEach((artist)=>{ %>
+                    <div class="d-flex py-2 ps-2 album-song-row">
+                        <img src="<%= artist.image %>" width="60px" height="60px" class="songside--img">
+                        <div class="mb-0 py-2 ps-2 small lh-sm w-100">
+                          <div class="d-flex justify-content-between">
+                            <a href="/artist/<%= artist._id %>" class="text-white text-decoration-none mb-1"><strong class="album-song--name"><%= artist.name %></strong></a>
+                          </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+
+        <div class="albumside">
+            <h1>Albums</h1>
+        </div>
+    </div>
+</div>
 
 <%- include("partials/footer.ejs") %>

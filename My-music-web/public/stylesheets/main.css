@@ -90,7 +90,7 @@ thead{
     transform: translateY(-10%);
 }
 
-.artistinfo--img, .songinfo--img{
+.artistinfo--img, .songinfo--img, .songside--img{
     object-fit: cover;
 }
 
