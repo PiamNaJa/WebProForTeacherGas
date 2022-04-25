@@ -9,7 +9,7 @@ hr{
     color: white;
 }
 
-tbody, td, tfoot, th, .album-song{
+tbody, td, tfoot, th, .album-song, .songside, .artistside, .albumside{
     background-color: #121212;
     border-style: hidden
 }
@@ -90,7 +90,7 @@ thead{
     transform: translateY(-10%);
 }
 
-.artistinfo--img, .songinfo--img, .songside--img{
+.artistinfo--img, .songinfo--img, .songside--img, .artistside--img, .albumside--img{
     object-fit: cover;
 }
 
@@ -152,7 +152,7 @@ thead{
     text-decoration: underline;
 }
 
-.album-song--name:hover, .album-song--artistname:hover{
+.album-song--name:hover, .album-song--artistname:hover, .songside--name:hover, .songside--artistname:hover, .artistside--name:hover, .albumside--name:hover{
     color: rgba(255, 255, 255, 0.705);
 }
 
@@ -201,7 +201,7 @@ thead{
     font-size: 3.1vw;
 }
 
-.artist-song-row:hover, .album-song-row:hover{
+.artist-song-row:hover, .album-song-row:hover, .songside__row:hover, .artistside__row:hover, .albumside__row:hover{
     background-color: #2c2c2c;
 }
 
