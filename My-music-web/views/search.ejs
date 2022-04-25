@@ -1,44 +1,4 @@
 <%- include("partials/header.ejs") %>
-<!-- <div class="container">
-    <div class="d-flex justify-content-between">
-        <div class="songside">
-            <h1 class="ms-3">Songs</h1>
-            <div class="my-2 p-3 rounded shadow-sm">
-                <% //song.forEach((song)=>{ %>
-                    <div class="d-flex py-2 ps-2 songside__row">
-                        <img src="<%= //song.image %>" width="60px" height="60px" class="songside--img">
-                        <div class="mb-0 py-2 ps-2 small lh-sm w-100">
-                          <div class="d-flex justify-content-between">
-                            <a href="/song/<%= //song._id %>" class="text-white text-decoration-none mb-1"><strong class="songside--name"><%= //song.name %></strong></a>
-                          </div>
-                          <a class="d-inline text-white text-decoration-none" href="/artist/<%= //song.artist._id %>"><span class="songside--artistname"><%= //song.artist.name %></span></a>
-                        </div>
-                        <a href="#" class="my-auto me-2">Play</a>
-                    </div>
-                <% //}) %>
-            </div>
-        </div>
-
-        <div class="artistside">
-            <h1>Artists</h1>
-            <div class="my-2 p-3 rounded shadow-sm">
-                <% //artist.forEach((artist)=>{ %>
-                    <div class="d-flex py-2 ps-2 artistside__row">
-                        <img src="<%= //artist.image %>" width="60px" height="60px" class="artistside--img rounded-circle">
-                        <div class="mb-0 py-3y ps-2 small lh-sm w-100">
-                            <a href="/artist/<%= //artist._id %>" class="text-white text-decoration-none mb-1"><strong class="artistside--name"><%= //artist.name %></strong></a>
-                        </div>
-                    </div>
-                <% //}) %>
-            </div>
-        </div>
-
-        <div class="albumside">
-            <h1>Albums</h1>
-        </div>
-    </div>
-</div> -->
-
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-3">
     <div class="col">
         <div class="mb-4 rounded-3 shadow-sm">
@@ -47,20 +7,27 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
-                    <% song.forEach((song)=>{ %>
-                    <li>
-                        <div class="d-flex py-2 ps-2 songside__row">
-                            <img src="<%= song.image %>" width="60px" height="60px" class="songside--img">
-                            <div class="mb-0 py-2 ps-2 small lh-sm w-100">
-                              <div class="d-flex justify-content-between">
-                                <a href="/song/<%= song._id %>" class="text-white text-decoration-none mb-1"><strong class="songside--name"><%= song.name %></strong></a>
-                              </div>
-                              <a class="d-inline text-white text-decoration-none" href="/artist/<%= song.artist._id %>"><span class="songside--artistname"><%= song.artist.name %></span></a>
+                    <% if(song.length > 0){ %>
+                        <% song.forEach((song)=>{ %>
+                        <li>
+                            <div class="d-flex py-2 ps-2 songside__row">
+                                <img src="<%= song.image %>" width="60px" height="60px" class="songside--img">
+                                <div class="mb-0 py-2 ps-2 small lh-sm w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <a href="/song/<%= song._id %>" class="text-white text-decoration-none mb-1"><strong
+                                                class="songside--name"><%= song.name %></strong></a>
+                                    </div>
+                                    <a class="d-inline text-white text-decoration-none"
+                                        href="/artist/<%= song.artist._id %>"><span
+                                            class="songside--artistname"><%= song.artist.name %></span></a>
+                                </div>
+                                <a href="#" class="my-auto me-2">Play</a>
                             </div>
-                            <a href="#" class="my-auto me-2">Play</a>
-                        </div>
-                    </li>
-                    <% }) %>
+                        </li>
+                        <% }) %>
+                    <% } else{ %>
+                        <li class="text-center"><h2>Not Found</h2></li>
+                        <% } %>
                 </ul>
             </div>
         </div>
@@ -72,17 +39,23 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
-                    <% artist.forEach((artist)=>{ %>
-                    <li>
-                        <div class="d-flex py-2 ps-2 artistside__row">
-                            <img src="<%= artist.image %>" width="60px" height="60px" class="artistside--img rounded-circle">
-                            <div class="mb-0 py-4 ps-2 small lh-sm w-100">
-                                <a href="/artist/<%= artist._id %>" class="text-white text-decoration-none mb-1"><strong class="artistside--name"><%= artist.name %></strong></a>
+                    <% if(artist.length > 0){ %>
+                        <% artist.forEach((artist)=>{ %>
+                        <li>
+                            <div class="d-flex py-2 ps-2 artistside__row">
+                                <img src="<%= artist.image %>" width="60px" height="60px"
+                                    class="artistside--img rounded-circle">
+                                <div class="mb-0 py-4 ps-2 small lh-sm w-100">
+                                    <a href="/artist/<%= artist._id %>" class="text-white text-decoration-none mb-1"><strong
+                                            class="artistside--name"><%= artist.name %></strong></a>
+                                </div>
+                                <a href="#" class="my-auto me-2">Play</a>
                             </div>
-                            <a href="#" class="my-auto me-2">Play</a>
-                        </div>
-                    </li>
-                    <% }) %>
+                        </li>
+                        <% }) %>
+                    <% } else{ %>
+                        <li class="text-center"><h2>Not Found</h2></li>
+                        <% } %>
                 </ul>
             </div>
         </div>
@@ -94,20 +67,28 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
-                    <% album.forEach((album)=>{ %>
-                    <li>
-                        <div class="d-flex py-2 ps-2 albumside__row">
-                            <img src="<%= album.image %>" width="60px" height="60px" class="albumside--img">
-                            <div class="mb-0 py-2 ps-2 small lh-sm w-100">
-                              <div class="d-flex justify-content-between">
-                                <a href="/album/<%= album._id %>" class="text-white text-decoration-none mb-1"><strong class="albumside--name"><%= album.name %></strong></a>
-                              </div>
-                              <a class="d-inline text-white text-decoration-none" href="/artist/<%= album.artist._id %>"><span class="albumside--artistname"><%= album.artist.name %></span></a>
+                    <% if(album.length > 0){ %>
+                        <% album.forEach((album)=>{ %>
+                        <li>
+                            <div class="d-flex py-2 ps-2 albumside__row">
+                                <img src="<%= album.image %>" width="60px" height="60px" class="albumside--img">
+                                <div class="mb-0 py-2 ps-2 small lh-sm w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <a href="/album/<%= album._id %>"
+                                            class="text-white text-decoration-none mb-1"><strong
+                                                class="albumside--name"><%= album.name %></strong></a>
+                                    </div>
+                                    <a class="d-inline text-white text-decoration-none"
+                                        href="/artist/<%= album.artist._id %>"><span
+                                            class="albumside--artistname"><%= album.artist.name %></span></a>
+                                </div>
+                                <a href="#" class="my-auto me-2">Play</a>
                             </div>
-                            <a href="#" class="my-auto me-2">Play</a>
-                        </div>
-                    </li>
-                    <% }) %>
+                        </li>
+                        <% }) %>
+                    <% } else{ %>
+                        <li class="text-center"><h2>Not Found</h2></li>
+                        <% } %>
                 </ul>
             </div>
         </div>

@@ -28,8 +28,6 @@ router.post('/', (req,res)=>{
                         }
                         else
                         {
-                            console.log(foundArtist);
-                            console.log(foundAlbum);
                             res.render("search.ejs",{
                                 song:foundSong, 
                                 artist:foundArtist, 
