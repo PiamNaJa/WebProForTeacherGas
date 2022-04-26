@@ -1,12 +1,18 @@
-<%- include("partials/header.ejs") %>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-3">
+<%- include("../partials/header.ejs") %>
+<div class="filter">
+    <h3 class="d-inline">All</h3>
+    <a href="#"><h3 class="d-inline">Songs</h3></a>
+    <a href="#"><h3 class="d-inline">Artists</h3></a>
+    <a href="#"><h3 class="d-inline">Albums</h3></a>
+</div>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-3 searchpage--bg">
     <div class="col">
         <div class="mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
+            <div class="py-3">
                 <h2 class="my-0 fw-normal text-center">Songs</h2>
             </div>
-            <div class="card-body">
-                <ul class="list-unstyled mt-3 mb-4">
+            <div class="card-body songside">
+                <ul class="list-unstyled my-auto">
                     <% if(song.length > 0){ %>
                         <% song.forEach((song)=>{ %>
                         <li>
@@ -34,11 +40,11 @@
     </div>
     <div class="col">
         <div class="mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
+            <div class="py-3">
                 <h2 class="my-0 fw-normal text-center">Artists</h2>
             </div>
-            <div class="card-body">
-                <ul class="list-unstyled mt-3 mb-4">
+            <div class="card-body artistside">
+                <ul class="list-unstyled my-auto">
                     <% if(artist.length > 0){ %>
                         <% artist.forEach((artist)=>{ %>
                         <li>
@@ -62,11 +68,11 @@
     </div>
     <div class="col">
         <div class="mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
+            <div class="py-3">
                 <h2 class="my-0 fw-normal text-center">Albums</h2>
             </div>
-            <div class="card-body">
-                <ul class="list-unstyled mt-3 mb-4">
+            <div class="card-body albumside">
+                <ul class="list-unstyled my-auto">
                     <% if(album.length > 0){ %>
                         <% album.forEach((album)=>{ %>
                         <li>
@@ -95,4 +101,4 @@
     </div>
 </div>
 
-<%- include("partials/footer.ejs") %>
+<%- include("../partials/footer.ejs") %>

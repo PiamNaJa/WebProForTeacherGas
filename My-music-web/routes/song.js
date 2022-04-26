@@ -2,15 +2,25 @@ const   express = require("express"),
         router = express.Router(),
         bodyParser = require("body-parser"),
         Artist = require('../models/artist'),
+        Album = require('../models/album'),
         Song = require('../models/song');
 
 router.post('/', (req,res)=>{
-    let image = req.body.image;
-    let name = req.body.name;
-    let genre = ToTitleCase(req.body.genre);
-    let artist = req.body.artist;
-    let lyric = req.body.lyric;
-    let newSong = {image : image, name : name, genre : genre, artist : {_id : artist}, lyric : lyric};
+    let image = req.body.image.trim();
+    let name = req.body.name.trim();
+    let genre = ToTitleCase(req.body.genre.trim());
+    let artist = req.body.artist.trim();
+    let lyric = req.body.lyric.trim();
+    let newSong;
+    if(req.body.album)
+    {
+        let album = req.body.album.trim();
+        newSong = {image : image, name : name, genre : genre, artist : {_id : artist}, album : {_id : album}, lyric : lyric};
+    }
+    else
+    {
+        newSong = {image : image, name : name, genre : genre, artist : {_id : artist}, lyric : lyric};
+    }
     Song.create(newSong, (err, newlyAdded)=>{
         if(err)
         {
@@ -31,7 +41,16 @@ router.get('/new', (req,res)=>{
         }
         else
         {
-            res.render('song/new.ejs', {artist : foundArtist});
+            Album.find({}, (err, foundAlbum)=>{
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    res.render('song/new.ejs', {artist : foundArtist, album : foundAlbum});
+                }
+            });
         }
     });
 });

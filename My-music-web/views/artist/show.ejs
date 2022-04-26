@@ -31,7 +31,11 @@
               <tr class = "artist-song-row">
                 <td class="text-white" ><p id="number"><%=i++%></p></td>
                 <td class="text-white" ><a class="text-white text-decoration-none" href="/song/<%= song._id %>" id="song"><%= song.name %></a></td>
-                <td class="text-white"><a class="text-white text-decoration-none" href="/album/<%= song.album._id %>" id="album"><%= song.album.name %></a></td>
+                <% if(song.album){ %>
+                  <td class="text-white"><a class="text-white text-decoration-none" href="/album/<%= song.album._id %>" id="album"><%= song.album.name %></a></td>
+                  <% } else { %>
+                  <td></td>
+                  <% } %>
                 <td class="text-white"><a class="text-white text-decoration-none" href="#"><%= song.genre %></a></td>
               </tr>
             <% }); %>
@@ -42,15 +46,17 @@
 
     <div class="col-md-4">
       <div class="position-sticky" style="top: 4rem;">
-        <div class="p-0 mb-3 mt-1 otherartist rounded">
-          <h2>Album</h2>
-          <% album.forEach((album)=>{ %>
-            <a class = "d-block p-2 ps-2 mb-1 otherartist__block"href="/album/<%= album._id %>">
-              <img src="<%= album.image %>" width = "60px" height="60px">
-              <p class="d-inline-block otherartist--name"><%= album.name %></p>
-            </a>
-          <% }); %>
-        </div>
+        <% if(album.length > 0){ %>
+          <div class="p-0 mb-3 mt-1 otherartist rounded">
+            <h2>Album</h2>
+            <% album.forEach((album)=>{ %>
+              <a class = "d-block p-2 ps-2 mb-1 otherartist__block"href="/album/<%= album._id %>">
+                <img src="<%= album.image %>" width = "60px" height="60px">
+                <p class="d-inline-block otherartist--name"><%= album.name %></p>
+              </a>
+            <% }); %>
+          </div>      
+        <% } %>
 
         <div class="p-0 mt-1 otherartist rounded">
           <h2>Other Artist</h2>

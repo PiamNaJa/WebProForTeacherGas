@@ -59,8 +59,31 @@ thead{
     width: 5.5rem;
 }
 
+.btn--newartist{
+    background-image: linear-gradient(to bottom right, #1DE8F1, #050505);
+    color: white;
+    font-weight: 700;
+    border-radius: 15px;
+    background-size: 110% 110%;
+    width: 9rem;
+}
+
+.btn--newalbum{
+    background-image: linear-gradient(to bottom right, #1DE8F1, #050505);
+    color: white;
+    font-weight: 700;
+    border-radius: 15px;
+    background-size: 110% 110%;
+    width: 10rem;
+}
+
 .btn--login:hover, .btn--submit:hover{
     background-color: #12a7af;
+    color: white;
+}
+
+.btn--signup:hover{
+    background-color: #1F1F1F;
     color: white;
 }
 
@@ -253,4 +276,8 @@ thead{
 
 .artist-song-row td a:hover{
     color: rgba(255, 255, 255, 0.705)!important;
+}
+
+.searchpage--bg{
+    background-color: #050505;
 }

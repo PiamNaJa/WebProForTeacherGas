@@ -5,9 +5,9 @@ const   express = require("express"),
         Song = require('../models/song');
 
 
-router.post('/', (req,res)=>{
-    let image = req.body.image;
-    let name = ToTitleCase(req.body.name);
+router.post('/new', (req,res)=>{
+    let image = req.body.image.trim();
+    let name = ToTitleCase(req.body.name.trim());
     let newArtist = {image : image, name : name};
     Artist.create(newArtist, (err, newlyAdded)=>{
         if(err)
@@ -16,7 +16,7 @@ router.post('/', (req,res)=>{
         }
         else
         {
-            res.redirect("/");
+            res.redirect("/song/new");
         }
     });
 });

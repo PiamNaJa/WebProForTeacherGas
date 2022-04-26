@@ -1,19 +1,28 @@
 <%- include("../partials/header.ejs") %>
 <div class="container">
-    <h1 class="display-5">Add new music</h1>
+    <h1 class="display-5">Add New Music</h1>
     <form action="/song" method="post">
         <div class="mb-3">
-            <label class="form-label">Music Name</label>
-            <input type="text" class="form-control" name="name" placeholder="Print Name" required>
+            <label class="form-label">Music Title</label>
+            <input type="text" class="form-control" name="name" placeholder="Music Title" required>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Artist</label>
-            <!-- <input type="text" class="form-control" name="artist" placeholder="Artist" required> -->
-            <input class="form-control" name = "artist" list="datalistOptions" id="exampleDataList" placeholder="Select Artist" required>
-            <datalist id="datalistOptions">
+            <input class="form-control" name = "artist" list="Artistdatalist" id="exampleDataList" placeholder="Select Artist" autocomplete="off" required>
+            <datalist id="Artistdatalist">
                 <% artist.forEach((artist)=>{ %>
                     <option value=<%= artist._id %>><%= artist.name %></option>
+                <% }); %>
+            </datalist>  
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Album</label>
+            <input class="form-control" name = "album" list="Albumdatalist" id="exampleDataList" placeholder="Select Album" autocomplete="off">
+            <datalist id="Albumdatalist">
+                <% album.forEach((album)=>{ %>
+                    <option value=<%= album._id %>><%= album.name %></option>
                 <% }); %>
             </datalist>  
         </div>
@@ -33,7 +42,8 @@
         </div>
         <button type="submit" class="btn btn--submit">Submit</button>
         <a href="/">Go back</a>
-        <a href="/artist/new">Add New Artist</a>
+        <a href="/artist/new" class="btn btn--newartist float-end">Add New Artist</a>
+        <a href="/album/new" class="btn btn--newalbum float-end me-lg-3">Add New Album</a>
     </form>
 </div>
 

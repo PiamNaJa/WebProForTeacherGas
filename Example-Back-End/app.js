@@ -5,6 +5,7 @@ const   express = require("express"),
         passport = require('passport'),
         localStrategy = require('passport-local'),
         flash  = require('connect-flash'),
+        methodOverride = require('method-override'),
         Print = require('./models/print'),
         Comment = require('./models/comment'),
         User = require('./models/user'),
@@ -18,6 +19,7 @@ mongoose.connect('mongodb://localhost/GracePrint'); // เชื่อม Databa
 app.set("view engine" ,"ejs");
 app.use(express.static("./public"));
 app.use(bodyParser.urlencoded({extended : true}));
+app.use(methodOverride('_method'));
 // sendDB();
 app.use(require('express-session')({
     secret: "secret word",

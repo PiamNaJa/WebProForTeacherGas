@@ -1,13 +1,41 @@
 const   express = require("express"),
         router = express.Router(),
         Album = require('../models/album'),
+        Artist = require('../models/artist'),
         Song = require('../models/song');
 
 
 
 router.get('/new', (req,res)=>{
-    res.render('album/new.ejs');
+    Artist.find({}, (err, foundArtist)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.render('album/new.ejs', {artist : foundArtist});
+        }
+    })
 });
+
+router.post('/new', (req,res)=>{
+    let image = req.body.image.trim();
+    let name = req.body.name.trim();
+    let artist = req.body.artist.trim();
+    let newAlbum = {image : image, name : name, artist : {_id : artist}};    
+    Album.create(newAlbum, (err)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.redirect('/song/new');
+        }
+    });
+});
+
 router.get('/all', (req,res)=>{
     res.render('album/all.ejs');
 });

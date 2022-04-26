@@ -6,7 +6,7 @@ const   express = require("express"),
 
 
 router.post('/', (req,res)=>{
-    const word = req.body.search;
+    const word = req.body.search.trim();
     Song.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist album').exec((err, foundSong)=>{ //case-insensitive search
         if(err)
         {
@@ -28,7 +28,7 @@ router.post('/', (req,res)=>{
                         }
                         else
                         {
-                            res.render("search.ejs",{
+                            res.render("search/all.ejs",{
                                 song:foundSong, 
                                 artist:foundArtist, 
                                 album:foundAlbum
