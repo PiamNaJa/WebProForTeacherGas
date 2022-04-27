@@ -32,20 +32,23 @@
       <span class="navbar-toggler-icon">&nbsp;</span>
     </button>
     <div class="navbar--button collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-lg-0">
         <% if(!currentUser) {%>
-        <li class="nav-item ms-auto">
+        <li class="nav-item ms-auto my-auto">
           <a href="/login" class="btn btn--login">Login</a>
         </li>
-        <li class="nav-item ms-auto">
+        <li class="nav-item ms-auto my-auto">
           <a href="/register" class="btn btn--signup ">Sign up</a>
         </li>
         <% }else{ %>
-          <li class="nav-item ms-auto me-3">
-            <a href="#" class="text-white">Login as <%= currentUser.username %></a>
+          <li class="nav-item ms-auto me-3 my-auto">
+            <a href="/song/new" class="btn btn-outline-primary">Add Data</a>
           </li>
-          <li class="nav-item ms-auto me-3">
-            <a href="/logout"><img src="/icon/logout.png" width="25rem"></a>
+          <li class="nav-item ms-auto me-3 my-auto">
+            <a href="/user/<%= currentUser._id %>" class="text-white text-decoration-none nav--username"><%= currentUser.username %></a>
+          </li>
+          <li class="nav-item ms-auto me-3 my-auto">
+            <a href="/logout"><img src="/icon/logout.png" width="27rem"></a>
           </li>
         <% } %>
       </ul>

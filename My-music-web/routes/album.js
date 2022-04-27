@@ -40,7 +40,7 @@ router.get('/all', (req,res)=>{
     res.render('album/all.ejs');
 });
 router.get('/:id', (req,res)=>{
-    Album.findById(req.params.id, (err, foundAlbum)=>{
+    Album.findById(req.params.id).populate('artist').exec((err, foundAlbum)=>{
         if(err)
         {
             console.log(err);

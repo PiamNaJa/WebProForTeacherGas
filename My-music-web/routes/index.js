@@ -5,6 +5,23 @@ const   express     = require("express"),
         Song        = require('../models/song'),
         Artist      = require('../models/artist'),
         Album       = require('../models/album'),
+        multer      = require('multer'),
+        path        = require('path'),
+        storage     = multer.diskStorage({
+                        destination : function(req,file, callback){
+                            callback(null,'./public/upload/');
+                        },
+                        filename: function(req,file, callback){
+                            callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+                        }
+                    });
+        imageFiler = function(req,file,callback){
+            if(file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)){
+                return callback(new Error('Only jpg, jpeg, png, gif'),false);
+            }
+            callback(null, true);
+        },
+        upload = multer({storage: storage, fileFiler: imageFiler}),        
         middleware  = require('../middleware');
 
 router.get('/', (req,res)=>{
@@ -22,12 +39,6 @@ router.get('/', (req,res)=>{
                         {
                             const MostFavSong   = allSong.sort((a, b) => a.fav < b.fav ? 1 : -1).slice(0,6), //เรียง Fav จากมากไปน้อย และเอา5อันดับแรก
                                   NewSong       = allSong.sort((a, b) => a.release < b.release ? 1 : -1).slice(0,6); //เรียง date จากล่าสุดไปนาน และเอา5อันดับแรก
-                            
-                                  console.log(NewSong[0].release);
-                                  console.log(NewSong[1].release);
-                                  console.log(NewSong[2].release);
-                                  console.log(NewSong[3].release);
-                                  console.log(NewSong[4].release);
                             
                             res.render("landing.ejs", {
                                 MostFavSong : MostFavSong,
@@ -86,6 +97,10 @@ router.post("/register", (req, res)=>{
 
 router.get('/favorite', middleware.isLoggedIn, (req,res)=>{
     res.render("favorite.ejs");
+});
+
+router.get('/user/:id', middleware.isLoggedIn, (req,res)=>{
+    res.render("user/show.ejs");
 });
 
 module.exports = router;

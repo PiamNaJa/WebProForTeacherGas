@@ -8,8 +8,9 @@
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-3 searchpage--bg">
     <div class="col">
         <div class="mb-4 rounded-3 shadow-sm">
-            <div class="py-3">
-                <h2 class="my-0 fw-normal text-center">Songs</h2>
+            <div class="py-3 d-flex justify-content-between">
+                <h2 class="my-0 fw-normal d-inline">Songs</h2>
+                <a href="/search/<%= word %>/song" class="d-inline mt-auto me-1 text-white">See All</a>
             </div>
             <div class="card-body songside">
                 <ul class="list-unstyled my-auto">
@@ -40,8 +41,9 @@
     </div>
     <div class="col">
         <div class="mb-4 rounded-3 shadow-sm">
-            <div class="py-3">
-                <h2 class="my-0 fw-normal text-center">Artists</h2>
+            <div class="py-3 d-flex justify-content-between">
+                <h2 class="my-0 fw-normal d-inline">Artists</h2>
+                <a href="/search/<%= word %>/artist" class="d-inline mt-auto me-1 text-white">See All</a>
             </div>
             <div class="card-body artistside">
                 <ul class="list-unstyled my-auto">
@@ -68,8 +70,9 @@
     </div>
     <div class="col">
         <div class="mb-4 rounded-3 shadow-sm">
-            <div class="py-3">
-                <h2 class="my-0 fw-normal text-center">Albums</h2>
+            <div class="py-3 d-flex justify-content-between">
+                <h2 class="my-0 fw-normal d-inline">Albums</h2>
+                <a href="/search/<%= word %>/album" class="d-inline mt-auto me-1 text-white">See All</a>
             </div>
             <div class="card-body albumside">
                 <ul class="list-unstyled my-auto">

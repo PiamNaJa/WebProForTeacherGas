@@ -10,21 +10,21 @@ router.post('/', (req,res)=>{
 
 router.get('/:word/all', (req,res)=>{
     const word = req.params.word;
-    Song.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist').exec((err, foundSong)=>{ //case-insensitive search
+    Song.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist').limit(5).exec((err, foundSong)=>{ //case-insensitive search
         if(err)
         {
             console.log(err);
         }
         else
         {
-            Artist.find({"name" : {"$regex" : word, $options:'i'}}, (err, foundArtist)=>{
+            Artist.find({"name" : {"$regex" : word, $options:'i'}}).limit(5).exec((err, foundArtist)=>{
                 if(err)
                 {
                     console.log(err);
                 }
                 else
                 {
-                    Album.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist').exec((err, foundAlbum)=>{
+                    Album.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist').limit(5).exec((err, foundAlbum)=>{
                         if(err)
                         {
                             console.log(err);

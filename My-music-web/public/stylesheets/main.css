@@ -31,6 +31,11 @@ thead{
     margin-left: 10%;
 }
 
+.nav--username{
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
 .btn--login{
     background-color: #1DE8F1;
     color: black;
@@ -113,12 +118,17 @@ thead{
     transform: translateY(-10%);
 }
 
-.artistinfo--img, .songinfo--img, .songside--img, .artistside--img, .albumside--img{
+.artistinfo--img, .songinfo--img, .songside--img, .artistside--img, .albumside--img, .albuminfo--img, .userinfo--img{
     object-fit: cover;
 }
 
 .artistinfo{
     background-color: #121212;
+}
+
+.albuminfo{
+    background: rgb(18,18,18);
+    background: linear-gradient(149deg, rgba(18,18,18,1) 0%, rgba(18,18,18,0.7091211484593838) 85%, rgba(21,100,104,1) 100%);    
 }
 
 .song--img, .artist--img, .album--img{
@@ -314,7 +324,6 @@ thead{
     width: 90vw;
 }
 
-.searchpage__artistcard
-{
+.searchpage__artistcard, .searchpage__albumcard{
     background-color: transparent;
 }
