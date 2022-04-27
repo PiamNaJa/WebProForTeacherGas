@@ -29,7 +29,7 @@
           <tbody>
             <% song.forEach((song)=>{ %>
               <tr class = "artist-song-row">
-                <td class="text-white" ><p id="number"><%=i++%></p></td>
+                <td class="text-white" ><p class="my-auto"id="number"><%=i++%></p></td>
                 <td class="text-white" ><a class="text-white text-decoration-none" href="/song/<%= song._id %>" id="song"><%= song.name %></a></td>
                 <% if(song.album){ %>
                   <td class="text-white"><a class="text-white text-decoration-none" href="/album/<%= song.album._id %>" id="album"><%= song.album.name %></a></td>

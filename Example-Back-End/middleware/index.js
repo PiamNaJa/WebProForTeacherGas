@@ -16,14 +16,14 @@ middlewareObj.checkPrintOwner = function(req, res, next)
             }
             else
             {
-                if(foundPrint.author.id.equals(req.user._id))
+                if(foundPrint.author.id.equals(req.user._id) || req.user.isAdmin)
                 {
                     next();
                 }
                 else
                 {
                     req.flash('error', "You do not have permission to do this action!");
-                    res.redirect('/back');
+                    res.redirect('back');
                 }
             }
         });
@@ -47,14 +47,14 @@ middlewareObj.checkCommentOwner = function(req, res, next)
             }
             else
             {
-                if(foundComment.author.id.equals(req.user._id))
+                if(foundComment.author.id.equals(req.user._id) || req.user.isAdmin)
                 {
                     next();
                 }
                 else
                 {
                     req.flash('error', "You do not have permission to do this action!");
-                    res.redirect('/back');
+                    res.redirect('back');
                 }
             }
         });

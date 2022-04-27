@@ -4,13 +4,12 @@ const   express = require("express"),
         Album = require('../models/album'),
         Song = require('../models/song');
 
-let word;
-router.post('/all', (req,res)=>{
-    word = req.body.search.trim();
-    res.redirect('/search/all');
+router.post('/', (req,res)=>{
+    res.redirect('/search/'+req.body.search.trim()+'/all');
 });
 
-router.get('/all', (req,res)=>{
+router.get('/:word/all', (req,res)=>{
+    const word = req.params.word;
     Song.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist').exec((err, foundSong)=>{ //case-insensitive search
         if(err)
         {
@@ -35,7 +34,8 @@ router.get('/all', (req,res)=>{
                             res.render("search/all.ejs",{
                                 song:foundSong, 
                                 artist:foundArtist, 
-                                album:foundAlbum
+                                album:foundAlbum,
+                                word : word
                             });
                         }
                     });
@@ -45,7 +45,8 @@ router.get('/all', (req,res)=>{
     });
 });
 
-router.get('/song', (req, res)=>{
+router.get('/:word/song', (req, res)=>{
+    const word = req.params.word;
     Song.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist album').exec((err, foundSong)=>{ //case-insensitive search
         if(err)
         {
@@ -53,12 +54,13 @@ router.get('/song', (req, res)=>{
         }
         else
         {
-            res.render("search/song.ejs",{song:foundSong});
+            res.render("search/song.ejs",{song:foundSong, word : word});
         }
     });
 });
 
-router.get('/artist', (req, res)=>{
+router.get('/:word/artist', (req, res)=>{
+    const word = req.params.word;
     Artist.find({"name" : {"$regex" : word, $options:'i'}}, (err, foundArtist)=>{
         if(err)
         {
@@ -66,12 +68,13 @@ router.get('/artist', (req, res)=>{
         }
         else
         {
-            res.render("search/artist.ejs",{artist:foundArtist});
+            res.render("search/artist.ejs",{artist:foundArtist, word : word});
         }
     });
 });
 
-router.get('/album', (req, res)=>{
+router.get('/:word/album', (req, res)=>{
+    const word = req.params.word;
     Album.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist').exec((err, foundAlbum)=>{
         if(err)
         {
@@ -79,7 +82,7 @@ router.get('/album', (req, res)=>{
         }
         else
         {
-            res.render("search/album.ejs",{album:foundAlbum});
+            res.render("search/album.ejs",{album:foundAlbum, word : word});
         }
     });    
 });

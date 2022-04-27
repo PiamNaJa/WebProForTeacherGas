@@ -1,15 +1,40 @@
 <%- include("./partials/header.ejs") %>
 <div class="container">
     <h1>Register</h1>
-    <form action="/register" method="post">
+    <form action="/register" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" placeholder="Your usernamee">
+            <input type="text" class="form-control" name="username" placeholder="Your username">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Password</label>
             <input type="password" class="form-control" name="password" placeholder="Your password">
+        </div>
+
+        <!-- <div class="mb-3">
+            <label class="form-label">Admin Code</label>
+            <input type="text" class="form-control" name="adminCode" placeholder="Type Admin Code Here">
+        </div> -->
+
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" name="firstname" placeholder="Your Firstname">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="lastname" placeholder="Your Lastname">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" placeholder="Your Email Address">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Profile Image</label>
+            <input type="file" class="form-control" name="profileImage" accept="image/*">
         </div>
 
         <button type="submit" class="btn btn-primary">Register</button>

@@ -3,7 +3,7 @@
 <img src="<%=print.image%>">
 <p>Artist : <%=print.Artist%></p>
 <p>Subbmited by <%= print.author.username %></p>
-<% if(currentUser && print.author.id.equals(currentUser._id)){ %>
+<% if(currentUser && print.author.id.equals(currentUser._id) || (currentUser && currentUser.isAdmin)){ %>
 <a href="/prints/<%=print._id%>/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
 <form id="delete-form" action="/prints/<%=print._id%>?_method=DELETE" method="post">
     <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
@@ -14,7 +14,7 @@
 <% print.comments.forEach((comment)=>{%> 
     <p>
         <strong><%=comment.author.username%></strong> = <%=comment.text%>
-        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+        <% if(currentUser && comment.author.id.equals(currentUser._id) || (currentUser && currentUser.isAdmin)){ %>
             <form id="delete-form" action="/prints/<%=print._id%>/comments/<%= comment._id %>?_method=DELETE" method="post">
                 <a href="/prints/<%=print._id%>/comments/<%= comment._id %>/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
                 <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
