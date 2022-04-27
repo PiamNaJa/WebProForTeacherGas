@@ -5,4 +5,25 @@
     <h3 class="d-inline text-decoration-underline search--navigation-current">Artists</h3>
     <a href="/search/<%= word %>/album" class="search--navigation"><h3 class="d-inline">Albums</h3></a>
 </div>
+
+<div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 justify-content-center searchpage--bg">
+    <% if(artist.length > 0) { %>
+        <% artist.forEach((artist)=>{ %>
+        <div class="col">
+            <div class="card text-center my-3 searchpage__artistcard">
+              <div class="card-body">
+                  <a href="/artist/<%= artist._id %>" class="text-decoration-none">
+                      <img src="<%= artist.image %>" class="card-img-top rounded-circle artist--img">
+                      <h5 class="card-title artist--name text-white"><%= artist.name %></h5>
+                  </a>
+              </div>
+            </div>
+        </div>
+    <% }) %> 
+    <% } else{ %> 
+        <h2>Not Found</h2>
+    <%}%> 
+    
+  </div>
+    
 <%- include("../partials/footer.ejs") %>

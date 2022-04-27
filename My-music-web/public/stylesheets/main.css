@@ -308,3 +308,13 @@ thead{
 .filter{
     word-spacing: 1rem;
 }
+
+.audiocontainer{
+    display: block;
+    width: 90vw;
+}
+
+.searchpage__artistcard
+{
+    background-color: transparent;
+}
