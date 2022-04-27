@@ -70,13 +70,13 @@ router.put('/:comment_id', middleware.checkCommentOwner, function(req, res){
         }
         else
         {
-            res.redirect('prints/'+req.params.print_id);
+            res.redirect('/prints/'+req.params.id);
         }
     });
 });
 
 router.delete('/:comment_id', middleware.checkCommentOwner, function(req, res){
-    Comment.findByIdandRemove(req.params.comment_id, function(err){
+    Comment.findByIdAndRemove(req.params.comment_id, function(err){
         if(err)
         {
             req.flash('error', 'There are something wrong!!!');
@@ -85,7 +85,7 @@ router.delete('/:comment_id', middleware.checkCommentOwner, function(req, res){
         else
         {
             req.flash('success', 'You comment deleted');
-            res.redirect('/prints');
+            res.redirect('/prints/'+req.params.id);
         }
     })
 })

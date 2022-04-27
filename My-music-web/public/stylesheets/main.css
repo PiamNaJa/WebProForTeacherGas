@@ -281,3 +281,22 @@ thead{
 .searchpage--bg{
     background-color: #050505;
 }
+
+.search--navigation{
+    text-decoration: none;
+    font-weight: 600;
+    color: white;
+}
+
+.search--navigation:hover{
+    text-decoration: underline;
+    color: #1ad0dac2;
+}
+
+.search--navigation-current{
+    color: #1DE8F1;
+}
+
+.filter{
+    word-spacing: 1rem;
+}

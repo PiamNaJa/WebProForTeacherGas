@@ -1,10 +1,10 @@
 <%- include("../partials/header.ejs") %>
 <div class="container">
     <h1>Edit your comment</h1>
-    <form action="/prints/<%= print_id %>/comments/<%=comment._id%>?_method=PUT" method="post">
+    <form action="/prints/<%= print_id %>/comments/<%=comment.id%>?_method=PUT" method="post">
         <div class="mb-3">
             <label class="form-label">Comment</label>
-            <input type="text" class="form-control" name="comment[text]" placeholder="<%=comment._text%>" value="<%=comment._text%>">
+            <input type="text" class="form-control" name="comment[text]" placeholder="<%=comment.text%>" value="<%=comment.text%>">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <a href="/prints/<%= print_id %>">Go back</a>
