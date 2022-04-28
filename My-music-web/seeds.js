@@ -1,6 +1,7 @@
 const mongoose = require('mongoose'),
       Artist = require('./models/artist'),
       Album = require('./models/album'),
+      User = require('./models/user'),
       Song = require('./models/song');
 
 const SlipknotSong = [
@@ -1746,6 +1747,12 @@ const Albumdata = [
 
 function sendDB()
 {
+    // User.remove({}, (err)=>{
+    //     if(err)
+    //     {
+    //         console.log(err);
+    //     }
+    // });
     Artist.remove({}, (err)=>{
         if(err)
         {

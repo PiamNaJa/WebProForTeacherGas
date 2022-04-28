@@ -23,12 +23,8 @@ thead{
     z-index: 1;
     position: sticky;
 }
-.navbar-toggler{
-    background-color: #1DE8F1;
-}
 .search{
-    width: 40vw;
-    margin-left: 10%;
+    width: 40%;
 }
 
 .nav--username{
@@ -42,7 +38,6 @@ thead{
     font-weight: 700;
     border-radius: 15px;
     margin-right: 0.5vw;
-    margin-top: 0.5rem;
     width: 5.5rem;
 }
 
@@ -52,7 +47,6 @@ thead{
     font-weight: 700;
     border-radius: 15px;
     margin-right: 0.5vw;
-    margin-top: 0.5rem;
     width: 5.5rem;
 }
 
@@ -114,11 +108,8 @@ thead{
     font-size: 1.5rem;
     color: white;
 }
-.navbar--button{
-    transform: translateY(-10%);
-}
 
-.artistinfo--img, .songinfo--img, .songside--img, .artistside--img, .albumside--img, .albuminfo--img, .userinfo--img{
+.artistinfo--img, .songinfo--img, .songside--img, .artistside--img, .albumside--img, .albuminfo--img, .userinfo--img, .adminprofileimg{
     object-fit: cover;
 }
 
@@ -311,7 +302,7 @@ thead{
     color: #1ad0dac2;
 }
 
-.search--navigation-current{
+.search--navigation-current, .userinfo--username, .userinfo--displayname{
     color: #1DE8F1;
 }
 
@@ -326,4 +317,14 @@ thead{
 
 .searchpage__artistcard, .searchpage__albumcard{
     background-color: transparent;
+}
+
+#seeall{
+    text-decoration: none;
+    color: grey;
+}
+
+#seeall:hover{
+    color: white;
+    text-decoration: underline;
 }

@@ -12,7 +12,8 @@ router.post('/new', (req,res)=>{
     Artist.create(newArtist, (err, newlyAdded)=>{
         if(err)
         {
-            console.log(err);
+            req.flash('err', err.message);
+            return res.redirect('back');
         }
         else
         {
@@ -25,7 +26,7 @@ router.get('/new', (req,res)=>{
     res.render('artist/new.ejs');
 });
 router.get('/all', (req,res)=>{
-    Artist.find({}, (err, allArtist)=>{
+    Artist.find({}).sort({name:1}).exec((err, allArtist)=>{
         if(err)
         {
             console.log(err);

@@ -4,16 +4,18 @@
     </a>
 
     <img src="/icon/web-icon.png" class="webicon">
-    <form action="" method="post" class="input" enctype="multipart/form-data">
+    <form action="/register" method="post" class="input" enctype="multipart/form-data">
         <% if(error && error.length>0){ %>
-            <div class="alert alert-danger mb-3" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
             <%= error %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           <% } %>
 
           <% if(success && success.length>0){ %>
-            <div class="alert alert-success mb-3" role="alert">
+            <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
             <%= success %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           <% } %>
         <div class ="mb-3">
@@ -23,15 +25,25 @@
 
         <div class ="mb-3">
             <label for="" class="form-label">Password</label>
-            <input class="form-control" name="password" id = "password" type="password" placeholder="Password" required>
+            <input class="form-control" name="password" type="password" placeholder="Password" required>
+        </div>
+
+        <div class ="mb-3">
+            <label for="" class="form-label">Display Name</label>
+            <input class="form-control" name="displayname"type="text" placeholder="Display Name" required>
         </div>
 
         <div class ="mb-3">
             <label for="" class="form-label">Profile Image</label>
-            <input class="form-control" name="profile" type="file" accept="image/*" required>
+            <input class="form-control" name="profileImage" type="file" accept="image/*" required>
+        </div>
+
+        <div class ="mb-3">
+            <label for="" class="form-label">Are You Admin?</label>
+            <input class="form-control" name="adminCode" type="text" placeholder="Yes or No">
         </div>
 
         <button type="submit" class="btn btn--register">Register</button>
         <a href="/login" class="gologin">I have account</a>
     </form>
-<%- include("partials/footer.ejs") %> 
+<%- include("partials/login_register_footer.ejs") %> 

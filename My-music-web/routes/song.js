@@ -28,7 +28,8 @@ router.post('/', (req,res)=>{
         }
         else
         {
-            res.redirect("/");
+            req.flash('success', newlyAdded.name + ' is Added')
+            res.redirect("back");
         }
     });
 });

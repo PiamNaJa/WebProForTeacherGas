@@ -12,14 +12,8 @@ const songSchema = new mongoose.Schema({ //สร้าง Schema หรือ t
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Album'
     },
-    release : {
-        type: Date,
-        default: new Date()
-    },
-    fav : {
-        type: Number,
-        default: 0
-    },
+    release : {type: Date, default: new Date()},
+    fav : {type: Number, default: 0},
     lyric: String
 });
 

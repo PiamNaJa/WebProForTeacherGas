@@ -37,7 +37,17 @@ router.post('/new', (req,res)=>{
 });
 
 router.get('/all', (req,res)=>{
-    res.render('album/all.ejs');
+    Album.find({}).sort({name : 1}).populate('artist').exec((err, foundAlbum)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.render('album/all.ejs', {albums:foundAlbum});
+        }
+    })
+    
 });
 router.get('/:id', (req,res)=>{
     Album.findById(req.params.id).populate('artist').exec((err, foundAlbum)=>{

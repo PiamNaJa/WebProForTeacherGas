@@ -1,0 +1,56 @@
+<%- include("../partials/admin_header.ejs") %>
+<h1>Welcome <%= currentUser.displayname %> </h1>
+<h2 class="text-center my-3">What do you want to do?</h2>
+<div class="row py-2 row-cols-1 row-cols-lg-3 mx-auto text-center">
+    <div class="col d-flex align-items-start">
+        <div>
+            <h1>Songs</h1>
+            <div class="d-flex">
+                <a href="#" class="btn btn-primary d-inline-flex me-2">
+                    Create
+                </a>
+                <a href="#" class="btn btn-primary d-inline-flex me-2">
+                    Edit
+                </a>
+                <a href="#" class="btn btn-primary d-inline-flex">
+                    Delete
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col d-flex align-items-start">
+        <div>
+            <h1>Artists</h1>
+            <div class="d-flex">
+                <a href="#" class="btn btn-primary d-inline-flex me-2">
+                    Create
+                </a>
+                <a href="#" class="btn btn-primary d-inline-flex me-2">
+                    Edit
+                </a>
+                <a href="#" class="btn btn-primary d-inline-flex">
+                    Delete
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col d-flex align-items-start">
+        <div>
+            <h1>Albums</h1>
+            <div class="d-flex">
+                <a href="#" class="btn btn-primary d-inline-flex me-2">
+                    Create
+                </a>
+                <a href="#" class="btn btn-primary d-inline-flex me-2">
+                    Edit
+                </a>
+                <a href="#" class="btn btn-primary d-inline-flex">
+                    Delete
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("../partials/admin_footer.ejs") %>

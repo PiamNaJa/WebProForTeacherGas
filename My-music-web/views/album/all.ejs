@@ -1,4 +1,22 @@
 <%- include("../partials/header.ejs") %>
 
+<h1 class="text-center">All Albums</h1>
+<div class="album ms-0">
+    <div class="container-fluid p-0">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3 justify-content-center">
+            <% albums.forEach((album)=>{ %>
+            <div class="col">
+                <div class="card shadow-sm p-3 text-center">
+                    <a href="/album/<%= album._id %>" class="text-decoration-none">
+                        <img class="album--img" src="<%= album.image %>">
+                        <p class="album--name text-white m-0"><%= album.name %></p>
+                    </a>
+                    <a href="/artist/<%= album.artist._id %>" class="artist--name text-white-50"><%= album.artist.name %></a>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
 
 <%- include("../partials/footer.ejs") %>

@@ -10,7 +10,7 @@
           <a href="/song/<%= fav._id %>" class="text-decoration-none">
             <img class="song--img" src="<%= fav.image %>">
             <p class="song--name text-white m-0"><%= fav.name %></p>
-            <a href="/artist/<%= fav.artist._id %>" class="song--artist text-white"><%= fav.artist.name %></a>
+            <a href="/artist/<%= fav.artist._id %>" class="song--artist text-white-50"><%= fav.artist.name %></a>
           </a>
         </div>
       </div>
@@ -29,7 +29,7 @@
           <a href="/song/<%= newsong._id %>" class="text-decoration-none">
             <img class="song--img" src="<%= newsong.image %>">
             <p class="song--name text-white m-0"><%= newsong.name %></p>
-            <a href="/artist/<%= newsong.artist._id %>" class="song--artist text-white"><%= newsong.artist.name %></a>
+            <a href="/artist/<%= newsong.artist._id %>" class="song--artist text-white-50"><%= newsong.artist.name %></a>
           </a>
         </div>
       </div>
@@ -38,7 +38,10 @@
   </div>
 </div>
 
-<h1 class="mt-2">Album</h1>
+<div class="d-block">
+  <h1 class="mt-2 d-inline">Album For You</h1>
+  <h3 class="d-inline float-end mt-3"><a href="/album/all" id="seeall">See All</a></h3>
+</div>
 <div class="album ms-0">
   <div class="container-fluid p-0">
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3">
@@ -48,7 +51,7 @@
             <a href="/album/<%= album._id %>" class="text-decoration-none">
               <img class="album--img" src="<%= album.image %>">
               <p class="album--name text-white m-0"><%= album.name %></p>
-              <a href="/artist/<%= album.artist._id %>" class="song--artist text-white"><%= album.artist.name %></a>
+              <a href="/artist/<%= album.artist._id %>" class="song--artist text-white-50"><%= album.artist.name %></a>
             </a>
           </div>
         </div>
@@ -57,7 +60,10 @@
   </div>
 </div>
 
-<h1 class="mt-2">Artist</h1>
+<div class="d-block">
+  <h1 class="mt-2 d-inline">Artists For You</h1>
+  <h3 class="d-inline float-end mt-3"><a href="/artist/all" id="seeall">See All</a></h3>
+</div>
 <div class="album ms-0">
   <div class="container-fluid p-0">
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3">

@@ -19,39 +19,48 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <a href="/" class="d-flex align-items-center text-white text-decoration-none" id="webicon">
-      <img src="/icon/web-icon.png" height="40px">
-      <span class="fs-5 d-none d-sm-inline webicon__font">&nbsp;Kmusic</span>
-    </a>
-    <form class="form-inline search" action="/search" method="post">
-      <input class="form-control mr-sm-2" type="search" id="search" name="search" placeholder="Search Songs, Artist, Album" aria-label="Search">
-    </form>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">&nbsp;</span>
-    </button>
-    <div class="navbar--button collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-lg-0">
+  <nav class="navbar p-0 fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand px-sm-2 px-0" href="/">
+        <img src="/icon/web-icon.png" class="ms-1" height="40px">
+        <span class="fs-5 d-none d-sm-inline webicon__font">&nbsp;Kmusic</span>
+      </a>
+      <form class="d-flex search" action="/search" method="post">
+        <input class="form-control me-2" type="search" id="search" name="search" placeholder="Search Songs, Artist, Album" aria-label="Search">
+      </form>
+      <div class="list-unstyled">
         <% if(!currentUser) {%>
-        <li class="nav-item ms-auto my-auto">
-          <a href="/login" class="btn btn--login">Login</a>
-        </li>
-        <li class="nav-item ms-auto my-auto">
-          <a href="/register" class="btn btn--signup ">Sign up</a>
-        </li>
-        <% }else{ %>
-          <li class="nav-item ms-auto me-3 my-auto">
-            <a href="/song/new" class="btn btn-outline-primary">Add Data</a>
+          <li class="nav-item ms-auto my-auto d-inline">
+            <a href="/login" class="btn btn--login">Login</a>
           </li>
-          <li class="nav-item ms-auto me-3 my-auto">
-            <a href="/user/<%= currentUser._id %>" class="text-white text-decoration-none nav--username"><%= currentUser.username %></a>
+          <li class="nav-item ms-auto my-auto d-inline">
+            <a href="/register" class="btn btn--signup ">Sign up</a>
           </li>
-          <li class="nav-item ms-auto me-3 my-auto">
-            <a href="/logout"><img src="/icon/logout.png" width="27rem"></a>
-          </li>
-        <% } %>
-      </ul>
+          <% } else{ %>
+            <% if(!currentUser.isAdmin){ %>
+            <li class="nav-item ms-auto my-auto me-3 d-inline">
+              <a href="/user/<%= currentUser._id %>" class="text-white text-decoration-none nav--username"><%= currentUser.displayname %></a>
+            </li>
+            <li class="nav-item ms-auto my-auto d-inline">
+              <a href="/logout"><img src="/icon/logout.png" width="27rem"></a>
+            </li>
+            <% } else {%>
+            <li class="nav-item">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle p-0 bg-transparent border-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  You Are Admin
+                  <img src="<%= currentUser.profileImage %>" class="rounded-circle adminprofileimg" width="35px" height="35px">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end bg-black" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item text-white" href="/admin">Admin Page</a></li>
+                  <li><a class="dropdown-item text-white" href="/user/<%= currentUser._id %>">Profile</a></li>
+                  <li><a class="dropdown-item text-white" href="/logout">Logout</a></li>
+                </ul>
+              </div>
+            </li>
+            <% } %>
+          <% } %>
+      </div>
     </div>
   </nav>
   <div class="container-fluid">
@@ -65,12 +74,12 @@
                   <span class="ms-1 d-none d-sm-inline home__font">Home</span>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="/favorite" class="nav-link align-middle px-0">
                   <img src="/icon/favorite.png" height="35rem">
                   <span class="ms-1 d-none d-sm-inline favorite__font">Favorite</span>
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="#" class="nav-link align-middle px-0">
                   <img src="/icon/playlist.png" height="35rem">
@@ -100,3 +109,16 @@
           </div>
       </div>
       <main class="col py-3 ms-3">
+        <% if(error && error.length>0){ %>
+          <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+          <%= error %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% } %>
+
+        <% if(success && success.length>0){ %>
+          <div class="alert alert-primary alert-dismissible fade show mb-3" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <%= success %>
+          </div>
+        <% } %>

@@ -6,14 +6,16 @@
     <img src="/icon/web-icon.png" class="webicon">
     <form action="" method="post" class="input">
         <% if(error && error.length>0){ %>
-            <div class="alert alert-danger mb-3" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
             <%= error %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           <% } %>
 
           <% if(success && success.length>0){ %>
-            <div class="alert alert-success mb-3" role="alert">
+            <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
             <%= success %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           <% } %>
           
@@ -30,4 +32,4 @@
         <button type="submit" class="btn btn--login">Login</button>
         <a href="/register" class="goregister">I not have account</a>
     </form>
-<%- include("partials/footer.ejs") %> 
+<%- include("partials/login_register_footer.ejs") %> 
