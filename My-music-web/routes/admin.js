@@ -6,7 +6,38 @@ const   express = require("express"),
 
 
 router.get('/', (req,res)=>{
-    res.render('admin/index.ejs');
+    Song.find({}).populate('album artist').sort({release : 1}).exec((err, foundSong)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            Artist.find({}).sort({name : 1}).exec((err, foundArtist)=>{
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    Album.find({}).populate('artist').sort({name:1}).exec((err, foundAlbum)=>{
+                        if(err)
+                        {
+                            console.log(err);
+                        }
+                        else
+                        {
+                            res.render('admin/index.ejs', {
+                                                            songs: foundSong,
+                                                            artists : foundArtist,
+                                                            albums : foundAlbum
+                                                          });
+                        }
+                    });
+                }
+            });
+        }
+    });
 });
 
 router.post('/song/new', (req,res)=>{
@@ -54,6 +85,41 @@ router.get('/song/new', (req,res)=>{
                 else
                 {
                     res.render('song/new.ejs', {artist : foundArtist, album : foundAlbum});
+                }
+            });
+        }
+    });
+});
+
+router.get('/song/all', (req,res)=>{
+    Song.find({}).populate('album artist').sort({release : 1}).exec((err, foundSong)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            Artist.find({}).sort({name : 1}).exec((err, foundArtist)=>{
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    Album.find({}).populate('artist').sort({name:1}).exec((err, foundAlbum)=>{
+                        if(err)
+                        {
+                            console.log(err);
+                        }
+                        else
+                        {
+                            res.render('song/alldata.ejs', {
+                                                            songs: foundSong,
+                                                            artists : foundArtist,
+                                                            albums : foundAlbum
+                                                          });
+                        }
+                    });
                 }
             });
         }
