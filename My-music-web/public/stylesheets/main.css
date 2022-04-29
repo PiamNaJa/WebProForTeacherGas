@@ -50,33 +50,7 @@ thead{
     width: 5.5rem;
 }
 
-.btn--submit{
-    background-color: #1DE8F1;
-    color: black;
-    font-weight: 700;
-    border-radius: 15px;
-    width: 5.5rem;
-}
-
-.btn--newartist{
-    background-image: linear-gradient(to bottom right, #1DE8F1, #050505);
-    color: white;
-    font-weight: 700;
-    border-radius: 15px;
-    background-size: 110% 110%;
-    width: 9rem;
-}
-
-.btn--newalbum{
-    background-image: linear-gradient(to bottom right, #1DE8F1, #050505);
-    color: white;
-    font-weight: 700;
-    border-radius: 15px;
-    background-size: 110% 110%;
-    width: 10rem;
-}
-
-.btn--login:hover, .btn--submit:hover{
+.btn--login:hover{
     background-color: #12a7af;
     color: white;
 }

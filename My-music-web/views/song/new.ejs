@@ -1,7 +1,7 @@
-<%- include("../partials/header.ejs") %>
+<%- include("../partials/admin_header.ejs") %>
 <div class="container">
     <h1 class="display-5">Add New Music</h1>
-    <form action="/song" method="post">
+    <form action="/admin/song/new" method="post">
         <div class="mb-3">
             <label class="form-label">Music Title</label>
             <input type="text" class="form-control" name="name" placeholder="Music Title" required>
@@ -40,12 +40,12 @@
             <label class="form-label">Lyrics</label>
             <textarea type="text" class="form-control" name="lyric" placeholder="Lyrics"></textarea>
         </div>
-        <button type="submit" class="btn btn--submit">Submit</button>
-        <a href="/">Go back</a>
-        <a href="/artist/new" class="btn btn--newartist float-end">Add New Artist</a>
-        <a href="/album/new" class="btn btn--newalbum float-end me-lg-3">Add New Album</a>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+        <a href="/admin">Go back</a>
+        <a href="/admin/artist/new" class="btn btn-outline-dark float-end">Add New Artist</a>
+        <a href="/admin/album/new" class="btn btn-outline-dark float-end me-lg-3">Add New Album</a>
     </form>
 </div>
 
 
-<%- include("../partials/footer.ejs") %>
+<%- include("../partials/admin_footer.ejs") %>

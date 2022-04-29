@@ -4,27 +4,6 @@ const   express = require("express"),
         Album = require('../models/album'),
         Song = require('../models/song');
 
-
-router.post('/new', (req,res)=>{
-    let image = req.body.image.trim();
-    let name = ToTitleCase(req.body.name.trim());
-    let newArtist = {image : image, name : name};
-    Artist.create(newArtist, (err, newlyAdded)=>{
-        if(err)
-        {
-            req.flash('err', err.message);
-            return res.redirect('back');
-        }
-        else
-        {
-            res.redirect("/song/new");
-        }
-    });
-});
-
-router.get('/new', (req,res)=>{
-    res.render('artist/new.ejs');
-});
 router.get('/all', (req,res)=>{
     Artist.find({}).sort({name:1}).exec((err, allArtist)=>{
         if(err)
