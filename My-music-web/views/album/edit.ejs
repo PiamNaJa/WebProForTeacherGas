@@ -1,0 +1,31 @@
+<%- include("../partials/admin_header.ejs") %>
+<div class="container">
+    <h1 class="display-5">Edit Album Data</h1>
+    <form action="/admin/album/<%= album._id %>?_method=PUT" method="post">
+        <div class="mb-3">
+            <label class="form-label">URL</label>
+            <input type="text" class="form-control" name="album[image]" placeholder="<%= album.image %>" value="<%= album.image %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Album Title</label>
+            <input type="text" class="form-control" name="album[name]" placeholder="<%= album.name %>" value="<%= album.name %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Artist</label>
+            <input class="form-control" name = "artistname" list="Artistdatalist" id="exampleDataList" value="<%= album.artist.name %>" placeholder="<%= album.artist.name %>" autocomplete="off" required>
+            <datalist id="Artistdatalist">
+                <% artists.forEach((artist)=>{ %>
+                    <option value=<%= artist.name %>></option>
+                <% }); %>
+            </datalist>  
+        </div>
+
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+        <a href="/admin/album/all">Go back</a>
+    </form>
+</div>
+
+
+<%- include("../partials/admin_footer.ejs") %>

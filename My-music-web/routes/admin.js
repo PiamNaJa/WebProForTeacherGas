@@ -99,32 +99,91 @@ router.get('/song/all', (req,res)=>{
         }
         else
         {
-            Artist.find({}).sort({name : 1}).exec((err, foundArtist)=>{
+            res.render('song/alldata.ejs', {songs: foundSong});
+        }
+    });
+});
+
+router.put('/song/:id', (req, res)=>{
+    Artist.findOne({name: req.body.artistname},(err, foundArtist)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            Album.findOne({name: req.body.albumname}, (err, foundAlbum)=>{
                 if(err)
                 {
                     console.log(err);
                 }
                 else
                 {
-                    Album.find({}).populate('artist').sort({name:1}).exec((err, foundAlbum)=>{
+                    req.body.song.artist = foundArtist._id;
+                    req.body.song.album = foundAlbum._id;
+                    Song.findByIdAndUpdate(req.params.id, req.body.song, (err)=>{
+                        if(err)
+                        {
+                            req.flash('error', err.message);
+                            res.redirect('back');
+                        }
+                        else
+                        {
+                            req.flash('success', 'Edit Data Successfully');
+                            res.redirect("/admin/song/all");
+                        }
+                    });
+                }
+            })
+        }
+    });
+});
+
+router.delete('/song/:id', (req, res)=>{
+    Song.findByIdAndRemove(req.params.id, (err)=>{
+        if(err)
+        {
+            req.flash('error', err.message);
+            res.redirect('back');
+        }
+        else
+        {
+            req.flash('success', "Delete Successfully");
+            res.redirect("/admin/song/all");
+        }        
+    });
+});
+
+router.get('/song/:id/edit', (req, res)=>{
+    Song.findById(req.params.id).populate('artist album').exec((err, foundSong)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            Artist.find({},(err, foundArtist)=>{
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    Album.find({}, (err, foundAlbum)=>{
                         if(err)
                         {
                             console.log(err);
                         }
                         else
                         {
-                            res.render('song/alldata.ejs', {
-                                                            songs: foundSong,
-                                                            artists : foundArtist,
-                                                            albums : foundAlbum
-                                                          });
+                            res.render('song/edit.ejs', {song:foundSong, artists : foundArtist, albums : foundAlbum});
                         }
                     });
                 }
             });
         }
-    });
-});
+    })
+})
 
 router.post('/artist/new', (req,res)=>{
     let image = req.body.image.trim();
@@ -146,6 +205,80 @@ router.post('/artist/new', (req,res)=>{
 
 router.get('/artist/new', (req,res)=>{
     res.render('artist/new.ejs');
+});
+
+router.get('/artist/all', (req,res)=>{
+    Artist.find({}).sort({name : 1}).exec((err, foundArtist)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.render('artist/alldata.ejs', {artists: foundArtist});
+        }
+    });
+});
+
+router.put('/artist/:id', (req, res)=>{
+    Artist.findByIdAndUpdate(req.params.id, req.body.artist, (err)=>{
+        if(err)
+        {
+            req.flash('error', err.message);
+            res.redirect('back');
+        }
+        else
+        {
+            req.flash('success', 'Edit Data Successfully');
+            res.redirect('/admin/artist/all');
+        }
+    });
+});
+
+router.delete('/artist/:id', (req, res)=>{
+    Song.deleteMany({artist : {_id : req.params.id}},(err)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            Album.deleteMany({artist : {_id : req.params.id}},(err)=>{
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    Artist.findByIdAndRemove(req.params.id, (err)=>{
+                        if(err)
+                        {
+                            req.flash('error', err.message);
+                            res.redirect('back');
+                        }
+                        else
+                        {
+                            req.flash('success', "Delete Successfully");
+                            res.redirect("/admin/artist/all");
+                        }        
+                    });       
+                }
+            });
+        }
+    });
+});
+
+router.get('/artist/:id/edit', (req, res)=>{
+    Artist.findById(req.params.id, (err, foundArtist)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.render('artist/edit.ejs', {artist: foundArtist});
+        }
+    });
 });
 
 router.get('/album/new', (req,res)=>{
@@ -175,6 +308,81 @@ router.post('/album/new', (req,res)=>{
         {
             req.flash('success', 'Album : ' + newlyAdded.name + ' is Added')
             res.redirect('back');
+        }
+    });
+});
+
+router.get('/album/all', (req,res)=>{
+    Album.find({}).populate('artist').sort({name : 1}).exec((err, foundAlbum)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.render('album/alldata.ejs', {albums: foundAlbum});
+        }
+    });
+});
+
+router.put('/album/:id', (req, res)=>{
+    Artist.findOne({name : req.body.artistname}, (err, foundArist)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            req.body.album.artist = foundArist._id;
+            Album.findOneAndUpdate(req.params.id, req.body.album, (err)=>{
+                if(err)
+                {
+                    req.flash('error', err.message);
+                    res.redirect('back');
+                }
+                else
+                {
+                    req.flash('success', 'Edit Data Successfully');
+                    res.redirect('/admin/album/all');
+                }
+            });
+        }
+    });
+});
+
+router.delete('/album/:id', (req, res)=>{
+    Album.findByIdAndRemove(req.params.id, (err)=>{
+        if(err)
+        {
+            req.flash('error', err.message);
+            res.redirect('back');
+        }
+        else
+        {
+            req.flash('success', 'Delete Data Successfully');
+            res.redirect('/admin/album/all');
+        }
+    });
+});
+
+router.get('/album/:id/edit', (req, res)=>{
+    Album.findById(req.params.id).populate('artist').exec((err, foundAlbum)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            Artist.find({}, (err, foundArist)=>{
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    res.render('album/edit.ejs', {album : foundAlbum, artists : foundArist});
+                }
+            })
         }
     });
 });

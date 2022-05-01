@@ -1,0 +1,24 @@
+<%- include("../partials/header.ejs") %>
+<div class="p-4 p-md-5 mb-4 text-white rounded bg-gradient text-center">
+    <div class="px-0">
+      <h1 class="display-3 fw-normal"><%= title %> Songs For You</h1>
+    </div>
+</div>
+<div class="album ms-0">
+    <div class="container-fluid">
+      <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3">
+        <% songs.forEach((song)=>{ %>
+        <div class="col">
+          <div class="card shadow-sm p-3">
+            <a href="/song/<%= song._id %>" class="text-decoration-none">
+              <img class="song--img" src="<%= song.image %>">
+              <p class="song--name text-white m-0"><%= song.name %></p>
+              <a href="/artist/<%= song.artist._id %>" class="song--artist text-white-50"><%= song.artist.name %></a>
+            </a>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+<%- include("../partials/footer.ejs") %>

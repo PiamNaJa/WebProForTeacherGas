@@ -1,0 +1,14 @@
+<%- include("../partials/header.ejs") %>
+<h1>Genres</h1>
+<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6">
+    <% genres.forEach((genre)=>{ %> 
+        <div class="col">
+            <div class="card shadow-sm text-center">
+              <div class="card-body mt-4 mb-4">
+                <h2 class="card-text"><a href="/genre/<%= genre %>" class="genre--title"><%= genre %></a></h2>
+              </div>
+            </div>
+          </div>
+    <% }); %>
+</div>
+<%- include("../partials/footer.ejs") %>

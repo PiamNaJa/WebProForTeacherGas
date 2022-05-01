@@ -210,17 +210,17 @@ thead{
     color: white;
 }
 
-.otherartist__block,.othersong__block{
-    text-decoration: none;
-    color: white;
-}
-
 .otherartist__block:hover, .othersong__block:hover{
     background-color: #252424;
 }
 
-.otherartist--name, .othersong--name{
+.otherartist--name, .othersong--name, .genre--title, .otherartist__block, .othersong__block, .album--artistname{
     text-decoration: none;
+    color: white;
+}
+
+.album--artistname:hover, .genre--title:hover{
+    text-decoration: underline;
     color: white;
 }
 

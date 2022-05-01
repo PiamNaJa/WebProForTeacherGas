@@ -1,0 +1,19 @@
+<%- include("../partials/admin_header.ejs") %>
+<div class="container">
+    <h1 class="display-5">Edit Artist Data</h1>
+    <form action="/admin/artist/<%= artist._id %>?_method=PUT" method="post">
+        <div class="mb-3">
+            <label class="form-label">URL</label>
+            <input type="text" class="form-control" name="artist[image]" placeholder="<%= artist.image %>" value="<%= artist.image %>" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Artist Name</label>
+            <input type="text" class="form-control" name="artist[name]" placeholder="<%= artist.name %>" value="<%= artist.name %>" required>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+        <a href="/admin/artist/all">Go back</a>
+    </form>
+</div>
+
+
+<%- include("../partials/admin_footer.ejs") %>

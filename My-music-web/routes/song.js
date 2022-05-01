@@ -1,8 +1,5 @@
 const   express = require("express"),
         router = express.Router(),
-        bodyParser = require("body-parser"),
-        Artist = require('../models/artist'),
-        Album = require('../models/album'),
         Song = require('../models/song');
 
 
