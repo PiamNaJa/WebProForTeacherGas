@@ -25,7 +25,7 @@
         <img src="/icon/web-icon.png" class="ms-1" height="40px">
         <span class="fs-5 d-none d-sm-inline webicon__font">&nbsp;Kmusic</span>
       </a>
-      <form class="d-flex search" action="/search" method="post">
+      <form class="d-flex mx-auto search" action="/search" method="post">
         <input class="form-control me-2" type="search" id="search" name="search" placeholder="Search Songs, Artist, Album" aria-label="Search">
       </form>
       <div class="list-unstyled">
@@ -39,10 +39,10 @@
           <% } else{ %>
             <% if(!currentUser.isAdmin){ %>
             <li class="nav-item ms-auto my-auto me-3 d-inline">
-              <a href="/user/<%= currentUser._id %>" class="text-white text-decoration-none nav--username"><%= currentUser.displayname %></a>
+              <a href="/user/<%= currentUser._id %>" class="text-decoration-none nav--username"><%= currentUser.displayname %></a>
             </li>
             <li class="nav-item ms-auto my-auto d-inline">
-              <a href="/logout"><img src="/icon/logout.png" width="27rem"></a>
+              <a href="/logout"><img src="/icon/logout.png" class="navlogout--img"></a>
             </li>
             <% } else {%>
             <li class="nav-item">
@@ -52,9 +52,9 @@
                   <img src="<%= currentUser.profileImage %>" class="rounded-circle adminprofileimg" width="35px" height="35px">
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end bg-black" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item text-white" href="/admin">Admin Page</a></li>
-                  <li><a class="dropdown-item text-white" href="/user/<%= currentUser._id %>">Profile</a></li>
-                  <li><a class="dropdown-item text-white" href="/logout">Logout</a></li>
+                  <li><a class="dropdown-item admin--list" href="/admin">Admin Page</a></li>
+                  <li><a class="dropdown-item admin--list" href="/user/<%= currentUser._id %>">Profile</a></li>
+                  <li><a class="dropdown-item admin--list" href="/logout">Logout</a></li>
                 </ul>
               </div>
             </li>

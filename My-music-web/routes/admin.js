@@ -236,10 +236,11 @@ router.put('/artist/:id', (req, res)=>{
 });
 
 router.delete('/artist/:id', (req, res)=>{
-    Song.deleteMany({artist : {_id : req.params.id}},(err)=>{
+    Artist.findByIdAndRemove(req.params.id, (err)=>{
         if(err)
         {
-            console.log(err);
+            req.flash('error', err.message);
+            res.redirect('back');
         }
         else
         {
@@ -250,22 +251,22 @@ router.delete('/artist/:id', (req, res)=>{
                 }
                 else
                 {
-                    Artist.findByIdAndRemove(req.params.id, (err)=>{
+                    Song.deleteMany({artist : {_id : req.params.id}},(err)=>{
                         if(err)
                         {
-                            req.flash('error', err.message);
-                            res.redirect('back');
+                            console.log(err);
                         }
                         else
                         {
                             req.flash('success', "Delete Successfully");
                             res.redirect("/admin/artist/all");
-                        }        
-                    });       
+                        }
+                    });                           
                 }
             });
-        }
+        }        
     });
+    
 });
 
 router.get('/artist/:id/edit', (req, res)=>{
@@ -359,8 +360,18 @@ router.delete('/album/:id', (req, res)=>{
         }
         else
         {
-            req.flash('success', 'Delete Data Successfully');
-            res.redirect('/admin/album/all');
+            Song.updateMany({album : req.params.id}, { $unset: { album: ""} }, (err)=>{
+                if(err)
+                {
+                    req.flash('error', err.message);
+                    res.redirect('back');
+                }
+                else
+                {
+                    req.flash('success', 'Delete Data Successfully');
+                    res.redirect('/admin/album/all');
+                }
+            });
         }
     });
 });

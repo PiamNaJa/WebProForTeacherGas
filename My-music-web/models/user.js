@@ -6,7 +6,11 @@ const userSchema = new mongoose.Schema({ //สร้าง Schema หรือ t
     password : String,
     displayname : String,
     profileImage : String,
-    isAdmin : {type : Boolean, default : false}
+    isAdmin : {type : Boolean, default : false},
+    favsong : [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Album'
+    }]
 });
 
 userSchema.plugin(passportLocalMongoose);

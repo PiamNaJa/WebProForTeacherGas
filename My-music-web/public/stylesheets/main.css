@@ -27,9 +27,36 @@ thead{
     width: 40%;
 }
 
+.navlogout--img{
+    width: 27px;
+}
+
+.navlogout--img:hover{
+    outline: 0.05rem solid white;
+}
+
 .nav--username{
     font-weight: 600;
     font-size: 1.5rem;
+    color: white;
+}
+
+.nav--username:hover{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.admin--list{
+    color: white;
+}
+
+.admin--list:active{
+    background-color: #12a7af!important;
+    color: white!important;
+}
+
+.admin--list:hover{
+    color: black;
+    background-color: #1DE8F1;
 }
 
 .btn--login{
@@ -81,6 +108,10 @@ thead{
     font-weight: 400;
     font-size: 1.5rem;
     color: white;
+}
+
+.webicon__font:hover, .home__font:hover, .favorite__font:hover, .playlist__font:hover, .genre__font:hover, .artist__font:hover, .album__font:hover{
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .artistinfo--img, .songinfo--img, .songside--img, .artistside--img, .albumside--img, .albuminfo--img, .userinfo--img, .adminprofileimg{
