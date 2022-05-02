@@ -3,7 +3,8 @@
     <h1 class="display-5">Edit Album Data</h1>
     <form action="/admin/album/<%= album._id %>?_method=PUT" method="post">
         <div class="mb-3">
-            <label class="form-label">URL</label>
+            <label class="form-label">Image URL</label>
+            <img src="<%= album.image %>" width="100" height="100">
             <input type="text" class="form-control" name="album[image]" placeholder="<%= album.image %>" value="<%= album.image %>" required>
         </div>
 

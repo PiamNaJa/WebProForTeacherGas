@@ -6,6 +6,7 @@
       <thead>
         <tr>
           <th scope="col">#</th>
+          <th scope="col">Image</th>
           <th scope="col">Title</th>
           <th scope="col">Artist</th>
           <th scope="col">Action</th>
@@ -15,13 +16,14 @@
           <% let i = 1; %> 
         <% albums.forEach((album)=>{ %> 
         <tr>
-          <td><p class="mt-2 mb-0"><%= i++ %></p></td>
-          <td><p class="mt-2 mb-0" id="title"><%= album.name %></p></td>
-          <td><p class="mt-2 mb-0"><%= album.artist.name %></p></td>
+          <td><p class="mt-4 mb-0"><%= i++ %></p></td>
+          <td><img src="<%= album.image %>" width="70" height="70" class="artist--img"></td>
+          <td><p class="mt-4 mb-0" id="title"><%= album.name %></p></td>
+          <td><p class="mt-4 mb-0"><%= album.artist.name %></p></td>
           <td>
             <form action="/admin/album/<%= album._id %>?_method=DELETE" method="post">
-              <a href="/admin/album/<%= album._id %>/edit" class="btn btn-warning"id="editBt">Edit</a>
-              <button type="submit" class="btn btn-danger" id="deleteBt">Delete</button>
+              <a href="/admin/album/<%= album._id %>/edit" class="btn btn-warning mt-3"id="editBt">Edit</a>
+              <button type="submit" class="btn btn-danger mt-3" id="deleteBt">Delete</button>
             </form>
               
           </td>

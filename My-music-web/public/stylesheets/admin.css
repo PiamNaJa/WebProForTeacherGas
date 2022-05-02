@@ -1,0 +1,4 @@
+.song--img, .artist--img, .album--img{
+    object-fit: cover;
+    aspect-ratio: 1/1;
+}
