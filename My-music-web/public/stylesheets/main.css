@@ -211,16 +211,36 @@ thead{
     background-color: rgba(255, 255, 255, 0.705);
 }
 
-.btn--fav:hover{
-    border: solid 1px white;
+.btn--fav i{
+    font-size: 2rem;
+    color: white;
+    position: relative;
+    top: 3.5%;
 }
 
-.btn--fav img{
-    height: 5vh;
+.btn--fav i:hover, .btn--addplaylist i:hover, .playbt--inrow:hover{
+    color: #1DE8F1;
 }
 
-.btn--addplaylist img{
-    height: 5vh;
+.addplaylist--inrow, .favbt--inrow{
+    font-size: 1rem!important;
+    color: white;
+    visibility: hidden;
+}
+
+.playbt--inrow{
+    color: white;
+    visibility: hidden;
+}
+
+.btn--addplaylist{
+    background-color: transparent;
+    border: 0;
+}
+
+.btn--addplaylist i{
+    font-size: 2rem;
+    color: white;
 }
 
 .lyric{

@@ -44,29 +44,59 @@ router.post('/song/new', (req,res)=>{
     let image = req.body.image.trim();
     let name = req.body.name.trim();
     let genre = ToTitleCase(req.body.genre.trim());
-    let artist = req.body.artist.trim();
+    let artistname = req.body.artist.trim();
     let lyric = req.body.lyric.trim();
-    let newSong;
-    if(req.body.album)
-    {
-        let album = req.body.album.trim();
-        newSong = {image : image, name : name, genre : genre, artist : {_id : artist}, album : {_id : album}, lyric : lyric};
-    }
-    else
-    {
-        newSong = {image : image, name : name, genre : genre, artist : {_id : artist}, lyric : lyric};
-    }
-    Song.create(newSong, (err, newlyAdded)=>{
+    let newSong = {image : image, name : name, genre : genre, lyric : lyric};
+    Artist.findOne({name : artistname}, (err, foundArist)=>{
         if(err)
         {
             console.log(err);
         }
         else
         {
-            req.flash('success', 'Song name : ' + newlyAdded.name + ' is Added')
-            res.redirect("back");
+            newSong.artist = foundArist._id;
+            if(req.body.album)
+            {
+                let albumname = req.body.album;
+                Album.findOne({name:albumname}, (err, foundAlbum)=>{
+                    if(err)
+                    {
+                        console.log(err);
+                    }
+                    else
+                    {
+                        newSong.album = foundAlbum._id;
+                        Song.create(newSong, (err, newlyAdded)=>{
+                            if(err)
+                            {
+                                console.log(err);
+                            }
+                            else
+                            {
+                                req.flash('success', 'Song name : ' + newlyAdded.name + ' is Added')
+                                res.redirect("back");
+                            }
+                        });
+                    }
+                });
+            }
+            else
+            {
+                Song.create(newSong, (err, newlyAdded)=>{
+                    if(err)
+                    {
+                        console.log(err);
+                    }
+                    else
+                    {
+                        req.flash('success', 'Song name : ' + newlyAdded.name + ' is Added')
+                        res.redirect("back");
+                    }
+                });
+            }
+            
         }
-    });
+    })
 });
 
 router.get('/song/new', (req,res)=>{

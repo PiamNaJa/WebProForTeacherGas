@@ -22,13 +22,14 @@
               <th class="text-white" id="number" scope="col">#</th>
               <th class="text-white" scope="col">Title</th>
               <th class="text-white" scope="col">Album</th>
-              <th class="text-white" scope="col">Genre</th>
+              <th class="text-white" scope="col"><span class="ms-5">Genre</span></th>
+              <th class="text-white" scope="col"></th>
             </tr>
           </thead>
           <% let i = 1;  %>
           <tbody>
             <% song.forEach((song)=>{ %>
-              <tr class = "artist-song-row">
+              <tr class = "artist-song-row" onpointerover="artistsongrowhover()">
                 <td class="text-white" ><p class="my-auto"id="number"><%=i++%></p></td>
                 <td class="text-white" ><a class="text-white text-decoration-none" href="/song/<%= song._id %>" id="song"><%= song.name %></a></td>
                 <% if(song.album){ %>
@@ -36,7 +37,24 @@
                   <% } else { %>
                   <td></td>
                   <% } %>
-                <td class="text-white"><a class="text-white text-decoration-none" href="#"><%= song.genre %></a></td>
+                <td class="text-white"><a class="text-white text-decoration-none ms-5" href="/genre/<%= song.genre %>"><%= song.genre %></a></td>
+                <td>
+                  <% if(currentUser){ %>
+                    <button class="my-auto bg-transparent border-0"><i class="fa-solid fa-play playbt--inrow"></i></button>
+                    <a class="btn--fav text-decoration-none mx-1 my-auto" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
+                      <i class="fa-solid fa-heart favbt--inrow"></i>
+                    </a>
+                    <div class="btn-group dropend">
+                      <button type="button" class="p-0 btn--addplaylist mb-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-plus addplaylist--inrow"></i>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-dark bg-black">
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Add to New Playlist</a></li>
+                      </ul>
+                    </div>
+                    <% } %> 
+                </td>
               </tr>
             <% }); %>
           </tbody>

@@ -11,7 +11,7 @@
     </div>
   </div>
   <h3>Songs List</h3>
-  <div class="my-2 p-3 rounded shadow-sm album-song">
+  <div class="my-2 p-3 rounded shadow-sm album-song" onpointerover="albumsongrowhover()">
     <% let i = 1;  %>
     <% song.forEach((song)=>{ %>
     <div class="d-flex pt-0 album-song-row">
@@ -24,7 +24,21 @@
         <a class="d-inline text-white text-decoration-none" href="/artist/<%= song.artist._id %>"><span
             class="album-song--artistname"><%= song.artist.name %></span></a>
       </div>
-      <a href="#" class="my-auto me-2">Play</a>
+      <% if(currentUser){ %> 
+      <button class="my-auto bg-transparent border-0"><i class="fa-solid fa-play playbt--inrow"></i></button>
+      <a class="btn--fav text-decoration-none mx-2 my-auto" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
+        <i class="fa-solid fa-heart favbt--inrow"></i>
+      </a>
+      <div class="btn-group dropup me-2">
+        <button type="button" class="p-0 btn--addplaylist " data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-plus addplaylist--inrow"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark bg-black">
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Add to New Playlist</a></li>
+        </ul>
+      </div>
+      <% } %> 
     </div>
     <% }) %>
   </div>

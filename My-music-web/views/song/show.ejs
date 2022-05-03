@@ -14,12 +14,12 @@
           <img class="mb-2" src="/icon/blue_play.png" alt="play">
           <p class="d-inline m-0">Play</p>
         </button>
-        <a class="btn btn--fav p-0 ms-2" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
-          <img src="/icon/OutlineHeart.png" alt="Favorite">
+        <a class="btn--fav text-decoration-none mx-2" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
+          <i class="fa-solid fa-heart"></i>
         </a>
         <div class="btn-group dropend">
-          <button type="button" class="btn p-0 btn--addplaylist " data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="/icon/addplaylist.png" alt="addplaylist">
+          <button type="button" class="p-0 btn--addplaylist " data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-plus"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-dark bg-black">
             <li><hr class="dropdown-divider"></li>
