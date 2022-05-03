@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({ //สร้าง Schema หรือ t
     isAdmin : {type : Boolean, default : false},
     favsong : [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Album'
+        ref: 'Song'
     }]
 });
 

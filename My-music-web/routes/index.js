@@ -110,19 +110,4 @@ router.get('/favorite', middleware.isLoggedIn, (req,res)=>{
     res.render("favorite.ejs");
 });
 
-router.get('/user/:id', middleware.isLoggedIn, (req,res)=>{
-    User.findById(req.params.id, (err, foundUser)=>{
-        if(err)
-        {
-            req.flash('err', 'There is Something Wrong');
-            return res.redirect('back');
-        }
-        else
-        {
-            res.render("user/show.ejs", {user : foundUser});
-        }
-    });
-    
-});
-
 module.exports = router;
