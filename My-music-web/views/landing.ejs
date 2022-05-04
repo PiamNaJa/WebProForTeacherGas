@@ -7,6 +7,17 @@
       <% MostFavSong.forEach((fav)=>{ %>
       <div class="col">
         <div class="card shadow-sm p-3">
+          <% if(currentUser){ %>
+            <button type="button" class="border-0 p-0 bg-transparent card__playbt">
+              <i class="fa-regular fa-circle-play"></i>
+            </button>
+          <% } else{ %>
+            <button type="button" class="border-0 p-0 bg-transparent card__playbt" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <i class="fa-regular fa-circle-play"></i>
+            </button>
+            <%- include("partials/login_modal.ejs") %>
+          <% } %>
+          
           <a href="/song/<%= fav._id %>" class="text-decoration-none">
             <img class="song--img" src="<%= fav.image %>">
             <p class="song--name text-white m-0"><%= fav.name %></p>
@@ -26,6 +37,9 @@
       <% NewSong.forEach((newsong)=>{ %>
       <div class="col">
         <div class="card shadow-sm p-3">
+          <button class="border-0 p-0 bg-transparent card__playbt">
+            <i class="fa-regular fa-circle-play"></i>
+          </button>
           <a href="/song/<%= newsong._id %>" class="text-decoration-none">
             <img class="song--img" src="<%= newsong.image %>">
             <p class="song--name text-white m-0"><%= newsong.name %></p>

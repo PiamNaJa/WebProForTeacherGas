@@ -1,0 +1,26 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+            <h4 class="modal-title text-white" id="exampleModalLabel">Please Login</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/login" method="post">
+                <div class ="mb-3">
+                    <label for="" class="form-label text-white">Username</label>
+                    <input class="form-control" name= "username" type="text" placeholder="Username"required>
+                </div>
+        
+                <div class ="mb-3">
+                    <label for="" class="form-label text-white">Password</label>
+                    <input class="form-control" name= "password" type="password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="btn btn--login">Login</button>
+                <a href="/register" class="goregister">I not have account</a>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
