@@ -35,7 +35,6 @@
           <% } %>
         <td class="text-white"><a class="text-white text-decoration-none ms-5" href="/genre/<%= song.genre %>"><%= song.genre %></a></td>
         <td>
-          <% if(currentUser){ %>
             <button class="my-auto bg-transparent border-0"><i class="fa-solid fa-play playbt--inrow"></i></button>
             <a class="btn--fav text-decoration-none mx-1 my-auto" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
               <i class="fa-solid fa-heart favbt--inrow"></i>
@@ -49,7 +48,6 @@
                 <li><a class="dropdown-item" href="#">Add to New Playlist</a></li>
               </ul>
             </div>
-            <% } %> 
         </td>
       </tr>
     <% }); %>

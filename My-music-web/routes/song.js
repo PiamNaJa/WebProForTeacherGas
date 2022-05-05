@@ -4,7 +4,7 @@ const   express = require("express"),
         Song = require('../models/song');
 
 
-router.get('/:id', middleware.isLoggedIn, (req,res)=>{ //$ne = not equal
+router.get('/:id', (req,res)=>{ //$ne = not equal
     Song.find({'_id': {$ne : req.params.id}}).populate('artist').exec((err, otherSong)=>{ // Query all song expect spectified ID
         if(err)
         {

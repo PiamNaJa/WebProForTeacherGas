@@ -9,7 +9,7 @@ hr{
     color: white;
 }
 
-tbody, td, tfoot, th, .album-song, .songside, .artistside, .albumside{
+tbody, td, tfoot, th, .album-song, .artistside, .albumside{
     background-color: #121212;
     border-style: hidden
 }
@@ -214,34 +214,18 @@ thead{
 }
 
 
-.btn--play{
-    border-radius: 15px;
-    width: 7.5vw;
-    padding: auto;
+.btn--play i{
+    font-size: 2rem;
+    color: #1DE8F1;
 }
 
-.btn--play p{
-    font-weight: 700;
-    font-size: 1.5vw;
-}
-
-.btn--play img{
-    width: 2vw;
-}
-
-.btn--play{
-    background-color: white;
-}
-
-.btn--play:hover{
-    background-color: rgba(255, 255, 255, 0.705);
+.btn--play i:hover{
+    color: white;
 }
 
 .btn--fav i{
     font-size: 2rem;
     color: white;
-    position: relative;
-    top: 3.5%;
 }
 
 .btn--fav i:hover, .btn--addplaylist i:hover, .playbt--inrow:hover{
@@ -252,6 +236,10 @@ thead{
     font-size: 1rem!important;
     color: white;
     visibility: hidden;
+}
+
+#tablebt, #tablebt{
+    width: 8rem;
 }
 
 .playbt--inrow{

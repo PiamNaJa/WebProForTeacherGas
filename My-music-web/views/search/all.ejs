@@ -12,56 +12,53 @@
                 <h2 class="my-0 d-inline fw-bold">Songs</h2>
                 <a href="/search/<%= word %>/song" class="d-inline mt-auto me-1" id="seeall">See All</a>
             </div>
-            <div class="card-body songside">
-                <ul class="list-unstyled my-auto">
-                    <% if(song.length > 0){ %>
-                        <% song.forEach((song)=>{ %>
-                        <li>
-                            <div class="d-flex py-2 ps-2 songside__row" onmouseover="songsiderowhover()">
-                                <img src="<%= song.image %>" width="60px" height="60px" class="songside--img">
-                                <div class="mb-0 py-2 ps-2 small lh-sm w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <a href="/song/<%= song._id %>" class="text-white text-decoration-none mb-1"><strong
-                                                class="songside--name"><%= song.name %></strong></a>
-                                    </div>
-                                    <a class="d-inline text-white text-decoration-none"
-                                        href="/artist/<%= song.artist._id %>"><span
-                                            class="songside--artistname"><%= song.artist.name %></span></a>
-                                </div>
-                                <% if(currentUser){ %> 
-                                    <button class="my-auto bg-transparent border-0"><i class="fa-solid fa-play playbt--inrow"></i></button>
-                                    <a class="btn--fav text-decoration-none mx-2 my-auto" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
-                                      <i class="fa-solid fa-heart favbt--inrow"></i>
-                                    </a>
-                                    <div class="btn-group dropup me-2">
-                                      <button type="button" class="p-0 btn--addplaylist " data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-plus addplaylist--inrow"></i>
-                                      </button>
-                                      <ul class="dropdown-menu dropdown-menu-dark bg-black">
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Add to New Playlist</a></li>
-                                      </ul>
-                                    </div>
-                                    <% } else { %>
-                                        <button type="button" class="my-auto bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <i class="fa-solid fa-play playbt--inrow"></i>
-                                          </button>
-                                          <button type="button" class="btn--fav bg-transparent border-0 mx-2 my-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <i class="fa-solid fa-heart favbt--inrow"></i>
-                                          </button>
-                                          <button type="button" class="p-0 btn--addplaylist" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <i class="fa-solid fa-plus addplaylist--inrow"></i>
-                                          </button>
-                                          <%- include("../partials/login_modal.ejs") %>
-                                   <% } %> 
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                  <thead>
+                    <tr>
+                      <th class="text-white" scope="col">Title</th>
+                      <th class="text-white" scope="col">Artist</th>
+                      <th class="text-white" scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% song.forEach((song)=>{ %>
+                      <tr class = "search-song__row" onpointerover="searchsongrow()">
+                        <td class="text-white" ><a class="text-white text-decoration-none text-truncate" href="/song/<%= song._id %>" id="song"><%= song.name %></a></td>
+                        <td class="text-white"><a class="text-white text-decoration-none" href="/artist/<%= song.artist._id %>"><%= song.artist.name%></a></td>
+                        <td id="tablebt">
+                          <% if(currentUser){ %>
+                            <button type="button" class="my-auto bg-transparent border-0"><i class="fa-solid fa-play playbt--inrow"></i></button>
+                            <a class="btn--fav text-decoration-none mx-1 my-auto" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
+                              <i class="fa-solid fa-heart favbt--inrow"></i>
+                            </a>
+                            <div class="btn-group dropend">
+                              <button type="button" class="p-0 btn--addplaylist mb-1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-plus addplaylist--inrow"></i>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-dark bg-black">
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Add to New Playlist</a></li>
+                              </ul>
                             </div>
-                        </li>
-                        <% }) %>
-                    <% } else{ %>
-                        <li class="text-center"><h2>Not Found</h2></li>
-                        <% } %>
-                </ul>
-            </div>
+                            <% } else { %>
+                              <button type="button" class="p-0 btn--addplaylist float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <i class="fa-solid fa-plus addplaylist--inrow"></i>
+                                </button>
+                                <button type="button" class="btn--fav bg-transparent border-0 me-1 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                  <i class="fa-solid fa-heart favbt--inrow"></i>
+                                </button>
+                                <button type="button" class="my-auto bg-transparent border-0 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <i class="fa-solid fa-play playbt--inrow"></i>
+                                </button>
+                                <%- include("../partials/login_modal.ejs") %>
+                         <% } %> 
+                        </td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+              </div>
         </div>
     </div>
     <div class="col">

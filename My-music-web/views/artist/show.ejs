@@ -22,7 +22,7 @@
               <th class="text-white" id="number" scope="col">#</th>
               <th class="text-white" scope="col">Title</th>
               <th class="text-white" scope="col">Album</th>
-              <th class="text-white" scope="col"><span class="ms-5">Genre</span></th>
+              <th class="text-white" scope="col">Genre</th>
               <th class="text-white" scope="col"></th>
             </tr>
           </thead>
@@ -37,8 +37,8 @@
                   <% } else { %>
                   <td></td>
                   <% } %>
-                <td class="text-white"><a class="text-white text-decoration-none ms-5" href="/genre/<%= song.genre %>"><%= song.genre %></a></td>
-                <td>
+                <td class="text-white" id="tablegenre"><a class="text-white text-decoration-none" href="/genre/<%= song.genre %>"><%= song.genre %></a></td>
+                <td id="tablebt">
                   <% if(currentUser){ %>
                     <button type="button" class="my-auto bg-transparent border-0"><i class="fa-solid fa-play playbt--inrow"></i></button>
                     <a class="btn--fav text-decoration-none mx-1 my-auto" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">

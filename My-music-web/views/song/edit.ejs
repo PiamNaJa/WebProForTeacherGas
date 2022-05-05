@@ -12,7 +12,7 @@
             <input class="form-control" name = "artistname" list="Artistdatalist" value="<%= song.artist.name %>" id="exampleDataList" placeholder="<%= song.artist.name %>" autocomplete="off" required>
             <datalist id="Artistdatalist">
                 <% artists.forEach((artist)=>{ %>
-                    <option value=<%= artist.name %>></option>
+                    <option value="<%= artist.name %>"></option>
                 <% }); %>
             </datalist>  
         </div>
@@ -22,7 +22,7 @@
             <input class="form-control" name = "albumname" list="Albumdatalist" id="exampleDataList" <% if(song.album){ %> value=" <%= song.album.name %>" placeholder="<%= song.album.name %><% } %>" autocomplete="off">
             <datalist id="Albumdatalist">
                 <% albums.forEach((album)=>{ %>
-                    <option value=<%= album.name %>></option>
+                    <option value="<%= album.name %>"></option>
                 <% }); %>
             </datalist>  
         </div>

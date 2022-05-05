@@ -65,3 +65,26 @@ function songsiderowhover()
         });
     }
 }
+
+function searchsongrow()
+{
+    const albumsongrow      = document.querySelectorAll('.search-song__row'),
+          playbtinrow       = document.querySelectorAll('.playbt--inrow'),
+          favbtinrow        = document.querySelectorAll('.favbt--inrow'),
+          addplaylistinrow  = document.querySelectorAll('.addplaylist--inrow');
+
+    for(let i = 0; i<albumsongrow .length; i++)
+    {
+        albumsongrow[i].addEventListener('mouseover', ()=>{
+            playbtinrow[i].style.visibility         = "visible"
+            favbtinrow[i].style.visibility          = "visible"
+            addplaylistinrow[i].style.visibility    = "visible"
+        });
+
+        albumsongrow[i].addEventListener('mouseout', ()=>{
+            playbtinrow[i].style.visibility         = "hidden"
+            favbtinrow[i].style.visibility          = "hidden"
+            addplaylistinrow[i].style.visibility    = "hidden"
+        });
+    }
+}

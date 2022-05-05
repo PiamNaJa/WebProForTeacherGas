@@ -142,29 +142,54 @@ router.put('/song/:id', (req, res)=>{
         }
         else
         {
-            Album.findOne({name: req.body.albumname}, (err, foundAlbum)=>{
-                if(err)
-                {
-                    console.log(err);
-                }
-                else
-                {
-                    req.body.song.artist = foundArtist._id;
-                    req.body.song.album = foundAlbum._id;
-                    Song.findByIdAndUpdate(req.params.id, req.body.song, (err)=>{
-                        if(err)
-                        {
-                            req.flash('error', err.message);
-                            res.redirect('back');
-                        }
-                        else
-                        {
-                            req.flash('success', 'Edit Data Successfully');
-                            res.redirect("/admin/song/all");
-                        }
-                    });
-                }
-            })
+            req.body.song.artist = foundArtist._id;
+            if(req.body.albumname)
+            {
+                Album.findOne({name: req.body.albumname}, (err, foundAlbum)=>{
+                    if(err)
+                    {
+                        console.log(err);
+                    }
+                    else
+                    {
+                        req.body.song.album = foundAlbum._id;
+                        Song.findByIdAndUpdate(req.params.id, req.body.song, (err)=>{
+                            if(err)
+                            {
+                                req.flash('error', err.message);
+                                res.redirect('back');
+                            }
+                            else
+                            {
+                                req.flash('success', 'Edit Data Successfully');
+                                res.redirect("/admin/song/all");
+                            }
+                        });
+                    }
+                });
+            }
+            else
+            {
+                Song.findByIdAndUpdate(req.params.id, {
+                    image  : req.body.song.image,
+                    name   : req.body.song.name,
+                    genre  : req.body.song.genre,
+                    lyric  : req.body.song.lyric,
+                    artist : req.body.song.artist,
+                    $unset : { album: ""}
+                }, (err)=>{
+                    if(err)
+                    {
+                        req.flash('error', err.message);
+                        res.redirect('back');
+                    }
+                    else
+                    {
+                        req.flash('success', 'Edit Data Successfully');
+                        res.redirect("/admin/song/all");
+                    }
+                });                
+            }
         }
     });
 });

@@ -7,7 +7,7 @@ const   express     = require("express"),
         middleware  = require('../middleware');
 
 router.get('/:id', middleware.isLoggedIn, (req,res)=>{
-    User.findById(req.params.id).populate('favsong').exec((err, foundUser)=>{
+    User.findById(req.params.id, (err, foundUser)=>{
         if(err)
         {
             req.flash('err', 'There is Something Wrong');
@@ -15,7 +15,17 @@ router.get('/:id', middleware.isLoggedIn, (req,res)=>{
         }
         else
         {
-            res.render("user/show.ejs", {user : foundUser});
+            Song.find({ _id: { $in: foundUser.favsong } }).populate('album artist').exec((err, foundSong)=>{
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    foundUser.favsong = foundSong;
+                    res.render("user/show.ejs", {user : foundUser});
+                }
+            });
         }
     });
 });

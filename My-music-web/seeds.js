@@ -1747,12 +1747,12 @@ const Albumdata = [
 
 function sendDB()
 {
-    // User.remove({}, (err)=>{
-    //     if(err)
-    //     {
-    //         console.log(err);
-    //     }
-    // });
+    User.remove({}, (err)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+    });
     Artist.remove({}, (err)=>{
         if(err)
         {
