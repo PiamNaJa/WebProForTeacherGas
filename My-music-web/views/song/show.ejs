@@ -12,15 +12,14 @@
           <%= song.release.getDate() %>/<%= song.release.getMonth() %>/<%= song.release.getFullYear() %></p>
           <div class="d-block">
           <% if(currentUser){ %>
-            <button class="btn btn--play">
-              <img src="/icon/blue_play.png" alt="play">
-              <p class="d-inline m-0">Play</p>
+            <button type="button" class="border-0 bg-transparent btn--play">
+              <i class="fa-solid fa-circle-play"></i>
             </button>
-            <a class="btn--fav text-decoration-none mx-2" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
+            <a class="btn--fav text-decoration-none me-1" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
               <i class="fa-solid fa-heart"></i>
             </a>
             <div class="btn-group dropend">
-              <button type="button" class="p-0 btn--addplaylist " data-bs-toggle="dropdown" aria-expanded="false">
+              <button type="button" class="p-0 btn--addplaylist mb-2 pb-1" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-plus"></i>
               </button>
               <ul class="dropdown-menu dropdown-menu-dark bg-black">

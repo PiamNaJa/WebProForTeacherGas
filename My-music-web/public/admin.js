@@ -34,3 +34,15 @@ for(let i = 0 ; i < deleteBt.length; i++)
     }
 }
 
+const GrantOrRevokeBt = document.querySelectorAll("#GrantOrRevokeBt");
+
+for(let i = 0 ; i < GrantOrRevokeBt.length; i++)
+{
+    GrantOrRevokeBt[i].onclick = (e)=>{
+        if(!confirm('Are you sure?')) 
+        {
+            e.preventDefault();
+        }
+    }
+}
+

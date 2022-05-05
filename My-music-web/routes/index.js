@@ -9,12 +9,12 @@ const   express     = require("express"),
         path        = require('path'),
         storage     = multer.diskStorage({
                         destination : (req,file, callback)=>{
-                            callback(null,'./public/upload/');
+                            callback(null,'./public/upload/profile/');
                         },
                         filename: (req,file, callback)=>{
                             callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
                         }
-                    });
+                    }),
         imageFiler = (req,file,callback)=>{
             if(file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)){
                 return callback(new Error('Only jpg, jpeg, png, gif'),false);
@@ -82,7 +82,7 @@ router.get('/register', (req,res)=>{
 });
 
 router.post("/register", upload.single('profileImage'), (req, res)=>{
-    req.body.profileImage = '/upload/' + req.file.filename;
+    req.body.profileImage = '/upload/profile/' + req.file.filename;
     let newUser = new User({username : req.body.username,
                             displayname : req.body.displayname,
                             profileImage : req.body.profileImage

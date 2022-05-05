@@ -219,6 +219,10 @@ thead{
     color: #1DE8F1;
 }
 
+.btn--play i:active,.btn--fav i:active, .btn--addplaylist i:active, .playbt--inrow:active{
+    transform: translateY(10%);
+}
+
 .btn--play i:hover{
     color: white;
 }

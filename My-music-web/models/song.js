@@ -14,7 +14,8 @@ const songSchema = new mongoose.Schema({ //สร้าง Schema หรือ t
     },
     release : {type: Date, default: new Date()},
     fav : {type: Number, default: 0},
-    lyric: String
+    lyric: String,
+    audio : String
 });
 
 module.exports = mongoose.model('Song', songSchema);

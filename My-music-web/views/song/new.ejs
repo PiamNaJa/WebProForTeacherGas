@@ -1,7 +1,7 @@
 <%- include("../partials/admin_header.ejs") %>
 <div class="container">
     <h1 class="display-5">Add New Music</h1>
-    <form action="/admin/song/new" method="post">
+    <form action="/admin/song/new" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Music Title</label>
             <input type="text" class="form-control" name="name" placeholder="Music Title" required>
@@ -36,10 +36,17 @@
             <label class="form-label">Image URL</label>
             <input type="text" class="form-control" name="image" placeholder="Image URL" required>
         </div>
+
         <div class="mb-3">
             <label class="form-label">Lyrics</label>
             <textarea type="text" class="form-control" name="lyric" placeholder="Lyrics"></textarea>
         </div>
+
+        <div class="mb-3">
+            <label class="form-label">Audio File (mp3, wav, ogg)</label>
+            <input class="form-control" name="audiofile" type="file" accept=".mp3, .wav, .ogg" required>
+        </div>
+
         <button type="submit" class="btn btn-outline-primary">Submit</button>
         <a class="btn btn-outline-dark" href="/admin">Go back</a>
         <a href="/admin/artist/new" class="btn btn-outline-dark float-end">Add New Artist</a>

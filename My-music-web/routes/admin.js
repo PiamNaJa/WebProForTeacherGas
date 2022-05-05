@@ -1,11 +1,29 @@
 const   express = require("express"),
         router = express.Router(),
+        middleware  = require('../middleware'),
         Album = require('../models/album'),
         Artist = require('../models/artist'),
-        Song = require('../models/song');
+        Song = require('../models/song'),
+        User = require('../models/user'),
+        multer      = require('multer'),
+        path        = require('path'),
+        storage     = multer.diskStorage({
+                        destination : (req,file, callback)=>{
+                            callback(null,'./public/upload/audio/');
+                        },
+                        filename: (req,file, callback)=>{
+                            callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+                        }
+                    }),
+        audioFiler = (req,file,callback)=>{
+            if(file.originalname.match(/\.(mp3|wav|ogg)$/i)){
+                return callback(new Error('Only mp3, wav, ogg'),false);
+            }
+            callback(null, true);
+        },
+        upload = multer({storage: storage, fileFiler: audioFiler});
 
-
-router.get('/', (req,res)=>{
+router.get('/', middleware.isAdmin, (req,res)=>{
     Song.find({}).populate('album artist').sort({release : 1}).exec((err, foundSong)=>{
         if(err)
         {
@@ -40,13 +58,14 @@ router.get('/', (req,res)=>{
     });
 });
 
-router.post('/song/new', (req,res)=>{
+router.post('/song/new', middleware.isAdmin, upload.single('audiofile'), (req,res)=>{
     let image = req.body.image.trim();
     let name = req.body.name.trim();
     let genre = ToTitleCase(req.body.genre.trim());
     let artistname = req.body.artist.trim();
     let lyric = req.body.lyric.trim();
-    let newSong = {image : image, name : name, genre : genre, lyric : lyric};
+    req.body.audiofile = '/upload/audio/' + req.file.filename;
+    let newSong = {image : image, name : name, genre : genre, lyric : lyric, audio : req.body.audiofile};
     Artist.findOne({name : artistname}, (err, foundArist)=>{
         if(err)
         {
@@ -99,7 +118,7 @@ router.post('/song/new', (req,res)=>{
     })
 });
 
-router.get('/song/new', (req,res)=>{
+router.get('/song/new', middleware.isAdmin, (req,res)=>{
     Artist.find({},(err, foundArtist)=>{
         if(err)
         {
@@ -121,7 +140,7 @@ router.get('/song/new', (req,res)=>{
     });
 });
 
-router.get('/song/all', (req,res)=>{
+router.get('/song/all', middleware.isAdmin, (req,res)=>{
     Song.find({}).populate('album artist').sort({release : 1}).exec((err, foundSong)=>{
         if(err)
         {
@@ -134,7 +153,7 @@ router.get('/song/all', (req,res)=>{
     });
 });
 
-router.put('/song/:id', (req, res)=>{
+router.put('/song/:id', middleware.isAdmin, (req, res)=>{
     Artist.findOne({name: req.body.artistname},(err, foundArtist)=>{
         if(err)
         {
@@ -194,7 +213,7 @@ router.put('/song/:id', (req, res)=>{
     });
 });
 
-router.delete('/song/:id', (req, res)=>{
+router.delete('/song/:id', middleware.isAdmin, (req, res)=>{
     Song.findByIdAndRemove(req.params.id, (err)=>{
         if(err)
         {
@@ -209,7 +228,7 @@ router.delete('/song/:id', (req, res)=>{
     });
 });
 
-router.get('/song/:id/edit', (req, res)=>{
+router.get('/song/:id/edit', middleware.isAdmin, (req, res)=>{
     Song.findById(req.params.id).populate('artist album').exec((err, foundSong)=>{
         if(err)
         {
@@ -240,7 +259,7 @@ router.get('/song/:id/edit', (req, res)=>{
     })
 })
 
-router.post('/artist/new', (req,res)=>{
+router.post('/artist/new', middleware.isAdmin, (req,res)=>{
     let image = req.body.image.trim();
     let name = ToTitleCase(req.body.name.trim());
     let newArtist = {image : image, name : name};
@@ -258,11 +277,11 @@ router.post('/artist/new', (req,res)=>{
     });
 });
 
-router.get('/artist/new', (req,res)=>{
+router.get('/artist/new', middleware.isAdmin, (req,res)=>{
     res.render('artist/new.ejs');
 });
 
-router.get('/artist/all', (req,res)=>{
+router.get('/artist/all', middleware.isAdmin, (req,res)=>{
     Artist.find({}).sort({name : 1}).exec((err, foundArtist)=>{
         if(err)
         {
@@ -275,7 +294,7 @@ router.get('/artist/all', (req,res)=>{
     });
 });
 
-router.put('/artist/:id', (req, res)=>{
+router.put('/artist/:id', middleware.isAdmin, (req, res)=>{
     Artist.findByIdAndUpdate(req.params.id, req.body.artist, (err)=>{
         if(err)
         {
@@ -290,7 +309,7 @@ router.put('/artist/:id', (req, res)=>{
     });
 });
 
-router.delete('/artist/:id', (req, res)=>{
+router.delete('/artist/:id', middleware.isAdmin, (req, res)=>{
     Artist.findByIdAndRemove(req.params.id, (err)=>{
         if(err)
         {
@@ -324,7 +343,7 @@ router.delete('/artist/:id', (req, res)=>{
     
 });
 
-router.get('/artist/:id/edit', (req, res)=>{
+router.get('/artist/:id/edit', middleware.isAdmin, (req, res)=>{
     Artist.findById(req.params.id, (err, foundArtist)=>{
         if(err)
         {
@@ -337,7 +356,7 @@ router.get('/artist/:id/edit', (req, res)=>{
     });
 });
 
-router.get('/album/new', (req,res)=>{
+router.get('/album/new', middleware.isAdmin, (req,res)=>{
     Artist.find({}, (err, foundArtist)=>{
         if(err)
         {
@@ -350,7 +369,7 @@ router.get('/album/new', (req,res)=>{
     })
 });
 
-router.post('/album/new', (req,res)=>{
+router.post('/album/new', middleware.isAdmin, (req,res)=>{
     let image = req.body.image.trim();
     let name = req.body.name.trim();
     let artist = req.body.artist.trim();
@@ -368,7 +387,7 @@ router.post('/album/new', (req,res)=>{
     });
 });
 
-router.get('/album/all', (req,res)=>{
+router.get('/album/all', middleware.isAdmin, (req,res)=>{
     Album.find({}).populate('artist').sort({name : 1}).exec((err, foundAlbum)=>{
         if(err)
         {
@@ -381,7 +400,7 @@ router.get('/album/all', (req,res)=>{
     });
 });
 
-router.put('/album/:id', (req, res)=>{
+router.put('/album/:id', middleware.isAdmin, (req, res)=>{
     Artist.findOne({name : req.body.artistname}, (err, foundArist)=>{
         if(err)
         {
@@ -406,7 +425,7 @@ router.put('/album/:id', (req, res)=>{
     });
 });
 
-router.delete('/album/:id', (req, res)=>{
+router.delete('/album/:id', middleware.isAdmin, (req, res)=>{
     Album.findByIdAndRemove(req.params.id, (err)=>{
         if(err)
         {
@@ -431,7 +450,7 @@ router.delete('/album/:id', (req, res)=>{
     });
 });
 
-router.get('/album/:id/edit', (req, res)=>{
+router.get('/album/:id/edit', middleware.isAdmin, (req, res)=>{
     Album.findById(req.params.id).populate('artist').exec((err, foundAlbum)=>{
         if(err)
         {
@@ -452,6 +471,49 @@ router.get('/album/:id/edit', (req, res)=>{
         }
     });
 });
+
+router.get('/user/all', middleware.isAdmin, (req, res)=>{
+   User.find({'_id': {$ne : req.user._id}}, (err, foundUser)=>{ //ne = not equals
+       if(err)
+       {
+           console.log(err);
+       }
+       else
+       {
+        res.render('user/alldata.ejs', {users : foundUser});
+       }
+   });
+});
+
+router.put('/user/:id/', middleware.isAdmin, (req, res)=>{
+    User.findById(req.params.id, (err, foundUser)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            foundUser.isAdmin = foundUser.isAdmin? false : true;
+            foundUser.save();
+            req.flash('success', 'Change Permission Successfully');
+            res.redirect('/admin/user/all');
+        }
+    });
+ });
+
+ router.delete('/user/:id/', middleware.isAdmin, (req, res)=>{
+    User.findByIdAndDelete(req.params.id, (err,foundUser)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            req.flash('success', 'Delete ' + foundUser.username +  ' Successfully');
+            res.redirect('/admin/user/all');
+        }
+    });
+ });
 
 module.exports = router;
 

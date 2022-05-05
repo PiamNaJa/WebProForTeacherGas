@@ -1,7 +1,7 @@
 <%- include("../partials/admin_header.ejs") %>
 <h1>Welcome <%= currentUser.displayname %> </h1>
 <h2 class="text-center my-3">What do you want to do?</h2>
-<div class="row py-2 row-cols-1 row-cols-lg-3 mx-auto align-items-center">
+<div class="row py-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mx-auto align-items-center">
     <div class="col d-flex align-items-start mt-4">
         <div class="mx-auto">
             <h1 class="text-center">Songs</h1>
@@ -38,6 +38,17 @@
                     Create
                 </a>
                 <a href="/admin/album/all" class="btn btn-primary d-inline-flex me-2">
+                    Show All
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col d-flex align-items-start mt-4">
+        <div class="mx-auto">
+            <h1 class="text-center">User</h1>
+            <div class="d-flex">
+                <a href="/admin/user/all" class="btn btn-primary d-inline-flex me-2">
                     Show All
                 </a>
             </div>
