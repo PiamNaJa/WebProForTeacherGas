@@ -1,0 +1,20 @@
+<%- include("../partials/header.ejs") %>
+<h1>Your Playlists</h1>
+<div class="album ms-0">
+    <div class="container-fluid p-0">
+      <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3">
+        <% playlists.forEach((playlist)=>{ %>
+        <div class="col">
+          <div class="card shadow-sm p-3">
+            <a href="/playlist/<%= playlist._id %>" class="text-decoration-none">
+              <img class="playlist--img" src="<%= playlist.image %>">
+              <p class="playlist--name text-white m-0"><%= playlist.name %></p>
+            </a>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+
+<%- include("../partials/footer.ejs") %>

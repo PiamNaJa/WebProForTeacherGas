@@ -1,11 +1,51 @@
 <%- include("../partials/header.ejs") %>
-<h1>My Page</h1>
+<div class="d-flex justify-content-between">
+  <h1>
+    My Page 
+    <button type="button" class="border-0 btn btn-sm btn--editprofile" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Edit Profile
+    </button>
+  </h1>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Nickname</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/user/<%= user._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+
+            <div class="mb-3">
+              <label class="form-label">Profile Image</label>
+              <img src="<%= user.profileImage %>" width="60px">
+              <input type="file" class="form-control" name="profileImage" accept="image/*">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Nickname</label>
+              <input type="text" class="form-control" name="user[displayname]" placeholder="<%= user.displayname %>" value="<%= user.displayname %>" required>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="p-1 p-md-3 mb-2 text-white rounded">
   <div class="col-md-6 px-0 d-flex">
     <img class="rounded-circle me-2 userinfo--img" src="<%= user.profileImage %>" width="140px" height="140px">
     <div class="d-block my-auto ms-1">
       <h2 class="userinfo--username">Username : <span class="text-white"><%= user.username %></span></h2>
-      <h2 class="userinfo--displayname">Display Name : <span class="text-white"><%= user.displayname %></span></h2>
+      <h2 class="userinfo--displayname">Nickname : 
+        <span class="text-white"><%= user.displayname %></span>
+      </h2>
     </div>
   </div>
 </div>

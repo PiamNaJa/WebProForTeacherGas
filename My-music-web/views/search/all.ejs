@@ -12,7 +12,7 @@
                 <h2 class="my-0 d-inline fw-bold">Songs</h2>
                 <a href="/search/<%= word %>/song" class="d-inline mt-auto me-1" id="seeall">See All</a>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive overflow-hidden">
                 <table class="table table-striped table-sm">
                   <thead>
                     <tr>
@@ -22,6 +22,7 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <% let i = 0; %> 
                     <% song.forEach((song)=>{ %>
                       <tr class = "search-song__row" onpointerover="searchsongrow()">
                         <td class="text-white" ><a class="text-white text-decoration-none text-truncate" href="/song/<%= song._id %>" id="song"><%= song.name %></a></td>
@@ -36,10 +37,48 @@
                               <button type="button" class="p-0 btn--addplaylist mb-1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-plus addplaylist--inrow"></i>
                               </button>
-                              <ul class="dropdown-menu dropdown-menu-dark bg-black">
+                              <ul class="dropdown-menu dropdown-menu-dark bg-black position-fixed">
+                                <% if(playlists){ %>
+                                    <% playlists.forEach((playlist)=>{ %>
+                                      <li><a class="dropdown-item" href="/playlist/<%= playlist._id %>/song/<%= song._id %>"><%= playlist.name %></a></li>
+                                    <% }) %>
+                                  <% } %>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Add to New Playlist</a></li>
+                                <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addplaylistModal<%=i%>">
+                                    Add to New Playlist
+                                  </button></li>
                               </ul>
+                            </div>
+                            <div class="modal fade" id="addplaylistModal<%=i%>" tabindex="-1" aria-labelledby="addplaylistModalLabel<%=i%>"
+                              aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content bg-dark">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title text-white" id="addplaylistModalLabel<%=i++%>">Add New Playlist</h4>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form action="/playlist/<%= song._id %> " method="post" enctype="multipart/form-data">
+                
+                                      <div class="mb-3">
+                                        <label for="" class="form-label text-white">Name</label>
+                                        <input class="form-control" name="playlist[name]" type="text" placeholder="Username" required>
+                                      </div>
+                
+                                      <div class="mb-3">
+                                        <label for="" class="form-label text-white">Playlist Image(optional)</label>
+                                        <input class="form-control" name="image" type="file" accept="image/*">
+                                      </div>
+                
+                                      <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline-info">Save</button>
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                             <% } else { %>
                               <button type="button" class="p-0 btn--addplaylist float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">

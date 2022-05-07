@@ -2,6 +2,7 @@ const   express = require("express"),
         router = express.Router(),
         Artist = require('../models/artist'),
         Album = require('../models/album'),
+        Playlist       = require('../models/playlist'),
         Song = require('../models/song');
 
 router.post('/', (req,res)=>{
@@ -10,6 +11,20 @@ router.post('/', (req,res)=>{
 
 router.get('/:word/all', (req,res)=>{
     const word = req.params.word;
+    let playlists;
+    if(req.user)
+    {
+        Playlist.find({owner : req.user._id}, (err, foundPlaylist)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                playlists = foundPlaylist;
+            }
+        });
+    }
     Song.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist').limit(5).exec((err, foundSong)=>{ //case-insensitive search
         if(err)
         {
@@ -31,12 +46,26 @@ router.get('/:word/all', (req,res)=>{
                         }
                         else
                         {
-                            res.render("search/all.ejs",{
-                                song:foundSong, 
-                                artist:foundArtist, 
-                                album:foundAlbum,
-                                word : word
-                            });
+                            if(playlists)
+                            {
+                                res.render("search/all.ejs",{
+                                    song:foundSong, 
+                                    artist:foundArtist, 
+                                    album:foundAlbum,
+                                    word : word,
+                                    playlists : playlists
+                                });
+                            }
+                            else
+                            {
+                                res.render("search/all.ejs",{
+                                    song:foundSong, 
+                                    artist:foundArtist, 
+                                    album:foundAlbum,
+                                    word : word
+                                });
+                            }
+                            
                         }
                     });
                 }
@@ -47,6 +76,20 @@ router.get('/:word/all', (req,res)=>{
 
 router.get('/:word/song', (req, res)=>{
     const word = req.params.word;
+    let playlists;
+    if(req.user)
+    {
+        Playlist.find({owner : req.user._id}, (err, foundPlaylist)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                playlists = foundPlaylist;
+            }
+        });
+    }
     Song.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist album').exec((err, foundSong)=>{ //case-insensitive search
         if(err)
         {
@@ -54,7 +97,15 @@ router.get('/:word/song', (req, res)=>{
         }
         else
         {
-            res.render("search/song.ejs",{song:foundSong, word : word});
+            if(playlists)
+            {
+                res.render("search/song.ejs",{song:foundSong, word : word, playlists, playlists});
+            }
+            else
+            {
+                res.render("search/song.ejs",{song:foundSong, word : word});
+            }
+            
         }
     });
 });

@@ -17,6 +17,7 @@ const   indexRoutes  = require('./routes/index'),
         albumRoutes  = require('./routes/album'),
         genreRoutes  = require('./routes/genre'),
         userRoutes  = require('./routes/user'),
+        playlistRoutes  = require('./routes/playlist'),
         adminRoutes  = require('./routes/admin');
 
 mongoose.connect('mongodb://localhost/Kmusic'); // เชื่อม Database
@@ -53,6 +54,7 @@ app.use('/album', albumRoutes);
 app.use('/search', searchRoutes);
 app.use('/genre', genreRoutes);
 app.use('/user', userRoutes);
+app.use('/playlist', playlistRoutes);
 app.use('/admin', adminRoutes);
 
 app.listen(3000, ()=>{

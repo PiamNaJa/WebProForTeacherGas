@@ -1,0 +1,61 @@
+<%- include("../partials/header.ejs") %>
+<div class="container-fluid pt-0 ps-0">
+  <div class="p-1 p-md-3 mb-2 text-white rounded artistinfo">
+    <div class="col-md-12 px-0 d-flex">
+      <img class="shadow-lg me-2 playlistinfo--img" src="<%= playlist.image %>">
+      <div class="d-block my-auto ms-1">
+        <h1 class="display-2 fw-bold"><%= playlist.name %></h1>
+        <h1 class="display-6">Playlist</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th class="text-white" id="number" scope="col">#</th>
+          <th class="text-white" scope="col">Title</th>
+          <th class="text-white" scope="col">Artist</th>
+          <th class="text-white" scope="col">Album</th>
+          <th class="text-white" scope="col"></th>
+        </tr>
+      </thead>
+      <% let i = 1;  %>
+      <tbody>
+        <% songs.forEach((song)=>{ %>
+        <tr class="artist-song-row" onpointerover="artistsongrowhover()">
+          <td class="text-white">
+            <p class="my-auto" id="number"><%=i++%></p>
+          </td>
+          <td class="text-white"><a class="text-white text-decoration-none" href="/song/<%= song._id %>"
+              id="song"><%= song.name %></a></td>
+          <td class="text-white"><a class="text-white text-decoration-none"
+              href="/artist/<%= song.artist._id %>"><%= song.artist.name %></a></td>
+          <% if(song.album){ %>
+          <td class="text-white"><a class="text-white text-decoration-none" href="/album/<%= song.album._id %>"
+              id="album"><%= song.album.name %></a></td>
+          <% } else { %>
+          <td></td>
+          <% } %>
+          <td id="tablebt">
+            <button type="button" class="my-auto bg-transparent border-0"><i
+                class="fa-solid fa-play playbt--inrow"></i></button>
+            <a class="btn--fav text-decoration-none my-auto"
+              href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
+              <i class="fa-solid fa-heart favbt--inrow"></i>
+            </a>
+            <a class="btn--fav text-decoration-none my-auto"
+              href="#">
+              <i class="fa-regular fa-horizontal-rule"></i>
+            </a>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<%- include("../partials/footer.ejs") %>

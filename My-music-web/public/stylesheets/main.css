@@ -87,7 +87,7 @@ thead{
     width: 5.5rem;
 }
 
-.btn--login:hover{
+.btn--login:hover, .btn--editprofile:hover{
     background-color: #12a7af;
     color: white;
 }
@@ -124,9 +124,13 @@ thead{
     color: rgba(255, 255, 255, 0.5);
 }
 
-.artistinfo--img, .songinfo--img, .songside--img, .artistside--img, .albumside--img, .albuminfo--img, .userinfo--img, .adminprofileimg{
+.artistinfo--img, .playlistinfo--img, .songinfo--img, .songside--img, .artistside--img, .albumside--img, .albuminfo--img, .userinfo--img, .adminprofileimg{
     object-fit: cover;
     aspect-ratio: 1/1;
+}
+
+.playlistinfo--img{
+    width: 18vw;
 }
 
 .artistinfo{
@@ -154,14 +158,14 @@ thead{
     color: white;
 }
 
-.song--img, .artist--img, .album--img{
+.song--img, .artist--img, .album--img, .playlist--img{
     object-fit: cover;
     width: 100%;
     height: 20vh;
     aspect-ratio: 1/1;
 }
 
-.song--name, .artist--name, .album--name{
+.song--name, .artist--name, .album--name, .playlist--name{
     font-size: 1.2rem;
     font-weight: 500;
     margin-bottom: 0;
@@ -182,7 +186,7 @@ thead{
     width: inherit;
 }
 
-.song--name:hover, .song--artist:hover, .artist--name:hover, .album--name:hover{
+.song--name:hover, .song--artist:hover, .artist--name:hover, .album--name:hover, .playlist--name:hover{
     text-decoration: underline;
 }
 
@@ -219,7 +223,7 @@ thead{
     color: #1DE8F1;
 }
 
-.btn--play i:active,.btn--fav i:active, .btn--addplaylist i:active, .playbt--inrow:active{
+.btn--play i:active,.btn--fav i:active, .btn--addplaylist i:active, .playbt--inrow:active, .btn--editprofile:active{
     transform: translateY(10%);
 }
 
@@ -232,7 +236,14 @@ thead{
     color: white;
 }
 
-.btn--fav i:hover, .btn--addplaylist i:hover, .playbt--inrow:hover{
+.btn--editprofile{
+    font-size: 1rem;
+    color: black;
+    font-weight: 600;
+    background-color: #1DE8F1;
+}
+
+.btn--fav i:hover, .btn--addplaylist i:hover, .playbt--inrow:hover, .btn--editnickname i:hover{
     color: #1DE8F1;
 }
 

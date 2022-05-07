@@ -1,19 +1,19 @@
 <%- include("../partials/header.ejs") %>
 <h1 class="text-center">All Artists</h1>
 <div class="album ms-0">
-    <div class="container-fluid p-0">
-      <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3 justify-content-center">
-        <% allArtist.forEach((artist)=>{ %>
-        <div class="col">
-          <div class="card shadow-sm p-3 text-center">
-            <a href="/artist/<%= artist._id %>" class="text-decoration-none">
-              <img class="rounded-circle artist--img" src="<%= artist.image %>">
-              <p class="artist--name text-white m-0"><%= artist.name %></p>
-            </a>
-          </div>
+  <div class="container-fluid p-0">
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3 justify-content-center">
+      <% allArtist.forEach((artist)=>{ %>
+      <div class="col">
+        <div class="card shadow-sm p-3 text-center">
+          <a href="/artist/<%= artist._id %>" class="text-decoration-none">
+            <img class="rounded-circle artist--img" src="<%= artist.image %>">
+            <p class="artist--name text-white m-0"><%= artist.name %></p>
+          </a>
         </div>
-        <% }); %>
       </div>
+      <% }); %>
     </div>
   </div>
+</div>
 <%- include("../partials/footer.ejs") %>

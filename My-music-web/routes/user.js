@@ -4,6 +4,24 @@ const   express     = require("express"),
         Song        = require('../models/song'),
         Artist      = require('../models/artist'),
         Album       = require('../models/album'),
+        Playlist       = require('../models/playlist'),
+        multer      = require('multer'),
+        path        = require('path'),
+        storage     = multer.diskStorage({
+                        destination : (req,file, callback)=>{
+                            callback(null,'./public/upload/profile/');
+                        },
+                        filename: (req,file, callback)=>{
+                            callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+                        }
+                    }),
+        imageFiler = (req,file,callback)=>{
+            if(file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)){
+                return callback(new Error('Only jpg, jpeg, png, gif'),false);
+            }
+            callback(null, true);
+        },
+        upload = multer({storage: storage, fileFiler: imageFiler}),
         middleware  = require('../middleware');
 
 router.get('/:id', middleware.isLoggedIn, (req,res)=>{
@@ -15,17 +33,45 @@ router.get('/:id', middleware.isLoggedIn, (req,res)=>{
         }
         else
         {
-            Song.find({ _id: { $in: foundUser.favsong } }).populate('album artist').exec((err, foundSong)=>{
+            Playlist.find({owner : req.user._id}).populate('song').exec((err, foundPlaylist)=>{
                 if(err)
                 {
                     console.log(err);
                 }
                 else
                 {
-                    foundUser.favsong = foundSong;
-                    res.render("user/show.ejs", {user : foundUser});
+                    Song.find({ _id: { $in: foundUser.favsong } }).populate('album artist').exec((err, foundSong)=>{
+                        if(err)
+                        {
+                            console.log(err);
+                        }
+                        else
+                        {
+                            foundUser.favsong = foundSong;
+                            res.render("user/show.ejs", {user : foundUser, playlists : foundPlaylist});
+                        }
+                    });
                 }
             });
+        }
+    });
+});
+
+router.put('/:id', middleware.isLoggedIn, upload.single('profileImage'), (req,res)=>{
+    if(req.file)
+    {
+        req.body.user.profileImage = '/upload/profile/' + req.file.filename;
+    }
+    User.findByIdAndUpdate(req.params.id, req.body.user, (err)=>{
+        if(err)
+        {
+            req.flash('err', 'There is Something Wrong');
+            return res.redirect('back');
+        }
+        else
+        {
+            req.flash('success', 'Edit Profile Successfully.');
+            res.redirect('back');
         }
     });
 });
@@ -52,7 +98,7 @@ router.get('/:id/addfavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
                     req.flash('success', 'Add to favorite song successfully');
                     res.redirect('back');
                 }
-            })
+            });
         }
     });
 });

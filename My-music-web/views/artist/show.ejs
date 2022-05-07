@@ -3,7 +3,7 @@
   <div class="p-1 p-md-3 mb-2 text-white rounded artistinfo">
     <div class="col-md-6 px-0 d-flex">
       <img class="rounded-circle me-2 artistinfo--img" src="<%= artist.image %>" width="140px" height = "140px">
-      <div class="d-block my-4 ms-1">
+      <div class="d-block my-auto ms-1">
         <h3><%= artist.name %></h3>
         <p class="lead">Artist</p>
       </div>  
@@ -41,11 +41,11 @@
                 <td id="tablebt">
                   <% if(currentUser){ %>
                     <button type="button" class="my-auto bg-transparent border-0"><i class="fa-solid fa-play playbt--inrow"></i></button>
-                    <a class="btn--fav text-decoration-none mx-1 my-auto" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
+                    <a class="btn--fav text-decoration-none my-auto" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
                       <i class="fa-solid fa-heart favbt--inrow"></i>
                     </a>
                     <div class="btn-group dropend">
-                      <button type="button" class="p-0 btn--addplaylist mb-1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button type="button" class="p-0 btn--addplaylist ps-1 mb-1" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-plus addplaylist--inrow"></i>
                       </button>
                       <ul class="dropdown-menu dropdown-menu-dark bg-black">
@@ -57,10 +57,10 @@
                       <button type="button" class="my-auto bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
                           <i class="fa-solid fa-play playbt--inrow"></i>
                         </button>
-                        <button type="button" class="btn--fav bg-transparent border-0 mx-2 my-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn--fav bg-transparent border-0 my-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
                           <i class="fa-solid fa-heart favbt--inrow"></i>
                         </button>
-                        <button type="button" class="p-0 btn--addplaylist" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="p-0 btn--addplaylist ps-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
                           <i class="fa-solid fa-plus addplaylist--inrow"></i>
                         </button>
                         <%- include("../partials/login_modal.ejs") %>
