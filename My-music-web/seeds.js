@@ -34,7 +34,8 @@ const SlipknotSong = [
             This is the world you have set ablaze
             All your lies are coming true
             All freedom is lost
-            All hope is gone`
+            All hope is gone`,
+            audio : '/demo/Slipknot/Execute.mp3'
         },
 
         {
@@ -113,7 +114,8 @@ const SlipknotSong = [
             And we will burn your cities down, down, down
             We will burn your cities down, down, down
             We will burn your cities down
-            America, what if "god" doesn't care?`
+            America, what if "god" doesn't care?`,
+            audio : '/demo/Slipknot/Gematria.mp3'
         },
 
         {
@@ -162,7 +164,8 @@ const SlipknotSong = [
             Like breathing in sulfur
             Like breathing in sulfur
             Like breathing in sulfur
-            Like breathing in sulfur`
+            Like breathing in sulfur`,
+            audio : '/demo/Slipknot/Sulfur.mp3'
         },
 
         {
@@ -236,7 +239,8 @@ const SlipknotSong = [
             But no one else can see
             The preservation of the martyr in me
             The limits of the dead!
-            The limits of the dead!`
+            The limits of the dead!`,
+            audio : '/demo/Slipknot/Psychosocial.mp3'
         },
 
         {
@@ -274,7 +278,8 @@ const SlipknotSong = [
             Dead memories in my heart
             Dead memories in my heart
             Dead memories in my heart
-            Dead memories in my heart`
+            Dead memories in my heart`,
+            audio : '/demo/Slipknot/DeadMemories.mp3'
         },
 
         {
@@ -334,7 +339,8 @@ const SlipknotSong = [
             Let's, pretend, we're not at the end
             Pretend, that we have nothing left
             Let's, pretend, we're not at the end
-            Pretend, that we have nothing left`
+            Pretend, that we have nothing left`,
+            audio : '/demo/Slipknot/Vendetta.mp3'
         },
 
         {
@@ -385,7 +391,8 @@ const SlipknotSong = [
             Go ahead and disagree, I'm giving up again?
             Go ahead and disagree, I'm giving up again?
             Go ahead and disagree, I'm giving up again?
-            I'm giving up again?`
+            I'm giving up again?`,
+            audio : "/demo/Slipknot/Butcher'sHook.mp3"
         },
 
         {
@@ -430,7 +437,8 @@ const SlipknotSong = [
             Free my severed heart, give me you, I want it
             I don't wanna be myself
             Free my severed heart, give me you, I want it
-            I don't wanna be myself`
+            I don't wanna be myself`,
+            audio : '/demo/Slipknot/Gehenna.mp3'
         },
 
         {
@@ -468,7 +476,8 @@ const SlipknotSong = [
             Pneumatic destroyer, pathetic seducer
             Distortion sufficient
             Some day, one day, we'll live our lives again
-            We'll live our lives again`
+            We'll live our lives again`,
+            audio : '/demo/Slipknot/ThisColdBlack.mp3'
         },
 
         {
@@ -530,8 +539,8 @@ const SlipknotSong = [
             We have to save ourselves
             We have to save ourselves
             We have to save ourselves
-            We have to save ourselves
-            `
+            We have to save ourselves`,
+            audio : '/demo/Slipknot/WhereinLiesContinue.mp3'
         },
 
         {
@@ -574,7 +583,8 @@ const SlipknotSong = [
             Angels lie to keep control
             Ooh, my love was punished long ago
             If you still care don't ever let me know
-            If you still care don't ever let me know`
+            If you still care don't ever let me know`,
+            audio : '/demo/Slipknot/Snuff.mp3'
         },
 
         {
@@ -637,7 +647,8 @@ const SlipknotSong = [
             We'll end the world when all hope is gone
             When all hope is gone
             When all hope is gone
-            When all hope is gone`
+            When all hope is gone`,
+            audio : '/demo/Slipknot/AllHopeIsGone.mp3'
         },
 
         {
@@ -680,7 +691,8 @@ const SlipknotSong = [
             Burn me away
             I won't become your hero just to fight the life I save
             Burn me away
-            I won't give up tomorrow just to lose it all, lose it all today`
+            I won't give up tomorrow just to lose it all, lose it all today`,
+            audio : '/demo/Slipknot/ChildofBurningTime.mp3'
         },
 
         {
@@ -739,7 +751,8 @@ const SlipknotSong = [
             Till we die
             Till we die
             Till we die
-            Till we die`
+            Till we die`,
+            audio : "/demo/Slipknot/TilWeDie.mp3"
         }
     ];
 
@@ -904,7 +917,8 @@ const BabymetalSong = [
         DEATH!!
         DEATH!!
         B×A×B×Y×M×E×T×A×L
-        DEATH!!`
+        DEATH!!`,
+        audio : '/demo/Babymetal/BABYMETALDEATH.mp3'
     },
     {
         image : "https://i1.sndcdn.com/artworks-000091364658-ay3rca-t500x500.jpg",
@@ -963,7 +977,8 @@ const BabymetalSong = [
         kao de waratte kokoro de nai te
         junjou otome na megitsune yo
         
-        Ah~ah..`
+        Ah~ah..`,
+        audio : '/demo/Babymetal/Megitsune.mp3'
     },
     {
         image : "https://upload.wikimedia.org/wikipedia/en/8/83/Babymetal_Gimme_Chocolate%21%21_UK_iTunes_artwork.jpg",
@@ -1057,7 +1072,8 @@ const BabymetalSong = [
         Rappappappaa paapapapapaa
         
         Parappappappaa rappappappaa
-        Rappappappaa paapapapapaa`
+        Rappappappaa paapapapapaa`,
+        audio : '/demo/Babymetal/GimmeChocolate!!.mp3'
     },
     {
         image : "https://i1.sndcdn.com/artworks-000173825717-fl1wpv-t500x500.jpg",
@@ -1142,7 +1158,8 @@ const BabymetalSong = [
         (Iine! Iine!)
         Yeah, yeah!
         (Iine! Iine!)
-        (Iine! Iine! Iine! Iine!)`
+        (Iine! Iine! Iine! Iine!)`,
+        audio : '/demo/Babymetal/Iine!.mp3'
     },
     {
         image : "https://www.guitartabsexplorer.com/images/tabs/babymetal_akatsuki.jpg",
@@ -1193,7 +1210,8 @@ const BabymetalSong = [
         inochi ga kieru made
         mamori tsuzukete yuku
         
-        Akaku somare! Makka ni somare!`
+        Akaku somare! Makka ni somare!`,
+        audio : '/demo/Babymetal/Akutsuki.mp3'
     },
     {
         image : "https://i.ytimg.com/vi/cirhQ8iLdbw/maxresdefault.jpg",
@@ -1245,7 +1263,8 @@ const BabymetalSong = [
         Rin rin rin! Awatezu make up
         Onegai! Cho matte! Cho matte!
         Ring, ring, ring! Today wa version Up
-        Doki doki morning`
+        Doki doki morning`,
+        audio : '/demo/Babymetal/DokiDokiMorning.mp3'
     },
     {
         image : "https://image.jimcdn.com/app/cms/image/transf/none/path/sfeb3e2f9ecd74f84/image/i20dd8bb7bc23ace7/version/1416281024/image.jpg",
@@ -1341,7 +1360,8 @@ const BabymetalSong = [
         Onegai.. [saigo no] onegai.. [itsumo no]
         Isshou ichido no [saisho de saigo no]
         Onegai.. [saigo no] onegai.. [itsumo no]
-        Koakuma kimeru [BLACK BABYMETAL]`
+        Koakuma kimeru [BLACK BABYMETAL]`,
+        audio : '/demo/Babymetal/OnedariDaisakusen.mp3'
     },
     {
         image : "https://i.ytimg.com/vi/dDFI-f-V8gs/maxresdefault.jpg",
@@ -1407,7 +1427,8 @@ const BabymetalSong = [
         Yorokobi no yon
         Yon. Yon. Yon. Yon. Foo!
         
-        Yon, yon! Yon, yon! Yon, yon! Yon, yon!`
+        Yon, yon! Yon, yon! Yon, yon! Yon, yon!`,
+        audio : '/demo/Babymetal/Song4.mp3'
     },
     {
         image : "https://i.ytimg.com/vi/wFO2sYncwt8/maxresdefault.jpg",
@@ -1461,7 +1482,8 @@ const BabymetalSong = [
         Denki o keshite genki o chaji
         Korya hajimaru yo uki uki ★ midnight
         Sorosoro honki to kaite maji!
-        Agepo yo ¯ de pikapika miraboru`
+        Agepo yo ¯ de pikapika miraboru`,
+        audio : '/demo/Babymetal/UkiUkiMidnight.mp3'
     },
     {
         image : "https://i.ytimg.com/vi/H_yATzyi-3g/maxresdefault.jpg",
@@ -1527,7 +1549,8 @@ const BabymetalSong = [
         
         Wow Wow……Guruguru Kakurenbo
         Wow Wow……Guruguru Kakurenbo
-        Akai Kutsu Haicha Dame Denjarasu Da Mon`
+        Akai Kutsu Haicha Dame Denjarasu Da Mon`,
+        audio : '/demo/Babymetal/CatchMeIfYouCan.mp3'
     },
     {
         image : "https://i.ytimg.com/vi/8WBDiLMNZcE/maxresdefault.jpg",
@@ -1563,7 +1586,8 @@ const BabymetalSong = [
         Mezame no hikari wa
         haruka kanata mie-naku naru
         Tada ochite yuku no
-        yami no naka e`
+        yami no naka e`,
+        audio : '/demo/Babymetal/RondoofNightmare.mp3'
     },
     {
         image : "https://resize.cdn.otakumode.com/exq/65/820.812/shop/product/16790618285746bab3e46e3aa3954baf.jpg",
@@ -1656,7 +1680,8 @@ const BabymetalSong = [
         
         Hedobangyaaa!
         
-        Hedobang Hedobang...`
+        Hedobang Hedobang...`,
+        audio : '/demo/Babymetal/Headbangeeeeerrrrr!!!!!.mp3'
     },
     {
         image : "https://wikiimg.tojsiabtv.com/wikipedia/en/thumb/e/e5/BABYMETAL_-_Ijime,_Dame,_Zettai_(cover).jpg/440px-BABYMETAL_-_Ijime,_Dame,_Zettai_(cover).jpg",
@@ -1720,7 +1745,8 @@ const BabymetalSong = [
         Ijime dame zettai (dame dame dame dame)
         Ijime dame forever
         Ijime dame zettai (dame dame dame dame)
-        Ijime dame dame`
+        Ijime dame dame`,
+        audio : '/demo/Babymetal/Ijime,Dame,Zettai.mp3'
     },
 ]
 

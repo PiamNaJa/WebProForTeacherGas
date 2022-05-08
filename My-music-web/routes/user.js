@@ -28,7 +28,7 @@ router.get('/:id', middleware.isLoggedIn, (req,res)=>{
     User.findById(req.params.id, (err, foundUser)=>{
         if(err)
         {
-            req.flash('err', 'There is Something Wrong');
+            req.flash('error', 'There is Something Wrong');
             return res.redirect('back');
         }
         else
@@ -65,7 +65,7 @@ router.put('/:id', middleware.isLoggedIn, upload.single('profileImage'), (req,re
     User.findByIdAndUpdate(req.params.id, req.body.user, (err)=>{
         if(err)
         {
-            req.flash('err', 'There is Something Wrong');
+            req.flash('error', 'There is Something Wrong');
             return res.redirect('back');
         }
         else
@@ -80,7 +80,7 @@ router.get('/:id/addfavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
     User.findById(req.params.id, (err, foundUser)=>{
         if(err)
         {
-            req.flash('err', 'There is Something Wrong');
+            req.flash('error', 'There is Something Wrong');
             return res.redirect('back');
         }
         else
@@ -88,7 +88,7 @@ router.get('/:id/addfavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
             Song.findById(req.params.song_id, (err, foundSong)=>{
                 if(err)
                 {
-                    req.flash('err', 'There is Something Wrong');
+                    req.flash('error', 'There is Something Wrong');
                     return res.redirect('back');
                 }
                 else

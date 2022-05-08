@@ -266,7 +266,7 @@ router.post('/artist/new', middleware.isAdmin, (req,res)=>{
     Artist.create(newArtist, (err, newlyAdded)=>{
         if(err)
         {
-            req.flash('err', err.message);
+            req.flash('error', err.message);
             return res.redirect('back');
         }
         else

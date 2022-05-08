@@ -58,17 +58,16 @@ router.get('/:id', middleware.checkPlaylistOwner, (req, res)=>{
 });
 
 router.get('/:id/song/:song_id', middleware.checkPlaylistOwner, (req, res)=>{
-    Playlist.findOne({_id: req.params.id, songs: {$elemMatch: {_id : req.params.song_id}}}, (err, Found)=>{
+    Playlist.findOne({_id: req.params.id, songs: {$in: {_id : req.params.song_id}}}, (err, Found)=>{
         if(err)
         {
             console.log(err);
         }
         else
         {
-            console.log(Found);
             if(Found)
             {
-                req.flash('err', 'This Song Already in ' + Found.name + ' Playlist');
+                req.flash('error', 'This Song Already in ' + Found.name + ' Playlist');
                 return res.redirect('back');
             }
             else
@@ -76,7 +75,7 @@ router.get('/:id/song/:song_id', middleware.checkPlaylistOwner, (req, res)=>{
                 Playlist.findById(req.params.id, (err, foundPlaylist)=>{
                     if(err)
                     {
-                        req.flash('err', err.message);
+                        req.flash('error', err.message);
                         return res.redirect('back');
                     }
                     else
@@ -84,7 +83,7 @@ router.get('/:id/song/:song_id', middleware.checkPlaylistOwner, (req, res)=>{
                         Song.findById(req.params.song_id, (err, foundSong)=>{
                             if(err)
                             {
-                                req.flash('err', err.message);
+                                req.flash('error', err.message);
                                 return res.redirect('back');
                             }     
                             else
@@ -106,7 +105,7 @@ router.post('/:song_id', middleware.isLoggedIn, upload.single('image'), (req, re
     Song.findById(req.params.song_id, (err, foundSong)=>{
         if(err)
         {
-            req.flash('err', err.message);
+            req.flash('error', err.message);
             return res.redirect('back');
         }
         else
