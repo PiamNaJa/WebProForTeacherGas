@@ -108,3 +108,26 @@ function playlistsongrowhover()
         });
     }
 }
+
+function userfavsongrowhover()
+{
+    const userfavsongrow      = document.querySelectorAll('.user-favsong-row'),
+          playbtinrow       = document.querySelectorAll('.playbt--inrow'),
+          favbtinrow        = document.querySelectorAll('.unfavbt--inrow'),
+          addplaylistinrow  = document.querySelectorAll('.addplaylist--inrow');
+
+    for(let i = 0; i<userfavsongrow.length; i++)
+    {
+        userfavsongrow[i].addEventListener('mouseover', ()=>{
+            playbtinrow[i].style.visibility         = "visible"
+            favbtinrow[i].style.visibility          = "visible"
+            addplaylistinrow[i].style.visibility    = "visible"
+        });
+
+        userfavsongrow[i].addEventListener('mouseout', ()=>{
+            playbtinrow[i].style.visibility         = "hidden"
+            favbtinrow[i].style.visibility          = "hidden"
+            addplaylistinrow[i].style.visibility    = "hidden"
+        });
+    }
+}

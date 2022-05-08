@@ -57,7 +57,7 @@ router.get('/:id', middleware.checkPlaylistOwner, (req, res)=>{
     });
 });
 
-router.get('/:id/song/:song_id', middleware.checkPlaylistOwner, (req, res)=>{
+router.post('/:id/song/:song_id', middleware.checkPlaylistOwner, (req, res)=>{
     Playlist.findOne({_id: req.params.id, songs: {$in: {_id : req.params.song_id}}}, (err, Found)=>{
         if(err)
         {

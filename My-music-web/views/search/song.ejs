@@ -1,15 +1,10 @@
+<% searchword = word; %>
 <%- include("../partials/header.ejs") %>
 <div class="filter mb-3">
-  <a href="/search/<%= word %>/all" class="search--navigation">
-    <h3 class="d-inline">All</h3>
-  </a>
+  <a href="/search/<%= word %>/all" class="search--navigation"><h3 class="d-inline">All</h3></a>
   <h3 class="d-inline text-decoration-underline search--navigation-current">Songs</h3>
-  <a href="/search/<%= word %>/artist" class="search--navigation">
-    <h3 class="d-inline">Artists</h3>
-  </a>
-  <a href="/search/<%= word %>/album" class="search--navigation">
-    <h3 class="d-inline">Albums</h3>
-  </a>
+  <a href="/search/<%= word %>/artist" class="search--navigation"><h3 class="d-inline">Artists</h3></a>
+  <a href="/search/<%= word %>/album" class="search--navigation"><h3 class="d-inline">Albums</h3></a>
 </div>
 <div class="col-md-12">
   <div class="table-responsive">
@@ -54,10 +49,19 @@
             <% if(currentUser){ %>
             <button type="button" class="my-auto bg-transparent border-0 my-3"><i
                 class="fa-solid fa-play playbt--inrow"></i></button>
-            <a class="btn--fav text-decoration-none mx-2 my-3"
-              href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
-              <i class="fa-solid fa-heart favbt--inrow"></i>
-            </a>
+            <%if(Userfavsong.includes(song._id)){ %>
+            <form action="/user/removefavsong/<%= song._id %>" method="post" class="d-inline my-auto">
+              <button class="btn--unfav bg-transparent border-0">
+                <i class="fa-solid fa-heart favbt--inrow"></i>
+              </button>
+            </form>
+            <%} else { %>
+            <form action="/user/addfavsong/<%= song._id %>" method="post" class="d-inline my-auto">
+              <button class="btn--fav bg-transparent border-0" href="/user/addfavsong/<%= song._id %>">
+                <i class="fa-solid fa-heart favbt--inrow"></i>
+              </button>
+            </form>
+            <%}%>
             <div class="btn-group dropend">
               <button type="button" class="p-0 btn--addplaylist pb-1 my-3" data-bs-toggle="dropdown"
                 aria-expanded="false">
@@ -65,71 +69,72 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-dark bg-black">
                 <% if(playlists){ %>
-                <% playlists.forEach((playlist)=>{ %>
-                <li><a class="dropdown-item"
-                    href="/playlist/<%= playlist._id %>/song/<%= song._id %>"><%= playlist.name %></a></li>
-                <% }) %>
-                <% } %>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><button type="button" class="dropdown-item" data-bs-toggle="modal"
-                    data-bs-target="#addplaylistModal<%=i%>">
-                    Add to New Playlist
-                  </button></li>
-              </ul>
-            </div>
-            <div class="modal fade" id="addplaylistModal<%=i%>" tabindex="-1" aria-labelledby="addplaylistModalLabel<%=i%>"
-              aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content bg-dark">
-                  <div class="modal-header">
-                    <h4 class="modal-title text-white" id="addplaylistModalLabel<%=i++%>">Add New Playlist</h4>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                      aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form action="/playlist/<%= song._id %> " method="post" enctype="multipart/form-data">
-
-                      <div class="mb-3">
-                        <label for="" class="form-label text-white">Name</label>
-                        <input class="form-control" name="playlist[name]" type="text" placeholder="Username" required>
-                      </div>
-
-                      <div class="mb-3">
-                        <label for="" class="form-label text-white">Playlist Image(optional)</label>
-                        <input class="form-control" name="image" type="file" accept="image/*">
-                      </div>
-
-                      <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-info">Save</button>
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <% } else { %>
-            <button type="button" class="my-auto bg-transparent border-0 my-3" data-bs-toggle="modal"
-              data-bs-target="#exampleModal">
-              <i class="fa-solid fa-play playbt--inrow"></i>
-            </button>
-            <button type="button" class="btn--fav bg-transparent border-0 mx-2 my-3" data-bs-toggle="modal"
-              data-bs-target="#exampleModal">
-              <i class="fa-solid fa-heart favbt--inrow"></i>
-            </button>
-            <button type="button" class="p-0 btn--addplaylist pb-1 my-3" data-bs-toggle="modal"
-              data-bs-target="#exampleModal">
-              <i class="fa-solid fa-plus addplaylist--inrow"></i>
-            </button>
-            <%- include("../partials/login_modal.ejs") %>
+            <% playlists.forEach((playlist)=>{ %>
+            <li>
+              <form action="/playlist/<%= playlist._id %>/song/<%= song._id %>" method="post">
+                <button class="dropdown-item" type="submit"><%= playlist.name %></button>
+              </form>
+            </li>
+            <% }); %>
             <% } %>
-          </td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><button type="button" class="dropdown-item" data-bs-toggle="modal"
+                data-bs-target="#addplaylistModal<%=i%>">
+                Add to New Playlist
+              </button></li>
+            </ul>
   </div>
+  <div class="modal fade" id="addplaylistModal<%=i%>" tabindex="-1" aria-labelledby="addplaylistModalLabel<%=i%>"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h4 class="modal-title text-white" id="addplaylistModalLabel<%=i++%>">Add New Playlist</h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/playlist/<%= song._id %> " method="post" enctype="multipart/form-data">
+
+            <div class="mb-3">
+              <label for="" class="form-label text-white">Name</label>
+              <input class="form-control" name="playlist[name]" type="text" placeholder="Username" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="" class="form-label text-white">Playlist Image(optional)</label>
+              <input class="form-control" name="image" type="file" accept="image/*">
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-outline-info">Save</button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } else { %>
+  <button type="button" class="my-auto bg-transparent border-0 my-3" data-bs-toggle="modal"
+    data-bs-target="#exampleModal">
+    <i class="fa-solid fa-play playbt--inrow"></i>
+  </button>
+  <button type="button" class="btn--fav bg-transparent border-0 mx-2 my-3" data-bs-toggle="modal"
+    data-bs-target="#exampleModal">
+    <i class="fa-solid fa-heart favbt--inrow"></i>
+  </button>
+  <button type="button" class="p-0 btn--addplaylist pb-1 my-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa-solid fa-plus addplaylist--inrow"></i>
+  </button>
+  <%- include("../partials/login_modal.ejs") %>
+  <% } %>
+  </td>
+  </tr>
+  <% }); %>
+  </tbody>
+  </table>
+</div>
 </div>
 <%- include("../partials/footer.ejs") %>

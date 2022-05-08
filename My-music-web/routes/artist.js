@@ -1,5 +1,7 @@
 const   express = require("express"),
         router = express.Router(),
+        Playlist = require('../models/playlist'),
+        User = require('../models/user'),
         Artist = require('../models/artist'),
         Album = require('../models/album'),
         Song = require('../models/song');
@@ -17,7 +19,30 @@ router.get('/all', (req,res)=>{
     });
 });
 router.get('/:id', (req,res)=>{
-    let otherArt;
+    let otherArt, playlists, Userfavsong;
+    if(req.user)
+    {
+        Playlist.find({owner : req.user._id}, (err, foundPlaylist)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                playlists = foundPlaylist;
+            }
+        });
+        User.findById(req.user._id, (err, foundUser)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                Userfavsong = foundUser.favsong;
+            }            
+        });
+    }
     Artist.find({'_id': {$ne : req.params.id}},(err, allArtist)=>{ //ne = not equal
         if(err)
         {
@@ -49,13 +74,28 @@ router.get('/:id', (req,res)=>{
                         }
                         else
                         {
-                            res.render('artist/show.ejs',
+                            if(req.user)
                             {
-                                song:foundSong,
-                                artist: foundArtist,
-                                otherArt : otherArt,
-                                album : foundAlbum
-                            });
+                                res.render('artist/show.ejs',
+                                {
+                                    song:foundSong,
+                                    artist: foundArtist,
+                                    otherArt : otherArt,
+                                    album : foundAlbum,
+                                    playlists : playlists,
+                                    Userfavsong : Userfavsong
+                                });
+                            }
+                            else
+                            {
+                                res.render('artist/show.ejs',
+                                {
+                                    song:foundSong,
+                                    artist: foundArtist,
+                                    otherArt : otherArt,
+                                    album : foundAlbum
+                                });                                
+                            }
                         }
                     });
                 }

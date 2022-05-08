@@ -1,12 +1,12 @@
 const   express = require("express"),
         router = express.Router(),
-        middleware  = require('../middleware'),
-        Playlist       = require('../models/playlist'),
+        Playlist = require('../models/playlist'),
+        User = require('../models/user'),
         Song = require('../models/song');
 
-
 router.get('/:id', (req,res)=>{ //$ne = not equal
-    let playlists;
+    let playlists,
+        isFav;
     if(req.user)
     {
         Playlist.find({owner : req.user._id}, (err, foundPlaylist)=>{
@@ -17,6 +17,16 @@ router.get('/:id', (req,res)=>{ //$ne = not equal
             else
             {
                 playlists = foundPlaylist;
+            }
+        });
+        User.findOne({ _id: req.user._id, favsong:  req.params.id }, (err, found)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                isFav = found? true : false ;
             }
         });
     }
@@ -35,9 +45,9 @@ router.get('/:id', (req,res)=>{ //$ne = not equal
                 else
                 {
                     const randSong = otherSong.sort(() => Math.random() - 0.5).slice(0,5); //Shuffle Array Because Can't Use aggregate with populate
-                    if(playlists)
+                    if(req.user)
                     {
-                        res.render('song/show.ejs', {song:foundSong, otherSong:randSong, playlists:playlists});
+                        res.render('song/show.ejs', {song:foundSong, otherSong:randSong, playlists:playlists, isFav : isFav});
                     }
                     else
                     {

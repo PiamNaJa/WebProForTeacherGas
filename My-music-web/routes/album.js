@@ -1,7 +1,8 @@
 const   express = require("express"),
         router = express.Router(),
+        Playlist = require('../models/playlist'),
+        User = require('../models/user'),
         Album = require('../models/album'),
-        Artist = require('../models/artist'),
         Song = require('../models/song');
 
 router.get('/all', (req,res)=>{
@@ -18,6 +19,30 @@ router.get('/all', (req,res)=>{
     
 });
 router.get('/:id', (req,res)=>{
+    let playlists, Userfavsong;
+    if(req.user)
+    {
+        Playlist.find({owner : req.user._id}, (err, foundPlaylist)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                playlists = foundPlaylist;
+            }
+        });
+        User.findById(req.user._id, (err, foundUser)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                Userfavsong = foundUser.favsong;
+            }            
+        });
+    }
     Album.findById(req.params.id).populate('artist').exec((err, foundAlbum)=>{
         if(err)
         {
@@ -32,7 +57,15 @@ router.get('/:id', (req,res)=>{
                 }
                 else
                 {
-                    res.render('album/show.ejs', {song:foundSong, album: foundAlbum});
+                    if(req.user)
+                    {
+                        res.render('album/show.ejs', {song:foundSong, album: foundAlbum, playlists : playlists, Userfavsong : Userfavsong});
+                    }
+                    else
+                    {
+                        res.render('album/show.ejs', {song:foundSong, album: foundAlbum});
+                    }
+                    
                 }
             });
         }

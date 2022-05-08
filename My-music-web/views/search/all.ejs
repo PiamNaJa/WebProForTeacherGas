@@ -1,3 +1,4 @@
+<% searchword = word; %>
 <%- include("../partials/header.ejs") %>
 <div class="filter mb-3">
     <h3 class="d-inline text-decoration-underline search--navigation-current">All</h3>
@@ -25,23 +26,43 @@
                     <% let i = 0; %> 
                     <% song.forEach((song)=>{ %>
                       <tr class = "search-song__row" onpointerover="searchsongrow()">
-                        <td class="text-white" ><a class="text-white text-decoration-none text-truncate" href="/song/<%= song._id %>" id="song"><%= song.name %></a></td>
-                        <td class="text-white"><a class="text-white text-decoration-none" href="/artist/<%= song.artist._id %>"><%= song.artist.name%></a></td>
+                        <td class="text-white">
+                          <a class="text-white text-decoration-none" href="/song/<%= song._id %>" id="song"><%= song.name %></a>
+                        </td>
+                        <td class="text-white">
+                          <a class="text-white text-decoration-none" href="/artist/<%= song.artist._id %>">
+                            <%= song.artist.name%></a>
+                          </td>
                         <td id="tablebt">
                           <% if(currentUser){ %>
                             <button type="button" class="my-auto bg-transparent border-0"><i class="fa-solid fa-play playbt--inrow"></i></button>
-                            <a class="btn--fav text-decoration-none mx-1 my-auto" href="/user/<%= currentUser._id %>/addfavsong/<%= song._id %>">
-                              <i class="fa-solid fa-heart favbt--inrow"></i>
-                            </a>
+                            <%if(Userfavsong.includes(song._id)){ %>
+                              <form action="/user/removefavsong/<%= song._id %>" method="post" class="d-inline my-auto">
+                                <button class="btn--unfav bg-transparent border-0">
+                                  <i class="fa-solid fa-heart favbt--inrow"></i>
+                                </button>
+                              </form>
+                            <%} else { %>
+                            <form action="/user/addfavsong/<%= song._id %>" method="post" class="d-inline my-auto">
+                              <button class="btn--fav bg-transparent border-0" href="/user/addfavsong/<%= song._id %>">
+                                <i class="fa-solid fa-heart favbt--inrow"></i>
+                              </button>
+                            </form>
+                            <%}%>
+
                             <div class="btn-group dropend">
                               <button type="button" class="p-0 btn--addplaylist mb-1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-plus addplaylist--inrow"></i>
                               </button>
                               <ul class="dropdown-menu dropdown-menu-dark bg-black position-fixed">
                                 <% if(playlists){ %>
-                                    <% playlists.forEach((playlist)=>{ %>
-                                      <li><a class="dropdown-item" href="/playlist/<%= playlist._id %>/song/<%= song._id %>"><%= playlist.name %></a></li>
-                                    <% }) %>
+                                  <% playlists.forEach((playlist)=>{ %>
+                                  <li>
+                                    <form action="/playlist/<%= playlist._id %>/song/<%= song._id %>" method="post">
+                                      <button class="dropdown-item" type="submit"><%= playlist.name %></button>
+                                    </form>
+                                    </li>
+                                  <% }); %>
                                   <% } %>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addplaylistModal<%=i%>">

@@ -11,9 +11,8 @@ hr{
 
 tbody, td, tfoot, th, .album-song, .artistside, .albumside{
     background-color: #121212;
-    border-style: hidden
+    border-style: hidden;
 }
-
 thead{
     background-color: #000000;
 }
@@ -144,12 +143,12 @@ thead{
 
 .card__playbt{
     position: absolute;
-    width: 96px;
-    height: 96px;
+    width: 2.5rem;
+    height: 2.5rem;
     left: 78%;
     top: 57%;
-    margin-left: -48px; /*half of the width */
-    margin-top: -48px; /*half of the height */
+    margin-left: -1.25rem; /*half of the width */
+    margin-top: -1.25rem; /*half of the height */
 }
 
 .card__playbt i{
@@ -223,8 +222,12 @@ thead{
     color: #1DE8F1;
 }
 
-.btn--play i:active,.btn--fav i:active, .btn--addplaylist i:active, .playbt--inrow:active, .btn--editprofile:active{
+.btn--play i:active,.btn--fav i:active, .btn--unfav i:active, .btn--addplaylist i:active, .playbt--inrow:active, .btn--editprofile:active{
     transform: translateY(10%);
+}
+
+.btn--unfav i:hover{
+    color: rgba(29, 232, 241, 0.7);
 }
 
 .btn--play i:hover{
@@ -234,6 +237,11 @@ thead{
 .btn--fav i{
     font-size: 2rem;
     color: white;
+}
+
+.btn--unfav i{
+    font-size: 2rem;
+    color: #1DE8F1;
 }
 
 .btn--editprofile{
@@ -250,6 +258,12 @@ thead{
 .addplaylist--inrow, .favbt--inrow{
     font-size: 1rem!important;
     color: white;
+    visibility: hidden;
+}
+
+.unfavbt--inrow{
+    font-size: 1rem!important;
+    color: #1DE8F1;
     visibility: hidden;
 }
 

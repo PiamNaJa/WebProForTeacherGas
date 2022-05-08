@@ -33,7 +33,7 @@ router.get('/:id', middleware.isLoggedIn, (req,res)=>{
         }
         else
         {
-            Playlist.find({owner : req.user._id}).populate('song').exec((err, foundPlaylist)=>{
+            Playlist.find({owner : req.user._id}).populate('songs').exec((err, foundPlaylist)=>{
                 if(err)
                 {
                     console.log(err);
@@ -76,8 +76,8 @@ router.put('/:id', middleware.isLoggedIn, upload.single('profileImage'), (req,re
     });
 });
 
-router.get('/:id/addfavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
-    User.findById(req.params.id, (err, foundUser)=>{
+router.post('/addfavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
+    User.findById(req.user._id, (err, foundUser)=>{
         if(err)
         {
             req.flash('error', 'There is Something Wrong');
@@ -99,6 +99,21 @@ router.get('/:id/addfavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
                     res.redirect('back');
                 }
             });
+        }
+    });
+});
+
+router.post('/removefavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
+    User.findByIdAndUpdate(req.user._id, { $pull: { favsong: req.params.song_id }}, (err, Found)=>{
+        if(err)
+        {
+            req.flash('error', 'There is Something Wrong');
+            return res.redirect('back');
+        }
+        else
+        {
+            req.flash('success', 'Unfavorite Successfully');
+            res.redirect('back');
         }
     });
 });

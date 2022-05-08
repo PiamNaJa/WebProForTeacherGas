@@ -2,7 +2,8 @@ const   express = require("express"),
         router = express.Router(),
         Artist = require('../models/artist'),
         Album = require('../models/album'),
-        Playlist       = require('../models/playlist'),
+        User = require('../models/user'),
+        Playlist = require('../models/playlist'),
         Song = require('../models/song');
 
 router.post('/', (req,res)=>{
@@ -11,7 +12,7 @@ router.post('/', (req,res)=>{
 
 router.get('/:word/all', (req,res)=>{
     const word = req.params.word;
-    let playlists;
+    let playlists, Userfavsong;
     if(req.user)
     {
         Playlist.find({owner : req.user._id}, (err, foundPlaylist)=>{
@@ -23,6 +24,16 @@ router.get('/:word/all', (req,res)=>{
             {
                 playlists = foundPlaylist;
             }
+        });
+        User.findById(req.user._id, (err, foundUser)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                Userfavsong = foundUser.favsong;
+            }            
         });
     }
     Song.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist').limit(5).exec((err, foundSong)=>{ //case-insensitive search
@@ -53,7 +64,8 @@ router.get('/:word/all', (req,res)=>{
                                     artist:foundArtist, 
                                     album:foundAlbum,
                                     word : word,
-                                    playlists : playlists
+                                    playlists : playlists,
+                                    Userfavsong : Userfavsong
                                 });
                             }
                             else
@@ -76,7 +88,7 @@ router.get('/:word/all', (req,res)=>{
 
 router.get('/:word/song', (req, res)=>{
     const word = req.params.word;
-    let playlists;
+    let playlists, Userfavsong;
     if(req.user)
     {
         Playlist.find({owner : req.user._id}, (err, foundPlaylist)=>{
@@ -89,6 +101,16 @@ router.get('/:word/song', (req, res)=>{
                 playlists = foundPlaylist;
             }
         });
+        User.findById(req.user._id, (err, foundUser)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            else
+            {
+                Userfavsong = foundUser.favsong;
+            }            
+        });
     }
     Song.find({"name" : {"$regex" : word, $options:'i'}}).populate('artist album').exec((err, foundSong)=>{ //case-insensitive search
         if(err)
@@ -99,7 +121,7 @@ router.get('/:word/song', (req, res)=>{
         {
             if(playlists)
             {
-                res.render("search/song.ejs",{song:foundSong, word : word, playlists, playlists});
+                res.render("search/song.ejs",{song:foundSong, word : word, playlists: playlists, Userfavsong : Userfavsong});
             }
             else
             {
