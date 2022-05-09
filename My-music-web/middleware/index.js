@@ -41,7 +41,7 @@ middlewareObj.checkPlaylistOwner = (req, res, next)=>
         {
             if(err)
             {
-                req.redirect('back');
+                res.redirect('back');
             }
             else
             {

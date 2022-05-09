@@ -1,5 +1,6 @@
 const   express     = require("express"),
         router      = express.Router(),
+        fs          = require('fs')
         User        = require('../models/user'),
         Song        = require('../models/song'),
         Artist      = require('../models/artist'),
@@ -62,7 +63,7 @@ router.put('/:id', middleware.isLoggedIn, upload.single('profileImage'), (req,re
     {
         req.body.user.profileImage = '/upload/profile/' + req.file.filename;
     }
-    User.findByIdAndUpdate(req.params.id, req.body.user, (err)=>{
+    User.findByIdAndUpdate(req.params.id, req.body.user, (err, foundUser)=>{
         if(err)
         {
             req.flash('error', 'There is Something Wrong');
@@ -103,7 +104,7 @@ router.post('/addfavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
     });
 });
 
-router.post('/removefavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
+router.put('/removefavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
     User.findByIdAndUpdate(req.user._id, { $pull: { favsong: req.params.song_id }}, (err, Found)=>{
         if(err)
         {

@@ -2,6 +2,7 @@ const   express = require("express"),
         router = express.Router(),
         Playlist = require('../models/playlist'),
         Song = require("../models/song"),
+        User = require("../models/user"),
         multer      = require('multer'),
         path        = require('path'),
         storage     = multer.diskStorage({
@@ -36,6 +37,7 @@ router.get('/', middleware.isLoggedIn, (req, res)=>{
 });
 
 router.get('/:id', middleware.checkPlaylistOwner, (req, res)=>{
+
     Playlist.findById(req.params.id, (err, foundPlaylist)=>{
         if(err)
         {
@@ -50,8 +52,52 @@ router.get('/:id', middleware.checkPlaylistOwner, (req, res)=>{
                 }
                 else
                 {
-                    res.render('playlist/show.ejs' , {playlist : foundPlaylist, songs : foundSong})
+                    User.findById(req.user._id, (err, foundUser)=>{
+                        if(err)
+                        {
+                            console.log(err);
+                        }
+                        else
+                        {
+                            res.render('playlist/show.ejs' , {playlist : foundPlaylist, songs : foundSong, Userfavsong : foundUser.favsong})
+                        }            
+                    });
                 }
+            });
+        }
+    });
+});
+
+router.post('/:song_id', middleware.isLoggedIn, upload.single('image'), (req, res)=>{
+    Song.findById(req.params.song_id, (err, foundSong)=>{
+        if(err)
+        {
+            req.flash('error', err.message);
+            return res.redirect('back');
+        }
+        else
+        {
+            if(req.file)
+            {
+                req.body.playlist.image = '/upload/playlist/' + req.file.filename;
+            }
+            else
+            {
+                req.body.playlist.image = foundSong.image;
+            }
+            Playlist.create(req.body.playlist, (err, newlyAdded)=>{
+                if(err)
+                {
+                    console.log(err);
+                }           
+                else
+                {
+                    newlyAdded.owner = req.user;
+                    newlyAdded.songs.push(foundSong);
+                    newlyAdded.save();
+                    req.flash('success', 'Added To New Playlist Successfully.');
+                    res.redirect('back');
+                }     
             });
         }
     });
@@ -101,8 +147,8 @@ router.post('/:id/song/:song_id', middleware.checkPlaylistOwner, (req, res)=>{
     });
 });
 
-router.post('/:song_id', middleware.isLoggedIn, upload.single('image'), (req, res)=>{
-    Song.findById(req.params.song_id, (err, foundSong)=>{
+router.put('/:id/song/:song_id', middleware.checkPlaylistOwner, (req, res)=>{
+    Playlist.findByIdAndUpdate(req.params.id, {$pull : {songs : req.params.song_id}}, (err)=>{
         if(err)
         {
             req.flash('error', err.message);
@@ -110,30 +156,10 @@ router.post('/:song_id', middleware.isLoggedIn, upload.single('image'), (req, re
         }
         else
         {
-            if(req.file)
-            {
-                req.body.playlist.image = '/upload/playlist/' + req.file.filename;
-            }
-            else
-            {
-                req.body.playlist.image = foundSong.image;
-            }
-            Playlist.create(req.body.playlist, (err, newlyAdded)=>{
-                if(err)
-                {
-                    console.log(err);
-                }           
-                else
-                {
-                    newlyAdded.owner = req.user;
-                    newlyAdded.songs.push(foundSong);
-                    newlyAdded.save();
-                    req.flash('success', 'Added To New Playlist Successfully.');
-                    res.redirect('back');
-                }     
-            });
+            req.flash('success', "Remove Song From This Playlist Successful");
+            res.redirect('back');
         }
-    });
+    })
 });
 
 module.exports = router;

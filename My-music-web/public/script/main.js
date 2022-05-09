@@ -93,18 +93,21 @@ function playlistsongrowhover()
 {
     const playlistsongrow      = document.querySelectorAll('.playlist-song-row'),
           playbtinrow       = document.querySelectorAll('.playbt--inrow'),
-          favbtinrow        = document.querySelectorAll('.favbt--inrow');
+          favbtinrow        = document.querySelectorAll('.favbt--inrow'),
+          rmfromplaylistinrow  = document.querySelectorAll('.rmfromplaylist--inrow');
 
     for(let i = 0; i<playlistsongrow.length; i++)
     {
         playlistsongrow[i].addEventListener('mouseover', ()=>{
             playbtinrow[i].style.visibility         = "visible"
             favbtinrow[i].style.visibility          = "visible"
+            rmfromplaylistinrow[i].style.visibility = "visible"
         });
 
         playlistsongrow[i].addEventListener('mouseout', ()=>{
             playbtinrow[i].style.visibility         = "hidden"
             favbtinrow[i].style.visibility          = "hidden"
+            rmfromplaylistinrow[i].style.visibility = "hidden"
         });
     }
 }

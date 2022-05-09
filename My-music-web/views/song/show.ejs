@@ -15,7 +15,7 @@
             <i class="fa-solid fa-circle-play"></i>
           </button>
           <%if(isFav){ %>
-            <form action="/user/removefavsong/<%= song._id %>" method="post" class="d-inline me-1 my-auto">
+            <form action="/user/removefavsong/<%= song._id %>?_method=PUT" method="post" class="d-inline me-1 my-auto">
               <button class="btn--unfav bg-transparent border-0">
                 <i class="fa-solid fa-heart"></i>
               </button>

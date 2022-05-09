@@ -222,7 +222,7 @@ thead{
     color: #1DE8F1;
 }
 
-.btn--play i:active,.btn--fav i:active, .btn--unfav i:active, .btn--addplaylist i:active, .playbt--inrow:active, .btn--editprofile:active{
+.btn--play i:active,.btn--fav i:active, .btn--unfav i:active, .btn--addplaylist i:active, .playbt--inrow:active, .btn--editprofile:active , .btn--rmformplaylist:active{
     transform: translateY(10%);
 }
 
@@ -251,11 +251,11 @@ thead{
     background-color: #1DE8F1;
 }
 
-.btn--fav i:hover, .btn--addplaylist i:hover, .playbt--inrow:hover, .btn--editnickname i:hover{
+.btn--fav i:hover, .btn--addplaylist i:hover, .playbt--inrow:hover, .btn--editnickname i:hover, .btn--rmformplaylist:hover{
     color: #1DE8F1;
 }
 
-.addplaylist--inrow, .favbt--inrow{
+.addplaylist--inrow, .favbt--inrow, .rmfromplaylist--inrow{
     font-size: 1rem!important;
     color: white;
     visibility: hidden;
@@ -267,7 +267,7 @@ thead{
     visibility: hidden;
 }
 
-#tablebt, #tablebt{
+#tablebt{
     width: 8rem;
 }
 

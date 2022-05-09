@@ -50,7 +50,7 @@
             <button type="button" class="my-auto bg-transparent border-0 my-3"><i
                 class="fa-solid fa-play playbt--inrow"></i></button>
             <%if(Userfavsong.includes(song._id)){ %>
-            <form action="/user/removefavsong/<%= song._id %>" method="post" class="d-inline my-auto">
+            <form action="/user/removefavsong/<%= song._id %>?_method=PUT" method="post" class="d-inline my-auto">
               <button class="btn--unfav bg-transparent border-0">
                 <i class="fa-solid fa-heart favbt--inrow"></i>
               </button>
