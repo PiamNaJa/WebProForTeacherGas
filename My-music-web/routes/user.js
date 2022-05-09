@@ -77,7 +77,7 @@ router.put('/:id', middleware.isLoggedIn, upload.single('profileImage'), (req,re
     });
 });
 
-router.post('/addfavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
+router.put('/addfavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
     User.findById(req.user._id, (err, foundUser)=>{
         if(err)
         {
