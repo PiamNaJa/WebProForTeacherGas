@@ -68,6 +68,21 @@ router.get('/:id', middleware.checkPlaylistOwner, (req, res)=>{
     });
 });
 
+router.delete('/:id', middleware.checkPlaylistOwner, (req, res)=>{
+    Playlist.findByIdAndRemove(req.params.id, (err)=>{
+        if(err)
+        {
+            req.flash('error', 'Something Went Wrong');
+            res.redirect('back');
+        }
+        else
+        {
+            req.flash('success', 'Delete Playlist Successfully');
+            res.redirect('/playlist');
+        }
+    })
+})
+
 router.post('/:song_id', middleware.isLoggedIn, upload.single('image'), (req, res)=>{
     Song.findById(req.params.song_id, (err, foundSong)=>{
         if(err)
