@@ -123,7 +123,7 @@ thead{
     color: rgba(255, 255, 255, 0.5);
 }
 
-.artistinfo--img, .playlistinfo--img, .songinfo--img, .songside--img, .artistside--img, .albumside--img, .albuminfo--img, .userinfo--img, .adminprofileimg{
+.artistinfo--img, .playlistinfo--img, .songinfo--img, .songside--img, .artistside--img, .albumside--img, .albuminfo--img, .userinfo--img, .adminprofileimg, .playlistedit--img{
     object-fit: cover;
     aspect-ratio: 1/1;
 }
@@ -222,7 +222,7 @@ thead{
     color: #1DE8F1;
 }
 
-.btn--play i:active,.btn--fav i:active, .btn--unfav i:active, .btn--addplaylist i:active, .playbt--inrow:active, .btn--editprofile:active , .btn--rmformplaylist:active{
+.btn--play i:active,.btn--fav i:active, .btn--unfav i:active, .btn--addplaylist i:active, .playbt--inrow:active, .btn--editprofile:active , .btn--rmformplaylist:active, .editplaylistbt:active{
     transform: translateY(10%);
 }
 
@@ -251,7 +251,7 @@ thead{
     background-color: #1DE8F1;
 }
 
-.btn--fav i:hover, .btn--addplaylist i:hover, .playbt--inrow:hover, .btn--editnickname i:hover, .btn--rmformplaylist:hover{
+.btn--fav i:hover, .btn--addplaylist i:hover, .playbt--inrow:hover, .btn--editnickname i:hover, .btn--rmformplaylist:hover, .editplaylistbt:hover{
     color: #1DE8F1;
 }
 
@@ -281,7 +281,7 @@ thead{
     border: 0;
 }
 
-.btn--addplaylist i{
+.btn--addplaylist i, .editplaylistbt{
     font-size: 2rem;
     color: white;
 }
@@ -295,7 +295,7 @@ thead{
     font-size: 3.1vw;
 }
 
-.artist-song-row:hover, .album-song-row:hover, .songside__row:hover, .artistside__row:hover, .albumside__row:hover, .search-song__row:hover, .playlist-song-row:hover{
+.artist-song-row:hover, .album-song-row:hover, .songside__row:hover, .artistside__row:hover, .albumside__row:hover, .search-song__row:hover, .playlist-song-row:hover, .user-favsong-row:hover{
     background-color: #2c2c2c;
 }
 

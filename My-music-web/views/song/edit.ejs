@@ -1,7 +1,7 @@
 <%- include("../partials/admin_header.ejs") %>
 <div class="container">
     <h1 class="display-5">Edit Music Data</h1>
-    <form action="/admin/song/<%= song._id %>?_method=PUT" method="post">
+    <form action="/admin/song/<%= song._id %>?_method=PUT" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Music Title</label>
             <input type="text" class="form-control" name="song[name]" placeholder="<%= song.name %>" value="<%= song.name %>" required>
@@ -19,7 +19,7 @@
 
         <div class="mb-3">
             <label class="form-label">Album</label>
-            <input class="form-control" name = "albumname" list="Albumdatalist" id="exampleDataList" <% if(song.album){ %> value=" <%= song.album.name %>" placeholder="<%= song.album.name %><% } %>" autocomplete="off">
+            <input class="form-control" name = "albumname" list="Albumdatalist" id="exampleDataList" <% if(song.album){ %> value="<%= song.album.name %>" placeholder="<%= song.album.name %><% } %>" autocomplete="off">
             <datalist id="Albumdatalist">
                 <% albums.forEach((album)=>{ %>
                     <option value="<%= album.name %>"></option>
@@ -37,10 +37,17 @@
             <img src="<%= song.image %>" width="100" height="100">
             <input type="text" class="form-control" name="song[image]" placeholder="<%= song.image %>" value="<%= song.image %>" required>
         </div>
+
         <div class="mb-3">
             <label class="form-label">Lyrics</label>
             <textarea type="text" class="form-control" name="song[lyric]" placeholder="<%= song.lyric %>"><%= song.lyric %></textarea>
         </div>
+
+        <div class="mb-3">
+            <label class="form-label">Audio File (mp3, wav, ogg)</label>
+            <input class="form-control" name="audiofile" type="file" accept=".mp3, .wav, .ogg">
+        </div>
+
         <button type="submit" class="btn btn-outline-primary">Submit</button>
         <a class="btn btn-outline-dark" href="/admin/song/all">Go back</a>
     </form>

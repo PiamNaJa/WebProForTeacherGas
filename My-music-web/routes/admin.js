@@ -24,38 +24,7 @@ const   express = require("express"),
         upload = multer({storage: storage, fileFiler: audioFiler});
 
 router.get('/', middleware.isAdmin, (req,res)=>{
-    Song.find({}).populate('album artist').sort({release : 1}).exec((err, foundSong)=>{
-        if(err)
-        {
-            console.log(err);
-        }
-        else
-        {
-            Artist.find({}).sort({name : 1}).exec((err, foundArtist)=>{
-                if(err)
-                {
-                    console.log(err);
-                }
-                else
-                {
-                    Album.find({}).populate('artist').sort({name:1}).exec((err, foundAlbum)=>{
-                        if(err)
-                        {
-                            console.log(err);
-                        }
-                        else
-                        {
-                            res.render('admin/index.ejs', {
-                                                            songs: foundSong,
-                                                            artists : foundArtist,
-                                                            albums : foundAlbum
-                                                          });
-                        }
-                    });
-                }
-            });
-        }
-    });
+    res.render('admin/index.ejs');
 });
 
 router.post('/song/new', middleware.isAdmin, upload.single('audiofile'), (req,res)=>{
@@ -153,7 +122,12 @@ router.get('/song/all', middleware.isAdmin, (req,res)=>{
     });
 });
 
-router.put('/song/:id', middleware.isAdmin, (req, res)=>{
+router.put('/song/:id', middleware.isAdmin, upload.single('audiofile'), (req, res)=>{
+    if(req.file)
+    {
+        req.body.song.audio = '/upload/audio/' + req.file.filename;
+    }
+    
     Artist.findOne({name: req.body.artistname},(err, foundArtist)=>{
         if(err)
         {
@@ -282,7 +256,7 @@ router.get('/artist/new', middleware.isAdmin, (req,res)=>{
 });
 
 router.get('/artist/all', middleware.isAdmin, (req,res)=>{
-    Artist.find({}).sort({name : 1}).exec((err, foundArtist)=>{
+    Artist.find({}).exec((err, foundArtist)=>{
         if(err)
         {
             console.log(err);
@@ -388,7 +362,7 @@ router.post('/album/new', middleware.isAdmin, (req,res)=>{
 });
 
 router.get('/album/all', middleware.isAdmin, (req,res)=>{
-    Album.find({}).populate('artist').sort({name : 1}).exec((err, foundAlbum)=>{
+    Album.find({}).populate('artist').exec((err, foundAlbum)=>{
         if(err)
         {
             console.log(err);
@@ -409,7 +383,7 @@ router.put('/album/:id', middleware.isAdmin, (req, res)=>{
         else
         {
             req.body.album.artist = foundArist._id;
-            Album.findOneAndUpdate(req.params.id, req.body.album, (err)=>{
+            Album.findOneAndUpdate({_id : req.params.id}, req.body.album, (err, foundAlbum)=>{
                 if(err)
                 {
                     req.flash('error', err.message);

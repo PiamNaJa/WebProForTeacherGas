@@ -31,21 +31,25 @@
             <% song.forEach((song)=>{ %>
             <tr class="artist-song-row" onpointerover="artistsongrowhover()">
               <td class="text-white">
-                <p class="my-auto" id="number"><%=i++%></p>
+                <p class="my-3" id="number"><%=i%></p>
               </td>
-              <td class="text-white"><a class="text-white text-decoration-none" href="/song/<%= song._id %>"
-                  id="song"><%= song.name %></a></td>
+              <td class="text-white">
+                <img src="<%= song.image %>" class="songinfo--img" width="60" height="60">
+                <a class="text-white text-decoration-none ps-1" href="/song/<%= song._id %>"id="song">
+                  <%= song.name %>
+                </a>
+              </td>
               <% if(song.album){ %>
               <td class="text-white"><a class="text-white text-decoration-none" href="/album/<%= song.album._id %>"
-                  id="album"><%= song.album.name %></a></td>
+                  id="album"><p class="my-3"><%= song.album.name %></p></a></td>
               <% } else { %>
               <td></td>
               <% } %>
               <td class="text-white" id="tablegenre"><a class="text-white text-decoration-none"
-                  href="/genre/<%= song.genre %>"><%= song.genre %></a></td>
+                  href="/genre/<%= song.genre %>"><p class="my-3"><%= song.genre %></p></a></td>
               <td id="tablebt">
                 <% if(currentUser){ %>
-                <button type="button" class="my-auto bg-transparent border-0"><i
+                <button type="button" class="my-3 bg-transparent border-0"><i
                     class="fa-solid fa-play playbt--inrow"></i></button>
                   <%if(Userfavsong.includes(song._id)){ %>
                   <form action="/user/removefavsong/<%= song._id %>?_method=PUT" method="post" class="d-inline me-1 my-auto">
@@ -80,15 +84,48 @@
                     <li>
                       <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Add to New Playlist</a></li>
+                    <li><button type="button" class="dropdown-item" data-bs-toggle="modal"
+                      data-bs-target="#addplaylistModal<%=i%>">
+                      Add to New Playlist
+                    </button></li>
                   </ul>
                 </div>
-                <% } else { %>
+                <div class="modal fade" id="addplaylistModal<%=i%>" tabindex="-1" aria-labelledby="addplaylistModalLabel<%=i%>"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-dark">
+                      <div class="modal-header">
+                        <h4 class="modal-title text-white" id="addplaylistModalLabel<%=i++%>">Add New Playlist</h4>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="/playlist/<%= song._id %> " method="post" enctype="multipart/form-data">
+              
+                          <div class="mb-3">
+                            <label for="" class="form-label text-white">Name</label>
+                            <input class="form-control" name="playlist[name]" type="text" placeholder="Playlist Name" required>
+                          </div>
+              
+                          <div class="mb-3">
+                            <label for="" class="form-label text-white">Playlist Image(optional)</label>
+                            <input class="form-control" name="image" type="file" accept="image/*">
+                          </div>
+              
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline-info">Save</button>
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% } else { i++ %>
                 <button type="button" class="my-auto bg-transparent border-0" data-bs-toggle="modal"
                   data-bs-target="#exampleModal">
                   <i class="fa-solid fa-play playbt--inrow"></i>
                 </button>
-                <button type="button" class="btn--fav bg-transparent border-0 my-auto" data-bs-toggle="modal"
+                <button type="button" class="btn--fav bg-transparent border-0 my-3" data-bs-toggle="modal"
                   data-bs-target="#exampleModal">
                   <i class="fa-solid fa-heart favbt--inrow"></i>
                 </button>

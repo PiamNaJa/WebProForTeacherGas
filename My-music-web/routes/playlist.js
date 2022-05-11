@@ -68,6 +68,25 @@ router.get('/:id', middleware.checkPlaylistOwner, (req, res)=>{
     });
 });
 
+router.put('/:id', middleware.checkPlaylistOwner, upload.single('image'), (req,res)=>{
+    if(req.file)
+    {
+        req.body.playlist.image = '/upload/playlist/' + req.file.filename;
+    }
+    Playlist.findByIdAndUpdate(req.params.id, req.body.playlist, (err, foundUser)=>{
+        if(err)
+        {
+            req.flash('error', 'There is Something Wrong');
+            return res.redirect('back');
+        }
+        else
+        {
+            req.flash('success', 'Edit Playlist Successfully.');
+            res.redirect('back');
+        }
+    });
+});
+
 router.delete('/:id', middleware.checkPlaylistOwner, (req, res)=>{
     Playlist.findByIdAndRemove(req.params.id, (err)=>{
         if(err)

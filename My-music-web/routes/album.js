@@ -20,7 +20,7 @@ router.get('/all', (req,res)=>{
 });
 router.get('/:id', (req,res)=>{
     let playlists, Userfavsong;
-    if(req.user)
+    if(req.isAuthenticated())
     {
         Playlist.find({owner : req.user._id}, (err, foundPlaylist)=>{
             if(err)
@@ -57,7 +57,7 @@ router.get('/:id', (req,res)=>{
                 }
                 else
                 {
-                    if(req.user)
+                    if(req.isAuthenticated())
                     {
                         res.render('album/show.ejs', {song:foundSong, album: foundAlbum, playlists : playlists, Userfavsong : Userfavsong});
                     }

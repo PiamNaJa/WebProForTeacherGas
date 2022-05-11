@@ -13,7 +13,7 @@ router.post('/', (req,res)=>{
 router.get('/:word/all', (req,res)=>{
     const word = req.params.word;
     let playlists, Userfavsong;
-    if(req.user)
+    if(req.isAuthenticated())
     {
         Playlist.find({owner : req.user._id}, (err, foundPlaylist)=>{
             if(err)
@@ -89,7 +89,7 @@ router.get('/:word/all', (req,res)=>{
 router.get('/:word/song', (req, res)=>{
     const word = req.params.word;
     let playlists, Userfavsong;
-    if(req.user)
+    if(req.isAuthenticated())
     {
         Playlist.find({owner : req.user._id}, (err, foundPlaylist)=>{
             if(err)

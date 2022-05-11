@@ -7,7 +7,7 @@ const   express = require("express"),
 router.get('/:id', (req,res)=>{ //$ne = not equal
     let playlists,
         isFav;
-    if(req.user)
+    if(req.isAuthenticated())
     {
         Playlist.find({owner : req.user._id}, (err, foundPlaylist)=>{
             if(err)
@@ -45,7 +45,7 @@ router.get('/:id', (req,res)=>{ //$ne = not equal
                 else
                 {
                     const randSong = otherSong.sort(() => Math.random() - 0.5).slice(0,5); //Shuffle Array Because Can't Use aggregate with populate
-                    if(req.user)
+                    if(req.isAuthenticated())
                     {
                         res.render('song/show.ejs', {song:foundSong, otherSong:randSong, playlists:playlists, isFav : isFav});
                     }

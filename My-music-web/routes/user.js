@@ -95,8 +95,9 @@ router.put('/addfavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
                 else
                 {
                     foundUser.favsong.push(foundSong);
+                    foundSong.fav++;
+                    foundSong.save();
                     foundUser.save();
-                    req.flash('success', 'Add to favorite song successfully');
                     res.redirect('back');
                 }
             });
@@ -105,7 +106,7 @@ router.put('/addfavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
 });
 
 router.put('/removefavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
-    User.findByIdAndUpdate(req.user._id, { $pull: { favsong: req.params.song_id }}, (err, Found)=>{
+    User.findById(req.user._id, (err, foundUser)=>{
         if(err)
         {
             req.flash('error', 'There is Something Wrong');
@@ -113,8 +114,21 @@ router.put('/removefavsong/:song_id', middleware.isLoggedIn, (req,res)=>{
         }
         else
         {
-            req.flash('success', 'Unfavorite Successfully');
-            res.redirect('back');
+            Song.findById(req.params.song_id, (err, foundSong)=>{
+                if(err)
+                {
+                    req.flash('error', 'There is Something Wrong');
+                    return res.redirect('back');
+                }
+                else
+                {
+                    foundUser.favsong.pull(foundSong);
+                    foundSong.fav--;
+                    foundSong.save();
+                    foundUser.save();
+                    res.redirect('back');
+                }
+            });
         }
     });
 });

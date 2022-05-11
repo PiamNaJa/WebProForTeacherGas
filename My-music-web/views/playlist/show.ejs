@@ -4,12 +4,49 @@
     <div class="col-md-12 px-0 d-flex">
       <img class="shadow-lg me-2 playlistinfo--img" src="<%= playlist.image %>">
       <div class="d-block my-auto ms-1">
-        <h1 class="display-2 fw-bold"><%= playlist.name %></h1>
+        <h1 class="display-2 fw-bold">
+          <%= playlist.name %>
+          <button type="button" class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#editplaylistModal">
+            <i class="fa-solid fa-pen editplaylistbt"></i>
+          </button>
+        </h1>
         <h1 class="display-6">Playlist</h1>
         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteplaylistModal">
           Delete
         </button>
         
+        <div class="modal fade" id="editplaylistModal" tabindex="-1" aria-labelledby="editplaylistModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark">
+              <div class="modal-header">
+                <h4 class="modal-title text-white" id="editplaylistModalLabel">Edit <%= playlist.name %> Playlist</h4>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="/playlist/<%= playlist._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+      
+                  <div class="mb-3">
+                    <label for="" class="form-label text-white">Name</label>
+                    <input class="form-control" name="playlist[name]" type="text" placeholder="<%= playlist.name %>" value="<%= playlist.name %>" required>
+                  </div>
+      
+                  <div class="mb-3">
+                    <label for="" class="form-label text-white">Playlist Image(optional)</label>
+                    <img src="<%= playlist.image %>" class="playlistedit--img" width="100px">
+                    <input class="form-control" name="image" type="file" accept="image/*">
+                  </div>
+      
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-info">Save</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="modal fade" id="deleteplaylistModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-dark">
@@ -26,6 +63,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -63,19 +101,19 @@
                 class="fa-solid fa-play playbt--inrow"></i></button>
                 <%if(Userfavsong.includes(song._id)){ %>
                   <form action="/user/removefavsong/<%= song._id %>?_method=PUT" method="post" class="d-inline mx-2 my-auto">
-                    <button class="btn--unfav bg-transparent border-0">
+                    <button class="btn--unfav bg-transparent border-0" type="submit">
                       <i class="fa-solid fa-heart favbt--inrow"></i>
                     </button>
                   </form>
                 <%} else { %>
                 <form action="/user/addfavsong/<%= song._id %>?_method=PUT" method="post" class="d-inline mx-2 my-auto">
-                  <button class="btn--fav bg-transparent border-0" href="/user/addfavsong/<%= song._id %>">
+                  <button class="btn--fav bg-transparent border-0" href="/user/addfavsong/<%= song._id %>" type="submit">
                     <i class="fa-solid fa-heart favbt--inrow"></i>
                   </button>
                 </form>
                 <%}%>
             <form action="/playlist/<%= playlist._id %>/song/<%= song._id %>?_method=PUT" method="post" class="d-inline my-auto">
-              <button class="btn--rmfromplaylist bg-transparent border-0">
+              <button class="btn--rmfromplaylist bg-transparent border-0" type="submit">
                 <i class="fa-brands fa-linux rmfromplaylist--inrow"></i>
               </button>
             </form>
