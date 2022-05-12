@@ -1211,7 +1211,7 @@ const BabymetalSong = [
         mamori tsuzukete yuku
         
         Akaku somare! Makka ni somare!`,
-        audio : '/demo/Babymetal/Akutsuki.mp3'
+        audio : '/demo/Babymetal/Akatsuki.mp3'
     },
     {
         image : "https://i.ytimg.com/vi/cirhQ8iLdbw/maxresdefault.jpg",

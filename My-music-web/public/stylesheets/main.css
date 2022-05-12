@@ -3,18 +3,36 @@ body
     font-family: 'Bai Jamjuree', sans-serif;
     background-color: #1F1F1F;
     color:white;
+    overflow-x: hidden;
 }
 hr{
     background-color: white;
     color: white;
 }
 
-tbody, td, tfoot, th, .album-song, .artistside, .albumside{
+tbody, td, tfoot, th, .album-song, .artistside, .albumside, .songside{
     background-color: #121212;
     border-style: hidden;
 }
 thead{
     background-color: #000000;
+}
+
+th:hover
+{
+    background-color: #1d1c1c!important;
+}
+
+#mainaudio{
+    width: 100vw;
+    position: sticky;
+    bottom: 0;
+    z-index: 900000;
+    color: #1F1F1F;
+}
+
+.modal{
+    z-index: 9000000;
 }
 
 .navbar{
@@ -307,7 +325,7 @@ thead{
 }
 
 .otherartist__block:hover, .othersong__block:hover{
-    background-color: #252424;
+    background-color: #353434;
 }
 
 .otherartist--name, .othersong--name, .genre--title, .otherartist__block, .othersong__block, .album--artistname{
@@ -392,11 +410,6 @@ thead{
     word-spacing: 1rem;
 }
 
-.audiocontainer{
-    display: block;
-    width: 90vw;
-}
-
 .searchpage__artistcard, .searchpage__albumcard{
     background-color: transparent;
 }
@@ -409,4 +422,28 @@ thead{
 #seeall:hover{
     color: white;
     text-decoration: underline;
+}
+
+.audiocontainer{
+    z-index: 9999!important;
+    outline: #1DE8F1 2px solid;
+}
+
+.audio__songinfo img{
+    height: 10vh;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.audio--control{
+    font-size: 1.5rem;
+}
+
+.songplaybar{
+    height: 0.2rem;
+}
+
+.test{
+    position: sticky;
+    bottom: 0;
 }

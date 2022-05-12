@@ -17,7 +17,7 @@ const   express = require("express"),
                     }),
         audioFiler = (req,file,callback)=>{
             if(file.originalname.match(/\.(mp3|wav|ogg)$/i)){
-                return callback(new Error('Only mp3, wav, ogg'),false);
+                return callback(new Error('Only mp3'),false);
             }
             callback(null, true);
         },

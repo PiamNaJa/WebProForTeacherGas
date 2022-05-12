@@ -13,8 +13,9 @@
                 <h2 class="my-0 d-inline fw-bold">Songs</h2>
                 <a href="/search/<%= word %>/song" class="d-inline mt-auto me-1" id="seeall">See All</a>
             </div>
+            <%if(song.length > 0){ %>
             <div class="table-responsive overflow-hidden">
-                <table class="table table-striped table-sm">
+                <table class="table table-striped table-sm sortable">
                   <thead>
                     <tr>
                       <th class="text-white" scope="col">Title</th>
@@ -119,6 +120,9 @@
                   </tbody>
                 </table>
               </div>
+              <%} else { %>
+                <h2 class="text-center p-3 pb-4 songside">Not Found</h2>
+              <%} %>
         </div>
     </div>
     <div class="col">

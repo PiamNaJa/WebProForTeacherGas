@@ -7,8 +7,8 @@
     <a href="/search/<%= word %>/album" class="search--navigation"><h3 class="d-inline">Albums</h3></a>
 </div>
 
+<% if(artist.length > 0) { %>
 <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 justify-content-center searchpage--bg">
-    <% if(artist.length > 0) { %>
         <% artist.forEach((artist)=>{ %>
         <div class="col">
             <div class="card text-center my-3 searchpage__artistcard">
@@ -21,10 +21,9 @@
             </div>
         </div>
     <% }) %> 
-    <% } else{ %> 
-        <h2>Not Found</h2>
-    <%}%> 
-    
   </div>
+  <% } else{ %> 
+    <h1 class="text-center bg-black py-5 display-1">Not Found</h1>
+<%}%> 
     
 <%- include("../partials/footer.ejs") %>
