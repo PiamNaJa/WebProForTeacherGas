@@ -38,7 +38,7 @@
                 <a class="text-white text-decoration-none ps-1" href="/song/<%= song._id %>"id="song">
                   <%= song.name %>
                 </a>
-                <span data-audio="<%= song.audio %>" id="audiopath" class="d-none"></span>
+                <span data-img="<%= song.image %>" data-song="<%= song.name %>" data-artist="<%= song.artist.name%>" data-audio="<%= song.audio %>" id="songdata" class="d-none"></span>
               </td>
               <% if(song.album){ %>
               <td class="text-white"><a class="text-white text-decoration-none" href="/album/<%= song.album._id %>"

@@ -440,10 +440,14 @@ th:hover
 }
 
 .songplaybar{
-    height: 0.2rem;
+    height: 0.5rem;
 }
 
 .test{
     position: sticky;
     bottom: 0;
+}
+
+.songcurrenttime{
+    width: 2.4rem;
 }

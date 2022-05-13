@@ -1,29 +1,108 @@
 const mainaudio = new Audio('/demo/Babymetal/GimmeChocolate!!.mp3');
-const audiocontrolplaybt = document.getElementById('audio--control--playbt');
-const audiopath = document.querySelectorAll('#audiopath');
-const playbtn = document.querySelectorAll('#btnplay');
+const audiocontainer = {
+    playbt      : document.getElementById('audio--control--playbt'),
+    currentTime : document.querySelector('.songcurrenttime'),
+    duration    : document.querySelector('.songduration'),
+    slider      : document.querySelector('.progress-slider'),
+    volume      : document.querySelector('.volume-slider'),
+    img         : document.querySelector('.audiocontainer--img'),
+    songname    : document.querySelector('.audiocontainer--name'),
+    artistname  : document.querySelector('.audiocontainer--artist')
+};
+const songdata  = document.querySelectorAll('#songdata');
+const playbtn   = document.querySelectorAll('#btnplay');
+let currentBt;
 mainaudio.volume = 0.008;
 
-audiocontrolplaybt.onclick = ()=>{
+function showCurrentTime()
+{
+    let currentMin = Math.floor(mainaudio.currentTime/60);
+    let currentSec = Math.floor(mainaudio.currentTime) - currentMin*60;
+    audiocontainer.currentTime.textContent = currentMin + ":" + currentSec.toLocaleString('en-us', {minimumIntegerDigits:2, useGrouping:false});
+    audiocontainer.slider.value = mainaudio.currentTime;
+    if(Math.floor(audiocontainer.slider.value) === Math.floor(mainaudio.duration))
+    {
+        clearInterval();
+        audiocontainer.playbt.classList.replace('fa-pause', 'fa-play');
+    }
+    setDuration();
+}
+
+function setDuration(index)
+{
+    let durationMin = Math.floor(Math.floor(mainaudio.duration)/60);
+    let durationSec =  Math.floor(mainaudio.duration) - durationMin*60;
+    audiocontainer.duration.textContent = durationMin + ":" + durationSec.toLocaleString('en-us', {minimumIntegerDigits:2, useGrouping:false});   
+    audiocontainer.slider.max = mainaudio.duration; 
+    audiocontainer.slider.disabled = false;
+    if(index !== undefined)
+    {
+        audiocontainer.img.src = songdata[index].getAttribute('data-img');
+        audiocontainer.songname.textContent = songdata[index].getAttribute('data-song');
+        audiocontainer.artistname.textContent = songdata[index].getAttribute('data-artist');
+    }
+}
+
+audiocontainer.slider.addEventListener('change', ()=>{
+    mainaudio.currentTime = audiocontainer.slider.value;
+    clearInterval();
+    showCurrentTime();
+    setInterval(showCurrentTime, 1000)
+})
+
+audiocontainer.volume.addEventListener('input', ()=>{
+    mainaudio.volume = audiocontainer.volume.value;
+})
+
+audiocontainer.playbt.onclick = ()=>{
     if(mainaudio.paused)
     {
         mainaudio.play();
-        audiocontrolplaybt.classList.replace('fa-play', 'fa-pause')
+        setDuration();
+        setInterval(showCurrentTime, 1000)
+        audiocontainer.playbt.classList.replace('fa-play', 'fa-pause')
+        if(currentBt)
+        {
+            if(currentBt.classList.contains('fa-play'))
+            {
+                currentBt.classList.replace('fa-play', 'fa-pause')
+            }
+            else if(currentBt.classList.contains('fa-circle-play'))
+            {
+                currentBt.classList.replace('fa-circle-play', 'fa-circle-pause')
+            }
+        }        
     }
     else
     {
         mainaudio.pause();
-        audiocontrolplaybt.classList.replace('fa-pause', 'fa-play')
+        clearInterval();
+        audiocontainer.playbt.classList.replace('fa-pause', 'fa-play')
+        if(currentBt)
+        {
+            if(currentBt.classList.contains('fa-pause'))
+            {
+                currentBt.classList.replace('fa-pause', 'fa-play')
+            }
+            else if(currentBt.classList.contains('fa-circle-pause'))
+            {
+                currentBt.classList.replace('fa-circle-pause', 'fa-circle-play')
+            }
+        }
+        audiocontainer.playbt.classList.replace('fa-pause', 'fa-play')            
     }
 }
 for(let i = 0; i< playbtn.length; i++)
 {
     playbtn[i].onclick = ()=>{
-        const path = window.location.protocol + "//" + window.location.host + audiopath[i].getAttribute('data-audio');
+        const path = window.location.protocol + "//" + window.location.host + songdata[i].getAttribute('data-audio');
         if(mainaudio.src !==  path)
         {
-            mainaudio.src = audiopath[i].getAttribute('data-audio');
+            mainaudio.src = songdata[i].getAttribute('data-audio');
             mainaudio.play();
+            setDuration(i);
+            setInterval(showCurrentTime, 1000);
+            currentBt = playbtn[i];
             if(playbtn[i].classList.contains('fa-play'))
             {
                 playbtn[i].classList.replace('fa-play', 'fa-pause')
@@ -32,7 +111,7 @@ for(let i = 0; i< playbtn.length; i++)
             {
                 playbtn[i].classList.replace('fa-circle-play', 'fa-circle-pause')
             }
-            audiocontrolplaybt.classList.replace('fa-play', 'fa-pause')
+            audiocontainer.playbt.classList.replace('fa-play', 'fa-pause')
             for(let j = 0; j< playbtn.length; j++)
             {
                 if(j!==i)
@@ -53,6 +132,9 @@ for(let i = 0; i< playbtn.length; i++)
             if(mainaudio.paused)
             {
                 mainaudio.play();
+                setDuration();
+                setInterval(showCurrentTime, 1000)
+                currentBt = playbtn[i];
                 if(playbtn[i].classList.contains('fa-play'))
                 {
                     playbtn[i].classList.replace('fa-play', 'fa-pause')
@@ -61,11 +143,12 @@ for(let i = 0; i< playbtn.length; i++)
                 {
                     playbtn[i].classList.replace('fa-circle-play', 'fa-circle-pause')
                 }
-                audiocontrolplaybt.classList.replace('fa-play', 'fa-pause')                
+                audiocontainer.playbt.classList.replace('fa-play', 'fa-pause')                
             }
             else
             {
                 mainaudio.pause();
+                clearInterval();
                 if(playbtn[i].classList.contains('fa-pause'))
                 {
                     playbtn[i].classList.replace('fa-pause', 'fa-play')
@@ -74,28 +157,11 @@ for(let i = 0; i< playbtn.length; i++)
                 {
                     playbtn[i].classList.replace('fa-circle-pause', 'fa-circle-play')
                 }
-                audiocontrolplaybt.classList.replace('fa-pause', 'fa-play')                
+                audiocontainer.playbt.classList.replace('fa-pause', 'fa-play')                
             }
         }
     }
 }
-// const songpageaudio = document.querySelector('#songpageaudio');
-// const songpageplaybtn = document.querySelector('#songpagebtnplay');
-// songpageplaybtn.onclick = ()=>{
-//     if(songpageaudio.paused)
-//     {
-//         songpageaudio.play();
-//         songpageplaybtn.classList.remove('fa-circle-play');
-//         songpageplaybtn.classList.add('fa-circle-pause');
-//     }
-//     else
-//     {
-//         songpageaudio.pause();
-//         songpageaudio.currentTime = 0
-//         songpageplaybtn.classList.remove('fa-circle-pause');
-//         songpageplaybtn.classList.add('fa-circle-play')
-//     }
-// }
 
 function albumsongrowhover()
 {

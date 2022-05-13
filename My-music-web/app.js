@@ -7,7 +7,7 @@ const express       = require('express'),
       flash         = require('connect-flash'),
       methodOverride = require('method-override'),
       User          = require('./models/user'),
-      sendDB        = require('./seeds.js');
+      seedDB        = require('./seeds.js');
 
 
 const   indexRoutes  = require('./routes/index'),
@@ -25,7 +25,7 @@ app.set("view engine" ,"ejs");
 app.use(express.static("./public"));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(methodOverride('_method'));
-// sendDB();
+// seedDB();
 app.use(require('express-session')({
     secret: "secret word",
     resave: false,

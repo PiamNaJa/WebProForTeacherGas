@@ -4,7 +4,7 @@
     <div class="col-md-12 px-0 d-flex">
       <img class="me-3 my-auto songinfo--img" src="<%= song.image %>" width="150px" height="150px">
       <div class="d-block">
-        <span data-audio="<%= song.audio %>" id="audiopath" class="d-none"></span>
+        <span data-img="<%= song.image %>" data-song="<%= song.name %>" data-artist="<%= song.artist.name%>" data-audio="<%= song.audio %>" id="songdata" class="d-none"></span>
         <h3 class="m-0"><%= song.name %></h3>
         <a href="/artist/<%= song.artist._id %>" class="mb-1 text-white songinfo--artist"><%= song.artist.name %></a>
         <p class="mb-1 songinfo--genre">Genre : <%= song.genre %></p>
@@ -116,7 +116,7 @@
       <div class="p-0 mb-3 bg-transparent border-start rounded">
         <h2 class="ps-2">Other Song</h2>
         <% otherSong.forEach((otherSong)=>{ %>
-          <span data-audio="<%= otherSong.audio %>" id="audiopath" class="d-none"></span>
+          <span data-img="<%= otherSong.image %>" data-song="<%= otherSong.name %>" data-artist="<%= otherSong.artist.name%>" data-audio="<%= otherSong.audio %>" id="songdata" class="d-none"></span>
         <div class="p-2 ps-2 mb-1 othersong__block d-flex justify-content-between" onpointerover="othersongblockhover()">
           <div>
             <a class="othersong--name" href="/song/<%= otherSong._id %>"><%= otherSong.name %></a>
