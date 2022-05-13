@@ -26,6 +26,7 @@
                   <tbody>
                     <% let i = 0; %> 
                     <% song.forEach((song)=>{ %>
+                      <span data-img="<%= song.image %>" data-song="<%= song.name %>" data-artist="<%= song.artist.name%>" data-audio="<%= song.audio %>" id="songdata" class="d-none"></span>
                       <tr class = "search-song__row" onpointerover="searchsongrow()">
                         <td class="text-white">
                           <a class="text-white text-decoration-none" href="/song/<%= song._id %>" id="song"><%= song.name %></a>
@@ -34,9 +35,11 @@
                           <a class="text-white text-decoration-none" href="/artist/<%= song.artist._id %>">
                             <%= song.artist.name%></a>
                           </td>
-                        <td id="tablebt">
+                        <td class="text-center" id="tablebt">
                           <% if(currentUser){ %>
-                            <button type="button" class="my-auto bg-transparent border-0"><i class="fa-solid fa-play playbt--inrow"></i></button>
+                            <button type="button" class="my-auto bg-transparent border-0">
+                              <i class="fa-solid fa-play playbt--inrow" id="btnplay"></i>
+                            </button>
                             <%if(Userfavsong.includes(song._id)){ %>
                               <form action="/user/removefavsong/<%= song._id %>?_method=PUT" method="post" class="d-inline my-auto">
                                 <button class="btn--unfav bg-transparent border-0">

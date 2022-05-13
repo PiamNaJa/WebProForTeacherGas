@@ -65,6 +65,7 @@
   <% let i = 1; %>
   <tbody>
     <% user.favsong.forEach((song)=>{ %>
+      <span data-img="<%= song.image %>" data-song="<%= song.name %>" data-artist="<%= song.artist.name%>" data-audio="<%= song.audio %>" id="songdata" class="d-none"></span>
       <tr class = "user-favsong-row" onpointerover="userfavsongrowhover()">
         <td class="text-white" ><p class="my-auto"id="number"><%=i++%></p></td>
         <td class="text-white" ><a class="text-white text-decoration-none" href="/song/<%= song._id %>" id="song"><%= song.name %></a></td>
@@ -76,7 +77,9 @@
           <% } %>
         <td class="text-white"><a class="text-white text-decoration-none ms-5" href="/genre/<%= song.genre %>"><%= song.genre %></a></td>
         <td>
-            <button class="my-auto bg-transparent border-0"><i class="fa-solid fa-play playbt--inrow"></i></button>
+            <button class="my-auto bg-transparent border-0">
+              <i class="fa-solid fa-play playbt--inrow" id="btnplay"></i>
+            </button>
             <form action="/user/removefavsong/<%= song._id %>?_method=PUT" method="post" class="d-inline my-auto">
               <button class="btn--unfav bg-transparent border-0">
                 <i class="fa-solid fa-heart unfavbt--inrow"></i>

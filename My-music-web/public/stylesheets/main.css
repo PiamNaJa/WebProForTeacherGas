@@ -175,6 +175,10 @@ th:hover
     color: white;
 }
 
+.card__playbt i:hover{
+    color: #1DE8F1;
+}
+
 .song--img, .artist--img, .album--img, .playlist--img{
     object-fit: cover;
     width: 100%;

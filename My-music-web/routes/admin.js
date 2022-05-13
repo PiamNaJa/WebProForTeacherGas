@@ -447,7 +447,7 @@ router.get('/album/:id/edit', middleware.isAdmin, (req, res)=>{
 });
 
 router.get('/user/all', middleware.isAdmin, (req, res)=>{
-   User.find({'_id': {$ne : req.user._id}}, (err, foundUser)=>{ //ne = not equals
+   User.find({}, (err, foundUser)=>{
        if(err)
        {
            console.log(err);

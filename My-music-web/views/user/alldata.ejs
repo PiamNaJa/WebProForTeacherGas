@@ -2,7 +2,7 @@
 <h1>Users Data</h1>
 <input type="text" class="form-control w-100 mt-2" id="search" placeholder="Search Song Title" onkeyup="Filter()">
 <div class="table-responsive">
-    <table class="table table-striped table-sm sortable" id="table">
+    <table class="table table-striped table-sm sortable text-center" id="table">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -16,23 +16,27 @@
           <% let i = 1; %> 
         <% users.forEach((user)=>{ %> 
         <tr>
-          <td><p class="mt-2"><%= i++ %></p></td>
-          <td><p class="mt-2" id="title"><%= user.username %></p></td>
-          <td><p class="mt-2"><%= user.displayname %></p></td>
-          <td><p class="mt-2"><%= user.isAdmin %></p></td>
-          <td>
-            <%if(user.isAdmin){ %>
-              <form action="/admin/user/<%= user._id %>?_method=PUT" method="post" class="d-inline">
-                <button type="submit" class="btn btn-warning" id="GrantOrRevokeBt">Revoke</button>
-              </form>
-            <%} else { %>
-              <form action="/admin/user/<%= user._id %>?_method=PUT" method="post" class="d-inline">
-                <button type="submit" class="btn btn-warning" id="GrantOrRevokeBt">Grant</button>
-              </form>              
-            <%} %>
+          <td><p class="mt-2 mb-0"><%= i++ %></p></td>
+          <td><p class="mt-2 mb-0" id="title"><%= user.username %></p></td>
+          <td><p class="mt-2 mb-0"><%= user.displayname %></p></td>
+          <td><p class="mt-2 mb-0"><%= user.isAdmin? "Yes":"No" %></p></td>
+          <td id="action">
+            <% if(!user._id.equals(currentUser._id)){ %> 
+              <%if(user.isAdmin){ %>
+                <form action="/admin/user/<%= user._id %>?_method=PUT" method="post" class="d-inline">
+                  <button type="submit" class="btn btn-warning" id="GrantOrRevokeBt">Revoke</button>
+                </form>
+              <%} else { %>
+                <form action="/admin/user/<%= user._id %>?_method=PUT" method="post" class="d-inline">
+                  <button type="submit" class="btn btn-warning" id="GrantOrRevokeBt">Grant</button>
+                </form>              
+              <%} %>
             <form action="/admin/user/<%= user._id %>?_method=DELETE" method="post" class="d-inline">
               <button type="submit" class="btn btn-danger" id="deleteBt">Delete</button>
-            </form>    
+            </form>
+            <%} else{ %>
+              <p class="mt-2 mb-0">You can't not do the action on yourself</p> 
+            <%} %>     
           </td>
         </tr>
         <% }); %> 

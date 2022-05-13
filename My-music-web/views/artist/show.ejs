@@ -152,7 +152,7 @@
           <h2>Album</h2>
           <% album.forEach((album)=>{ %>
           <a class="d-block p-2 ps-2 mb-1 otherartist__block" href="/album/<%= album._id %>">
-            <img src="<%= album.image %>" width="60px" height="60px">
+            <img class="albuminfo--img" src="<%= album.image %>" width="60px" height="60px">
             <p class="d-inline-block otherartist--name"><%= album.name %></p>
           </a>
           <% }); %>
@@ -163,7 +163,7 @@
           <h2>Other Artist</h2>
           <% otherArt.forEach((otherArt)=>{ %>
           <a class="d-block p-2 ps-2 mb-1 otherartist__block" href="/artist/<%= otherArt._id %>">
-            <img class="rounded-circle" src="<%= otherArt.image %>" width="60px" height="60px">
+            <img class="artistinfo--img rounded-circle" src="<%= otherArt.image %>" width="60px" height="60px">
             <p class="d-inline-block otherartist--name"><%= otherArt.name %></p>
           </a>
           <% }); %>
