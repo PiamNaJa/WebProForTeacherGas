@@ -98,11 +98,12 @@ for(let i = 0; i< playbtn.length; i++)
 {
     playbtn[i].onclick = ()=>{
         const path = window.location.protocol + "//" + window.location.host + songdata[i].getAttribute('data-audio');
-        if(mainaudio.src !==  path)
+        if(decodeURIComponent(mainaudio.src) !==  path) //เพลงภาษาไทยurlจะถูกencode เลยต้อง decode
         {
             clearInterval(updateaudioinfo);
             mainaudio.src = songdata[i].getAttribute('data-audio');
             mainaudio.play();
+            showCurrentTime();
             setDuration(i);
             updateaudioinfo = setInterval(showCurrentTime, 1000);
             currentBt = playbtn[i];

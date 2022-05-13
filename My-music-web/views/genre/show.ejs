@@ -8,8 +8,19 @@
     <div class="container-fluid">
       <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 g-3">
         <% songs.forEach((song)=>{ %>
+          <span data-img="<%= song.image %>" data-song="<%= song.name %>" data-artist="<%= song.artist.name%>" data-audio="<%= song.audio %>" id="songdata" class="d-none"></span>
         <div class="col">
           <div class="card shadow-sm p-3">
+            <% if(currentUser){ %>
+              <button type="button" class="border-0 p-0 bg-transparent card__playbt">
+                <i class="fa-regular fa-circle-play" id="btnplay"></i>
+              </button>
+            <% } else{ %>
+              <button type="button" class="border-0 p-0 bg-transparent card__playbt" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-regular fa-circle-play"></i>
+              </button>
+              <%- include("../partials/login_modal.ejs") %>
+            <% } %>
             <a href="/song/<%= song._id %>" class="text-decoration-none">
               <img class="song--img" src="<%= song.image %>">
               <p class="song--name text-white m-0"><%= song.name %></p>

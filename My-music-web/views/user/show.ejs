@@ -67,7 +67,7 @@
     <% user.favsong.forEach((song)=>{ %>
       <span data-img="<%= song.image %>" data-song="<%= song.name %>" data-artist="<%= song.artist.name%>" data-audio="<%= song.audio %>" id="songdata" class="d-none"></span>
       <tr class = "user-favsong-row" onpointerover="userfavsongrowhover()">
-        <td class="text-white" ><p class="my-auto"id="number"><%=i++%></p></td>
+        <td class="text-white" ><p class="my-auto"id="number"><%=i%></p></td>
         <td class="text-white" ><a class="text-white text-decoration-none" href="/song/<%= song._id %>" id="song"><%= song.name %></a></td>
         <td class="text-white" ><a class="text-white text-decoration-none" href="/song/<%= song.artist._id %>" id="song"><%= song.artist.name %></a></td>
         <% if(song.album){ %>
