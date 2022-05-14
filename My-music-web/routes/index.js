@@ -39,8 +39,8 @@ router.get('/', (req,res)=>{
                         {
                             const MostFavSong   = allSong.sort((a, b) => a.fav < b.fav ? 1 : -1).slice(0,6), //เรียง Fav จากมากไปน้อย และเอา5อันดับแรก
                                   NewSong       = allSong.sort((a, b) => a.release < b.release ? 1 : -1).slice(0,6); //เรียง date จากล่าสุดไปนาน และเอา5อันดับแรก
-                                  randArtist    = allArtist.sort(() => Math.random() - 0.5).slice(0,5); //Shuffle Array Because Can't Use aggregate with populate
-                                  randAlbum     = allAlbum.sort(() => Math.random() - 0.5).slice(0,5); //Shuffle Array Because Can't Use aggregate with populate
+                                  randArtist    = allArtist.sort(() => Math.random() - 0.5).slice(0,6); //Shuffle Array Because Can't Use aggregate with populate
+                                  randAlbum     = allAlbum.sort(() => Math.random() - 0.5).slice(0,6); //Shuffle Array Because Can't Use aggregate with populate
                             
                             res.render("landing.ejs", {
                                 MostFavSong : MostFavSong,

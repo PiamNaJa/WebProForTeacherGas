@@ -2,28 +2,28 @@
             </div>
         </div>
 <%if(currentUser){ %>
-    <footer class="row p-2 navbar fixed-bottom audiocontainer">
+    <footer hidden class="row p-2 navbar fixed-bottom audiocontainer">
         <div class="col-md-3 audio__songinfo">
             <div class="d-flex align-items-center">
                 <div class="flex-shrink-0">
-                    <img class="audiocontainer--img" src="https://upload.wikimedia.org/wikipedia/en/8/83/Babymetal_Gimme_Chocolate%21%21_UK_iTunes_artwork.jpg">
+                    <img class="audiocontainer--img" src="">
                 </div>
                 <div class="flex-grow-1 ms-3">
-                  <p class="m-0 audiocontainer--name">GimmeChocolate!!</p>
-                  <p class="m-0 text-white-50 audiocontainer--artist">Babymetal</p>
+                  <p class="m-0 audiocontainer--name"></p>
+                  <p class="m-0 text-white-50 audiocontainer--artist"></p>
                 </div>
             </div>
         </div>
         <div class="col-md-6 align-content-center">
                 <div class="d-flex justify-content-center audio--control">
-                    <button class="bg-transparent border-0 text-white"><i class="fa-solid fa-backward-step"></i></button>
+                    <button class="bg-transparent border-0 text-white"><i class="fa-solid fa-backward-step" id="audio--control--prevbt"></i></button>
                     <button class="bg-transparent border-0 text-white"><i class="fa-solid fa-play mx-4" id="audio--control--playbt"></i></button>
-                    <button class="bg-transparent border-0 text-white"><i class="fa-solid fa-forward-step"></i></button>
+                    <button class="bg-transparent border-0 text-white"><i class="fa-solid fa-forward-step" id="audio--control--nextbt"></i></button>
                 </div>
                 <div class="progess__block d-flex justify-content-between align-items-center">
-                    <div class=" songcurrenttime">0.00</div>
+                    <div class=" songcurrenttime"></div>
                     <input type="range" class="mx-2 progress-slider" min="0" max="3.5" style="width: 100%" value="0" disabled>
-                    <div class=" songduration">9.99</div>
+                    <div class=" songduration"></div>
                 </div>
         </div>
         <div class="col-md-3 align-content-center">
