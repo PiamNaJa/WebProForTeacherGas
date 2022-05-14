@@ -723,7 +723,48 @@ const YoungohmSong = [
         name :  "แสงไฟ in the city",
         genre : "Rap",
         fav : 100,
-        lyric : ``,
+        lyric : `ล่องลอย in the city
+        I i’ma take, take you with me
+        แสงไฟ in the city
+        ทำให้ใจคุณรู้สึกดี
+        
+        ล่องลอย in the city
+        I i’ma take, take you with me
+        แสงไฟ in the city
+        ทำให้ใจคุณรู้สึกดี
+        
+        เกิดและโต มาแถวสุขุมวิท
+        ไม่เชื่อใคร เอาแต่ที่กูคิด
+        ผู้หลักผู้ใหญ่ ต้องร้องว่า Ooh shit
+        ตอนนี้หล่ะเปนยังไง คุณลองมาดูดิ้
+        
+        จากเด็กวัดธาตุทองกูกลาย RAPSTAR
+        ถ้าไม่กล้าลอง คงไม่เป็น RAPSTAR
+        บ้านไม่ได้รวย กูก็แค่ RAP HARD
+        กูทำด้วยตัวเองกูไม่ได้ HACK มา
+        
+        เอกมัย you kno we made it (you we made it!)
+        ถ้าไม่มีมึง กูคงไม่ made it
+        ตาและยาย บอกต้องยังงี้สิ
+        สิบล้านในบัญชีมันไม่ที่ติ
+        
+        กูทำให้คนรู้จักเดินออกนอกกรอบ
+        ไม่ใช่แค่ทำ ทำตามแต่ที่พ่อบอก
+        BKK มีกูเป็นทรัพย์สมบัติ
+        ไหนรางวัล รางวัลสำหรับผมหล่ะ
+        
+        ล่องลอย in the city
+        I i’ma take, take you with me
+        แสงไฟ in the city
+        ทำให้ใจคุณรู้สึกดี
+        
+        ล่องลอย in the city
+        I i’ma take, take you with me
+        แสงไฟ in the city
+        ทำให้ใจคุณรู้สึกดี yeah...
+        youngohm matherf**ker
+        
+        BANGKOK LEGACY...`,
         audio : "/demo/Youngohm/แสงไฟinthecity.mp3"
     },
     {

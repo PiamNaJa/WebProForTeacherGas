@@ -1,3 +1,19 @@
+function cardbthover()
+{
+    const songcard     = document.querySelectorAll('#songcard'),
+          cardplaybt   = document.querySelectorAll('.card__playbt');
+    for(let i = 0; i<songcard.length; i++)
+    {
+        songcard[i].addEventListener('mouseover', ()=>{
+            cardplaybt[i].style.visibility = "visible";
+        });
+
+        songcard[i].addEventListener('mouseout', ()=>{
+            cardplaybt[i].style.visibility = "hidden";
+        });
+    }
+}
+
 function albumsongrowhover()
 {
     const albumsongrow      = document.querySelectorAll('.album-song-row'),
@@ -5,7 +21,7 @@ function albumsongrowhover()
           favbtinrow        = document.querySelectorAll('.favbt--inrow'),
           addplaylistinrow  = document.querySelectorAll('.addplaylist--inrow');
 
-    for(let i = 0; i<albumsongrow .length; i++)
+    for(let i = 0; i<albumsongrow.length; i++)
     {
         albumsongrow[i].addEventListener('mouseover', ()=>{
             playbtinrow[i].style.visibility         = "visible"
@@ -73,7 +89,7 @@ function searchsongrow()
           favbtinrow        = document.querySelectorAll('.favbt--inrow'),
           addplaylistinrow  = document.querySelectorAll('.addplaylist--inrow');
 
-    for(let i = 0; i<albumsongrow .length; i++)
+    for(let i = 0; i<albumsongrow.length; i++)
     {
         albumsongrow[i].addEventListener('mouseover', ()=>{
             playbtinrow[i].style.visibility         = "visible"

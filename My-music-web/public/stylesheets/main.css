@@ -160,19 +160,20 @@ th:hover
 }
 
 .card__playbt{
-    position: absolute;
-    width: 2.5rem;
-    height: 2.5rem;
-    left: 78%;
-    top: 57%;
-    margin-left: -1.25rem; /*half of the width */
-    margin-top: -1.25rem; /*half of the height */
+    position:absolute;
+    top: 40%;
+    left: 50%;
+    width: 4rem;
+    height: 4rem;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    visibility: hidden;
 }
 
 .card__playbt i{
-    font-size: 2.5rem;
+    font-size: 4rem;
     cursor: context-menu;
-    color: white;
+    color: #16b9c2;
 }
 
 .card__playbt i:hover{
