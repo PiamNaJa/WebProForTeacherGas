@@ -1099,6 +1099,95 @@ const ThetoySong = [
     }
 ]
 
+const YewSong = [
+    {
+        image : "https://s.isanook.com/jo/0/rp/r/w300/ya0xa0m1w0/aHR0cDovL2ltYWdlLmpvb3guY29tL0pPT1hjb3Zlci8wLzVmZTE5NTYxZjhjODM5ODUvNjQwLmpwZw==.jpg",
+        name :  "เก็บ",
+        genre : "Pop",
+        fav : 400,
+        lyric : `ภาวนาให้พรุ่งนี้ฉันจะไม่มีน้ำตา
+        ความต้องการคือวันนี้ฉันต้องหยุดทรมาน
+        เก็บเขาไปที่เดิมอย่าให้ต้องได้พบเจอสายตากันอีกเลย
+        ไม่ต้องเสียเวลาถ้าเราไม่ใช่ความสุขของเขา มันก็ควรเดินต่อไป
+        
+        เขาจะไม่มีความหมาย ถ้าเธอเลือกทิ้งเขาไป
+        ความทรงจำที่มี มันจะผ่านพ้นไป
+        เพราะเขาก็คงไม่รู้ ว่าเธอต้องเป็นเช่นไร
+        โปรดให้มันสลาย ก่อนที่ใจฉันตายลงไป
+        
+        แม้เวลาบอกกับฉันว่าเรายังมีน้ำตา
+        แต่สักวันความผิดหวังของเธอจะจางหายไป
+        ผ่านเรื่องราวเสียใจ เก็บภาพวันที่สวยงามทุกความรู้สึกดี
+        แต่อย่าเสียเวลาถ้าเราไม่ใช่ความสุขของเขา มันก็ควรเดินต่อไป`,
+        audio : "/demo/Yew/เก็บ.mp3"        
+    },
+    {
+        image : "https://f4.bcbits.com/img/a3969747381_10.jpg",
+        name :  "พระจันทร์",
+        genre : "Pop",
+        fav : 900,
+        lyric : `ฉันและเธอได้นั่งดูพระจันทร์ ที่สวยงดงามเธอเล่าให้ฉันฟัง
+        วันนึงเธอเดินเข้าไป เดินเข้าไปเมื่อตอนเธอหลับ
+        ในฝันฉันกลายเป็นกระต่ายสีเทา อยู่ข้างเคียงเธอกระซิบบอกฉันเบาๆ
+        ว่าคืนนี้จันทร์พิเศษ ฉันตอบไปว่าสวยที่สุด
+        
+        จบคำพูดฉันกลับลอยเข้าไป ดวงดาวพระจันทร์อยู่ตรงนี้ไง
+        โอ้ความรัก เธอทำให้รู้จัก ในความหมาย กระต่ายที่ได้พบดวงจันทร์
+        
+        ท่องเข้าไปที่นี่มีแค่เรา ชีวิตวุ่นวายบนโลกใบสีเทา
+        โยนทิ้งของที่อยาก มองเพียงรอยยิ้มมุมปาก
+        
+        ขอทุกวันไม่แปรเปลี่ยนผันไป จะเล่าเรื่องราว ทุกที่ที่ฉันเคยไป
+        เพราะเธอนั้นคือทุกสิ่ง เธอตอบฉันก็คือทุกอย่าง`,
+        audio : "/demo/Yew/พระจันทร์.mp3"        
+    },
+    {
+        image : "https://i1.sndcdn.com/artworks-LmCFRBTk115lyaW1-WGSOTw-t500x500.jpg",
+        name :  "ลมแล้ง",
+        genre : "Pop",
+        fav : 100,
+        lyric : `ถ้าปล่อยให้คุณไป ไม่รู้จะเป็นยังไง
+        ร่วงหล่นดั่งใบไม้ เมื่อคุณต้องเดินไปไกล
+        หากหันไปมองเมื่อใด จะเห็นผมรอที่เดิม
+        แต่ปีนี้ไม่เหมือนก่อน เมื่อผมมอง คุณอยู่ไหน
+        
+        ข้างนอกมันโหดร้าย ตัวฉันต้องทำยังไง
+        ในมือมีดอกไม้ แต่ลมก็พัดไปไกล
+        แค่หันไปมองทางใด ก้อนหินกระจายบนพื้นทราย
+        แต่ฉันขอคุณรอก่อน  จะคิดถึง อยู่ห่างไกล
+        
+        ผมจะรอแค่คุณ ตรงนี้ไม่เปลี่ยนไป
+        ฉันจะขอให้วันพรุ่งนี้ ต้นไม้ยังผลิใบ
+        นับคืนวันและรอให้เราได้หวนคืนมาอย่างสดใส
+        
+        หลับตาลงก็คิดถึงคุณที่อยู่ตรงนี้ตลอดมา
+        ช่วงเวลาที่เราจับมือและมอบความรักก่อนจากลา
+        
+        ยิ้มที่ผมเคยมองทุกวัน คำที่คุณต้องพูดทุกครา
+        ฉันคิดถึงเธอจริงๆ`,
+        audio : "/demo/Yew/ลมแล้ง.mp3"        
+    },
+    {
+        image : "https://pbs.twimg.com/media/Emdl9GhU8AMl-Uf.jpg",
+        name :  "แด่คุณ",
+        genre : "Pop",
+        fav : 108,
+        lyric : `เจ้าสายน้ำที่เย็นฉ่ำ ทำให้ใจผมชินและชา
+        บทกวีที่เคยอ่าน มอบแด่คุณแค่เพียงผู้เดียว
+        
+        ดวงฤทัยมิอาจ มองผู้ใดที่เพียงเดินผ่าน
+        คุณที่เป็นทุกอย่าง จากวันนี้และตลอดกาล
+        คุณที่เป็นความหวานที่เหมือนดั่งขนม
+        บางครั้งคุณก็ขมเมื่อผมต้องการยา
+        ขอบคุณทุกทุกอย่างในวันนี้
+        
+        จะเปิดประตูให้คุณเมื่อคุณกลับมา
+        จะคอยเตรียมน้ำเฝ้ารอเมื่อคุณอ่อนล้า
+        เป็นวันที่เราก้าวผ่าน เรื่องราวจะคงอยู่สวยงาม`,
+        audio : "/demo/Yew/แด่คุณ.mp3"        
+    }
+]
+
 const Artistdata = [
     {
         image : "https://m.thaiticketmajor.com/img_artist/prefix_1/0264/264/264-5ea7d02c147ee-a.jpg",
@@ -1115,6 +1204,10 @@ const Artistdata = [
     {
         image : "https://upload.wikimedia.org/wikipedia/commons/3/3b/%E0%B8%97%E0%B8%AD%E0%B8%A2_%E0%B8%98%E0%B8%B1%E0%B8%99%E0%B8%A7%E0%B8%B2_%E0%B8%9A%E0%B8%B8%E0%B8%8D%E0%B8%AA%E0%B8%B9%E0%B8%87%E0%B9%80%E0%B8%99%E0%B8%B4%E0%B8%99.png",
         name : "The TOYS"
+    },
+    {
+        image : "https://yt3.ggpht.com/PoJESpwmccba8amhic0OcyxLdFopwYptBItocZF4qvd-T76Qw0Vi4hcJk--gObF9gy-8DQtXRQ=s900-c-k-c0x00ffffff-no-rj",
+        name : "YEW"
     }
 ];
 
@@ -1134,6 +1227,10 @@ const Albumdata = [
     {
         image : "https://s.isanook.com/jo/0/rp/r/w700/ya0xa0m1w0/aHR0cHM6Ly9qb294LWNtcy1pbWFnZS0xMjUxMzE2MTYxLmZpbGUubXlxY2xvdWQuY29tLzIwMjEvMDkvMjYvMGU2NGU3NTMtYzY2ZC00YTc0LTlkZGMtOTRjOWY4YzliMzUwLmpwZy8xMDAw.jpg",
         name : "SUN"
+    },
+    {
+        image : "https://s.isanook.com/jo/0/rp/r/w700/ya0xa0m1w0/aHR0cDovL2ltYWdlLmpvb3guY29tL0pPT1hjb3Zlci8wLzVmZTE5NTYxZjhjODM5ODUvMTAwMC5qcGc=.jpg",
+        name : "Pauley & Jeen"
     }
 ];
 
@@ -1203,7 +1300,8 @@ function sendDB()
             seedSong(SlipknotSong, "Slipknot", "All hope is gone");
             seedSong(BabymetalSong, "Babymetal", "Babymetal");
             seedSong(YoungohmSong, "Youngohm", "Bangkok Legacy");
-            seedSong(ThetoySong, "The TOYS", "SUN")
+            seedSong(ThetoySong, "The TOYS", "SUN");
+            seedSong(YewSong, "YEW", "Pauley & Jeen");
         }
     });
 }

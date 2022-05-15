@@ -10,14 +10,14 @@
         <% songs.forEach((song)=>{ %>
           <span data-img="<%= song.image %>" data-song="<%= song.name %>" data-artist="<%= song.artist.name%>" data-audio="<%= song.audio %>" id="songdata" class="d-none"></span>
         <div class="col">
-          <div class="card shadow-sm p-3">
+          <div class="card shadow-sm p-3" id="songcard" onmouseover="cardbthover()">
             <% if(currentUser){ %>
               <button type="button" class="border-0 p-0 bg-transparent card__playbt">
-                <i class="fa-regular fa-circle-play" id="btnplay"></i>
+                <i class="fa-solid fa-circle-play" id="btnplay"></i>
               </button>
             <% } else{ %>
               <button type="button" class="border-0 p-0 bg-transparent card__playbt" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="fa-regular fa-circle-play"></i>
+                <i class="fa-solid fa-circle-play"></i>
               </button>
               <%- include("../partials/login_modal.ejs") %>
             <% } %>

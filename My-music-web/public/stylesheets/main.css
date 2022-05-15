@@ -198,7 +198,7 @@ th:hover
     width: inherit;
 }
 
-.song--artist{
+.song--artist, .album--artist{
     font-size: 1rem;
     font-weight: 400;
     text-overflow: ellipsis;
@@ -208,7 +208,7 @@ th:hover
     width: inherit;
 }
 
-.song--name:hover, .song--artist:hover, .artist--name:hover, .album--name:hover, .playlist--name:hover{
+.song--name:hover, .song--artist:hover, .artist--name:hover, .album--name:hover, .playlist--name:hover, .album--artist:hover{
     text-decoration: underline;
 }
 

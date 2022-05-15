@@ -61,10 +61,11 @@
   </div>
 </div>
 
-<div class="d-block">
-  <h1 class="mt-2 d-inline">Albums For You</h1>
-  <h3 class="d-inline float-end mt-3"><a href="/album/all" id="seeall">See All</a></h3>
+<div class="d-flex justify-content-between">
+  <h1 class="d-inline">Albums For You</h1>
+  <h3><a href="/album/all" id="seeall">See All</a></h3>
 </div>
+
 <div class="album ms-0">
   <div class="container-fluid p-0">
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3">
@@ -74,7 +75,7 @@
             <a href="/album/<%= album._id %>" class="text-decoration-none">
               <img class="album--img" src="<%= album.image %>">
               <p class="album--name text-white m-0"><%= album.name %></p>
-              <a href="/artist/<%= album.artist._id %>" class="song--artist text-white-50"><%= album.artist.name %></a>
+              <a href="/artist/<%= album.artist._id %>" class="album--artist text-white-50"><%= album.artist.name %></a>
             </a>
           </div>
         </div>
@@ -83,10 +84,11 @@
   </div>
 </div>
 
-<div class="d-block">
-  <h1 class="mt-2 d-inline">Artists For You</h1>
-  <h3 class="d-inline float-end mt-3"><a href="/artist/all" id="seeall">See All</a></h3>
+<div class="d-flex justify-content-between">
+  <h1 class="d-inline">Albums For You</h1>
+  <h3><a href="/artist/all" id="seeall">See All</a></h3>
 </div>
+
 <div class="album ms-0">
   <div class="container-fluid p-0">
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3">

@@ -1,6 +1,6 @@
 const   express     = require("express"),
         router      = express.Router(),
-        fs          = require('fs')
+        fs          = require('fs'),
         User        = require('../models/user'),
         Song        = require('../models/song'),
         Artist      = require('../models/artist'),
