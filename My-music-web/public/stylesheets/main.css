@@ -274,7 +274,7 @@ th:hover
     background-color: #1DE8F1;
 }
 
-.btn--fav i:hover, .btn--addplaylist i:hover, .playbt--inrow:hover, .btn--editnickname i:hover, .btn--rmformplaylist:hover, .editplaylistbt:hover{
+.btn--fav i:hover, .btn--addplaylist i:hover, .playbt--inrow:hover, .btn--editnickname i:hover, .rmfromplaylist--inrow:hover,.editplaylistbt:hover{
     color: #1DE8F1;
 }
 
