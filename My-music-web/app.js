@@ -21,7 +21,7 @@ const   indexRoutes  = require('./routes/index'),
         playlistRoutes  = require('./routes/playlist'),
         adminRoutes  = require('./routes/admin');
 
-mongoose.connect('mongodb://localhost/Kmusic'); // เชื่อม Database
+mongoose.connect('mongodb+srv://Kmusic:Kmusic@mycluster.vesir.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'); // เชื่อม Database
 app.set("view engine" ,"ejs");
 app.use(express.static("./public"));
 app.use(bodyParser.urlencoded({extended : true}));
